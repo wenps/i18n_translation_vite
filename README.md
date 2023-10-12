@@ -1,2 +1,0 @@
-# i18n_translation_vite
-基于谷歌翻译的自动i18n翻译配置

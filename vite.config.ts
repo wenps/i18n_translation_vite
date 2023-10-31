@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-10-31 10:52:17
+ * @LastEditTime: 2023-10-31 15:33:16
  * @FilePath: /i18n_translation_vite/vite.config.ts
  */
 import path from "path";
@@ -29,7 +29,9 @@ export default defineConfig({
         vuePluginsAutoI18n({option:{
             translateKey: '$t',
             excludedCall: [],
-            excludedPattern: []
+            excludedPattern: [],
+            globalPath: '',
+            langKey: [],
         }}),
       ]
 });

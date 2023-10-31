@@ -1,12 +1,12 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-10-11 10:05:36
+ * @LastEditTime: 2023-10-31 10:52:17
  * @FilePath: /i18n_translation_vite/vite.config.ts
  */
 import path from "path";
 import { defineConfig } from 'vite'
-import vuePluginsAutoi18n from "./src/plugins/vuePluginsAutoi18n";
+import vuePluginsAutoI18n from "./src/plugins/vuePluginsAutoi18n";
 import createVuePlugin from '@vitejs/plugin-vue';
 
 const vuePlugin = createVuePlugin({ include: [/\.vue$/] })
@@ -25,7 +25,11 @@ export default defineConfig({
         },
     },
     plugins: [
-        vuePluginsAutoi18n(),
-        vuePlugin
+        vuePlugin,
+        vuePluginsAutoI18n({option:{
+            translateKey: '$t',
+            excludedCall: [],
+            excludedPattern: []
+        }}),
       ]
 });

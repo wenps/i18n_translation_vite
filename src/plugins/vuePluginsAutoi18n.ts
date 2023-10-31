@@ -1,29 +1,28 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-10-12 13:29:14
+ * @LastEditTime: 2023-10-31 10:57:22
  * @FilePath: /i18n_translation_vite/src/plugins/vuePluginsAutoi18n.ts
  */
 const babel = require("@babel/core");
-const compilerSFC = require('@vue/compiler-sfc')
-import { hasChineseSymbols, removeComments } from './utils/base'
-import { initLangFile } from './utils/file';
+import {optionInfo, initOption} from './option'
+import { fileUtils, translateUtils, baseUtils } from './utils';
+import filter from './filter';
 
-let langObj = ''
-
-export default function vuePluginsAutoi18n() {
-  langObj = initLangFile()
+export default function vuePluginsAutoI18n(option: optionInfo) {
+  translateUtils.initLangObj(fileUtils.initLangFile())
+  initOption(option)
   return {
     name: 'vue-plugins-auto-i18n',
     transform(code:string, path:string) {
       // 处理ts || js || jsx || vue 文件
-      if (path.endsWith('.ts') || path.endsWith('.js')|| path.endsWith('.jsx')) {
-        if(!hasChineseSymbols(code)) return code;
-        code = removeComments(code)
+      if (path.endsWith('.vue') || path.endsWith('.ts') || path.endsWith('.js')|| path.endsWith('.jsx')) {
+        if(!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;
+        code = baseUtils.removeComments(code)
         try {
           let result = babel.transformSync(code, {
             configFile: false,
-            plugins: [plugin],
+            plugins: [filter],
           });
           return result.code;
         } catch (e) {
@@ -33,14 +32,3 @@ export default function vuePluginsAutoi18n() {
     }
   }
 }
-
-const plugin = function (api:any, config:any) {
-  return {
-    visitor: {
-      StringLiteral: (path:any)=>{console.log(path)},
-      JSXText: (path:any)=>{console.log(path)},
-      TemplateElement: (path:any)=>{console.log(path)},
-      CallExpression: (path:any)=>{console.log(path)},
-    },
-  };
-};

@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-10-12 13:28:40
+ * @LastEditTime: 2023-10-12 18:10:32
  * @FilePath: /i18n_translation_vite/src/plugins/utils/file.ts
  */
 import fs  from "fs";
@@ -18,5 +18,5 @@ import fs  from "fs";
     fs.writeFileSync(indexFilePath, '');
   }
   const content = fs.readFileSync(indexFilePath, 'utf-8');
-  return content ? JSON.parse(content) : ''
+  return content ? JSON.parse(content) : {}
 }

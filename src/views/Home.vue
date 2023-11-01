@@ -1,31 +1,19 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-08-09 11:48:25
- * @LastEditTime: 2023-10-12 13:22:26
+ * @LastEditTime: 2023-11-01 13:53:16
  * @FilePath: /i18n_translation_vite/src/views/Home.vue
 -->
 <template>
-  <div>
-    <aside>222 </aside>
-    <content>
-      <router-view></router-view>
-    </content>
-  </div>
+  月光明媚
+  测试
+  {{ msg }}
+  测试目的，权限
 </template>
-<script lang="ts">
+<script lang="ts" setup>
+  // 验证是否会翻译注释
+  import { ref } from "vue"
+  const a = '小山' 
+  console.log(a);
+  const msg = ref('hello world')
 </script>
-<style lang="scss" scoped>
-  div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    aside {
-      
-    }
-    content {
-      flex: 1;
-      padding: 20px;
-    }
-  }
-</style>
-

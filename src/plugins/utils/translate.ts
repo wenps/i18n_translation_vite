@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-01 09:22:16
+ * @LastEditTime: 2023-11-01 10:33:18
  * @FilePath: /i18n_translation_vite/src/plugins/utils/translate.ts
  */
 

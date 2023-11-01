@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2023-10-31 11:38:21
+ * @LastEditTime: 2023-11-01 13:48:16
  * @FilePath: /i18n_translation_vite/src/plugins/utils/base.ts
  */
 import { Node } from '@babel/types';

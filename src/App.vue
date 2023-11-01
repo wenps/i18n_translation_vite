@@ -1,16 +1,24 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2023-10-12 13:13:38
+ * @LastEditTime: 2023-11-01 13:54:42
+ * @FilePath: /i18n_translation_vite/src/App.vue
+-->
+<!--
+ * @Author: 小山问
+ * @Date: 2023-08-11 09:56:13
+ * @LastEditTime: 2023-11-01 13:47:58
  * @FilePath: /i18n_translation_vite/src/App.vue
 -->
 <template>
   <div class="main">
-    <header>
+    <header :name="name?'小山':$emit('text')">
       <div class="title">
-        <!--测试-->
-        <img src="https://www.antdv.com/assets/logo.1ef800a8.svg" class="icon"/>
-        <div class="name">XiaoShan Design 小山，芜湖，不是吧 </div>
+        <img class="icon" :name="name?'小山':$emit('text')" :src="img1"/>
+        <p>测试</p>
+        <div class="name">XiaoShan Design '小山'，芜湖，不是吧 {{ nameA('小山') }} 
+        </div>
+        <div class="name">XiaoShan  Design '小山'，芜湖，不是吧 {{ nameA('小山') }} </div>
       </div>
     </header>
     <main>
@@ -21,7 +29,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-  // 测试11，333
+  data() {
+    return {
+      name: 1,
+      // img1: '',
+      img1: "https://www.antdv.com/assets/logo.1ef800a8.svg",
+    }
+  },
+  methods: {
+    nameA(data:string) {
+      return data
+    }
+  }
 });
 </script>
 <style lang="scss" scoped>

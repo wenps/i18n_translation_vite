@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2023-10-31 15:31:53
+ * @LastEditTime: 2023-11-01 14:35:13
  * @FilePath: /i18n_translation_vite/src/plugins/option.ts
  */
 const OPTION = {
@@ -14,7 +14,13 @@ const OPTION = {
   langKey: ['zh-cn', 'en']
 }
 
-type OptionType = typeof OPTION;
+type OptionType = {
+  translateKey: string,
+  excludedCall: string[],
+  excludedPattern: string[] | RegExp[]
+  globalPath: string,
+  langKey: string[]
+};
 
 export let option: OptionType= {
   translateKey: "$t",
@@ -25,8 +31,10 @@ export let option: OptionType= {
 }
 
 export type optionInfo = {
-  option: OptionType
+  option: Partial<OptionType>;
 }
 export function initOption(optionInfo: optionInfo) {
-  option = OPTION
+  option = Object.assign({}, OPTION, optionInfo.option)
+  console.log(option);
+  
 }

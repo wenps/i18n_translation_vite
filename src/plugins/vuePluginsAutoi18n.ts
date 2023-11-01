@@ -1,7 +1,7 @@
 /*
- * @Author: xiaoshanwen
+ * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-10-31 19:29:20
+ * @LastEditTime: 2023-11-01 13:54:15
  * @FilePath: /i18n_translation_vite/src/plugins/vuePluginsAutoi18n.ts
  */
 const babel = require("@babel/core");
@@ -18,7 +18,7 @@ export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
       // 处理ts || js || jsx || vue 文件
       if (path.endsWith('.vue') || path.endsWith('.ts') || path.endsWith('.js')|| path.endsWith('.jsx')) {
         if(!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;
-        code = baseUtils.removeComments(code)
+        // code = baseUtils.removeComments(code)
         try {
           let result = babel.transformSync(code, {
             configFile: false,

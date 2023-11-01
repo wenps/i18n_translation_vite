@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2023-11-01 13:48:16
+ * @LastEditTime: 2023-11-01 17:13:58
  * @FilePath: /i18n_translation_vite/src/plugins/utils/base.ts
  */
 import { Node } from '@babel/types';
@@ -34,19 +34,20 @@ export const removeComments = function(code: string) {
 }
 
 /**
- * @description: 用于判断提供的值是否不符合正则表达式数组中的任一规则
+ * @description: 用于判断提供的值是否符合正则表达式数组中的任一规则，符合则跳过
  * @param {*} value
  * @param {*} regexArray
  * @return {*}
  */
 export function checkAgainstRegexArray(value: string, regexArray: string[]) {
+  if(!regexArray.length) return false // 没有匹配规则，返回false
   for (let i = 0; i < regexArray.length; i++) {
     const regex = new RegExp(regexArray[i]);
-    if (!regex.test(value)) {
-      return false; // 如果不符合任何一个规则，返回 false
+    if (regex.test(value)) {
+      return true; // 如果符合任何一个规则，返回 true
     }
   }
-  return true; // 如果符合所有规则，返回 true
+  return false; // 如果所有规则都不符合，返回 false
 }
 
 /**

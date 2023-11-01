@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2023-11-01 14:35:13
+ * @LastEditTime: 2023-11-01 16:47:51
  * @FilePath: /i18n_translation_vite/src/plugins/option.ts
  */
 const OPTION = {
@@ -35,6 +35,4 @@ export type optionInfo = {
 }
 export function initOption(optionInfo: optionInfo) {
   option = Object.assign({}, OPTION, optionInfo.option)
-  console.log(option);
-  
 }

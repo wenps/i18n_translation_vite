@@ -1,13 +1,7 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2023-11-01 13:54:42
- * @FilePath: /i18n_translation_vite/src/App.vue
--->
-<!--
- * @Author: 小山问
- * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2023-11-01 13:47:58
+ * @LastEditTime: 2023-11-01 16:16:34
  * @FilePath: /i18n_translation_vite/src/App.vue
 -->
 <template>

@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-10-31 15:49:43
+ * @LastEditTime: 2023-11-01 09:36:47
  * @FilePath: /i18n_translation_vite/src/plugins/utils/file.ts
  */
 import fs  from "fs";
@@ -46,7 +46,7 @@ export function initLangTranslateFile(key:string, Path:string) {
  * @return {*}
  */
 export function getLangTranslateFileContent(key:string, Path:string) {
-  const indexFilePath = path.join(Path, key, 'index.js')
+  const indexFilePath = './' + path.join(Path, key, 'index.js')
   const content = require(indexFilePath);
   return content || {}
 }

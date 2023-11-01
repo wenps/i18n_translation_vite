@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-10-31 15:28:53
+ * @LastEditTime: 2023-10-31 19:29:20
  * @FilePath: /i18n_translation_vite/src/plugins/vuePluginsAutoi18n.ts
  */
 const babel = require("@babel/core");
@@ -11,7 +11,7 @@ import filter from './filter';
 
 export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo)
-  translateUtils.initLangObj(fileUtils.initLangFile(option.globalPath))
+  translateUtils.initLangObj(fileUtils.initLangFile(option.globalPath)[option.langKey[0]])
   return {
     name: 'vue-plugins-auto-i18n',
     async transform(code:string, path:string) {

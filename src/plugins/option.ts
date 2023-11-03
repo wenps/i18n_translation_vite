@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2023-11-02 17:34:24
+ * @LastEditTime: 2023-11-03 18:06:52
  * @FilePath: /i18n_translation_vite/src/plugins/option.ts
  */
 
@@ -9,7 +9,10 @@ const OPTION = {
   translateKey: "$t",
   excludedCall: ["$i8n", "require", "$$i8n", "console.log", "$t"],
   excludedPattern: [/\.\w+$/],
+  includePath: [/src\//],
   globalPath: './lang',
+  distPath: '',
+  distKey: 'index',
   langKey: ['zh-cn', 'en'],
   namespace: ''
 }
@@ -19,9 +22,12 @@ type OptionType = {
   // 排除不需要国际化配置的调用方法
   excludedCall: string[], // 标记不翻译调用函数
   excludedPattern: RegExp[], // 标记不用翻译字符串
-  globalPath: string,
-  langKey: string[],
-  namespace: string
+  includePath: RegExp[], // 指定需要翻译的目录下的文件
+  globalPath: string, // 配置文件生成位置
+  langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件
+  namespace: string, // 命名空间
+  distPath: string, // 打包后生成文件的位置 比如 ./dist/assets
+  distKey: string, // 打包后生成文件的主文件名称，比如index.xxx 默认是index
 };
 
 export let option: OptionType = { ...OPTION };

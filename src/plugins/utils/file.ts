@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-01 14:31:52
+ * @LastEditTime: 2023-11-03 18:29:04
  * @FilePath: /i18n_translation_vite/src/plugins/utils/file.ts
  */
 import fs  from "fs";
@@ -12,16 +12,16 @@ import {option} from '../option'
  * @description: 新建国际化配置文件夹
  * @return {*}
  */
- export function initLangFile(langFolderPath:string) {
-  if (!fs.existsSync(langFolderPath)) {
-    fs.mkdirSync(langFolderPath); // 创建lang文件夹
-    initLangTranslateFile(option.langKey[1], langFolderPath)
-    initLangTranslateFile(option.langKey[0], langFolderPath)
+ export function initLangFile() {
+  if (!fs.existsSync(option.globalPath)) {
+    fs.mkdirSync(option.globalPath); // 创建lang文件夹
+    initLangTranslateFile(option.langKey[1], option.globalPath)
+    initLangTranslateFile(option.langKey[0], option.globalPath)
   }
-  initTranslateBasicFn(langFolderPath)
+  initTranslateBasicFn(option.globalPath)
   return {
-    [option.langKey[1]]: getLangTranslateFileContent(option.langKey[1], langFolderPath),
-    [option.langKey[0]]: getLangTranslateFileContent(option.langKey[0], langFolderPath)
+    [option.langKey[1]]: getLangTranslateFileContent(option.langKey[1], option.globalPath),
+    [option.langKey[0]]: getLangTranslateFileContent(option.langKey[0], option.globalPath)
   }
 }
 
@@ -93,4 +93,41 @@ export function initTranslateBasicFn(Path: string) {
   })();`
   const indexPath = path.join(Path, 'index.js')
   fs.writeFileSync(indexPath, translateBasicFnText); // 创建
+}
+
+/**
+ * @description: 构建时把lang配置文件设置到打包后到主文件中
+ * @return {*}
+ */
+export function buildSetLangConfigToIndexFile() {
+  const targetLangObj = getLangTranslateFileContent(option.langKey[1], option.globalPath)
+  const currentLangObj = getLangTranslateFileContent(option.langKey[0], option.globalPath)
+  if(fs.existsSync(option.distPath)) {
+    fs.readdir(option.distPath, (err, files) => {
+      if (err) {
+        console.error('❌构建文件夹为空，翻译配置无法写入');
+        return;
+      }
+    
+      files.forEach((file) => {
+        if (file.startsWith(option.distKey) && file.endsWith('.js')) {
+          const filePath = path.join(option.distPath, file);
+          fs.readFile(filePath, 'utf-8', (err, data) => {
+            if (err) {
+              console.log(filePath);
+              console.error('❌构建主文件不存在，翻译配置无法写入');
+              return;
+            }
+            try {
+              // 翻译配置写入主文件
+              fs.writeFileSync(filePath, `window.${option.namespace}.${option.langKey[0]}=${JSON.stringify(currentLangObj)};window.${option.namespace}.${option.langKey[1]}=${JSON.stringify(targetLangObj)};` + data); 
+              console.info('恭喜：翻译配置写入构建主文件成功🌟🌟🌟');
+            } catch (err) {
+              console.error('翻译配置写入构建主文件失败:', err);
+            }
+          });
+        }
+      });
+    });
+  }
 }

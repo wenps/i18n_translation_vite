@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-02 17:34:39
+ * @LastEditTime: 2023-11-03 17:58:19
  * @FilePath: /i18n_translation_vite/vite.config.ts
  */
 import path from "path";
@@ -29,7 +29,9 @@ export default defineConfig({
         vuePluginsAutoI18n({
             option:{
                 globalPath: './lang',
-                namespace: 'lang'
+                namespace: 'lang',
+                distPath: './dist/assets',
+                distKey: 'index'
             }
         }),
       ]

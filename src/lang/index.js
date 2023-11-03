@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:08:36
- * @LastEditTime: 2023-11-01 11:29:50
+ * @LastEditTime: 2023-11-02 17:38:40
  * @FilePath: /i18n_translation_vite/src/lang/index.js
  */
 import '../../lang/index'
@@ -12,4 +12,4 @@ const langMap = {
     zhcn: CN
 }
 const lang = window.localStorage.getItem('lang') || 'zhcn'
-window.$t.locale(langMap[lang], '')
+window.$t.locale(langMap[lang], 'lang')

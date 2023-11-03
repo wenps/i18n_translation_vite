@@ -1,1 +1,1 @@
-module.exports = {"g5z62":"小山","1cjag4":"12小时","jcve2":"测试","rbk14yr":"XiaoShan Design '小山'，芜湖，不是吧","g84msj7":"月光明媚 测试","6a2b7r7":"测试目的，权限"}
+module.exports = {"g5z62":"小山","1cjag4":"12小时","jcve2":"测试","rbk14yr":"XiaoShan Design '小山'，芜湖，不是吧","1e4ym2d":"使用 .type 直接取值","g84msj7":"月光明媚 测试","6a2b7r7":"测试目的，权限","ino1":"年","f5zd33":"条/页","ouw02":"跳至","kzjg2":"确定","u451":"页","btlof3":"上一页","btmf43":"下一页","14s1h66":"向前 5 页","5q3kxz6":"向后 5 页","14s2yk6":"向前 3 页","5q3jgl6":"向后 3 页"}

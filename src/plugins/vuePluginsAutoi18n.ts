@@ -1,13 +1,13 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-01 16:22:41
+ * @LastEditTime: 2023-11-02 19:03:44
  * @FilePath: /i18n_translation_vite/src/plugins/vuePluginsAutoi18n.ts
  */
-const babel = require("@babel/core");
 import {optionInfo, initOption, option} from './option'
 import { fileUtils, translateUtils, baseUtils } from './utils';
 import filter from './filter';
+const babel = require("@babel/core");
 
 export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo)
@@ -29,6 +29,10 @@ export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
           console.error(e);
         }
       }
+    },
+    async buildEnd() {
+      console.info('构建阶段批量翻译')
+      await translateUtils.googleAutoTranslate()
     }
   }
 }

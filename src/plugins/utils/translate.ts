@@ -1,14 +1,14 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-01 17:25:14
+ * @LastEditTime: 2023-11-02 18:38:17
  * @FilePath: /i18n_translation_vite/src/plugins/utils/translate.ts
  */
 
-const tunnel = require('tunnel');
-const { translate } = require('@vitalets/google-translate-api');
 import { fileUtils } from './index.js';
 import { option } from '../option';
+const tunnel = require('tunnel');
+const { translate } = require('@vitalets/google-translate-api');
 
 /**
  * @description: 调用翻译API
@@ -30,8 +30,9 @@ const translateText = async (text: string) => {
         }
       })
     }
-  }).catch(() => {
-    throw new Error('翻译api请求异常');
+  }).catch((err:any) => {
+    console.error('自动翻译api，请求异常')
+    throw new Error(err);
   });
   return data['text'] || '';
 };
@@ -74,14 +75,20 @@ export async function googleAutoTranslate() {
     }
   });
   // 没有需要翻译的
-  if(!Object.keys(transLangObj).length) return
+  if(!Object.keys(transLangObj).length) {
+    console.info('没有需要翻译的内容！')
+    return 
+  }
+  console.info('开始自动翻译...')
   // 创建翻译文本
   let Text = Object.values(transLangObj).join('\n###\n');
   const res = await translateText(Text);
   const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案
   if (resultValues.length !== Object.values(transLangObj).length) {
-    throw new Error('翻译异常，长度缺少');
+    console.error('翻译异常，翻译结果缺失❌')
+    return
   }
+  console.info('翻译成功⭐️⭐️⭐️')
   Object.keys(transLangObj).forEach((key, index) => {
     curOriginLangObj[key] = transLangObj[key];
     curTargetLangObj[key] = resultValues[index];

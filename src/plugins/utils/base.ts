@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2023-11-01 17:13:58
+ * @LastEditTime: 2023-11-02 17:35:18
  * @FilePath: /i18n_translation_vite/src/plugins/utils/base.ts
  */
 import { Node } from '@babel/types';
@@ -104,8 +104,8 @@ export function extractStrings(fileContent: string, regex: any) {
  * @param {string} key
  * @return {*}
  */
-export function createI18nTranslator(value: string, isExpression: boolean, key?: string): any {
-  const nameSpace = '';
+export function createI18nTranslator(value: string, isExpression?: boolean, key?: string): any {
+  const nameSpace = option.namespace;
   const trimmedValue = value.trim();
   const valStr = trimmedValue.replace(/'/g, '"').replace(/(\n)/g, "\\n");
   const generatedKey = key || generateId(valStr);

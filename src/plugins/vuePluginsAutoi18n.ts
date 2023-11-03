@@ -9,6 +9,8 @@ import { fileUtils, translateUtils, baseUtils } from './utils';
 import filter from './filter';
 const babel = require("@babel/core");
 
+const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
+
 export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo)
   translateUtils.initLangObj(fileUtils.initLangFile()[option.langKey[0]])
@@ -16,7 +18,7 @@ export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
     name: 'vue-plugins-auto-i18n',
     async transform(code:string, path:string) {
       // 处理ts || js || jsx || vue 文件
-      if (path.endsWith('.vue') || path.endsWith('.ts') || path.endsWith('.js')|| path.endsWith('.jsx')) {
+      if (allowedExtensions.some(ext => path.endsWith(ext))) {
         if(!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;
         try {
           let result = babel.transformSync(code, {

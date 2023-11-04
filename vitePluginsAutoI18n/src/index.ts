@@ -1,8 +1,8 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-04 16:17:13
- * @FilePath: /i18n_translation_vite/src/plugins/vuePluginsAutoi18n.ts
+ * @LastEditTime: 2023-11-04 18:28:38
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/core/vuePluginsAutoi18n.ts
  */
 import { optionInfo, initOption, option } from './option';
 import { fileUtils, translateUtils, baseUtils } from './utils';
@@ -11,13 +11,13 @@ import filter from './filter';
 const babel = require("@babel/core");
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
 
-export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
+export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo);
   fileUtils.initLangFile();
   translateUtils.initLangObj(fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0]));
 
   return {
-    name: 'vue-plugins-auto-i18n',
+    name: 'vite-plugins-auto-i18n',
     async transform(code: string, path: string) {
       if (allowedExtensions.some(ext => path.endsWith(ext))) {
         if (!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;

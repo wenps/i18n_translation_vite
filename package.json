@@ -1,10 +1,11 @@
 {
   "name": "i18n_translation_vite",
   "version": "0.0.0",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "preview": "vite build && vite preview",
-    "build": "vite build"
+    "build": "rollup -c ./rollup.config.ts --configPlugin typescript"
   },
   "description": "基于vite i18n 自动翻译 插件",
   "dependencies": {
@@ -24,12 +25,16 @@
     "vue-template-compiler": "^2.7.14"
   },
   "devDependencies": {
+    "@babel/types": "^7.23.0",
+    "@rollup/plugin-typescript": "^11.1.5",
     "@types/node": "^20.3.3",
     "babel-plugin-import": "^1.13.6",
     "eslint": "^8.52.0",
     "eslint-plugin-vue": "^9.15.1",
     "less": "^4.2.0",
     "pinia": "^2.1.4",
+    "rollup": "^4.3.0",
+    "rollup-plugin-dts": "^6.1.0",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
     "typescript": "^5.1.6",

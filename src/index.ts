@@ -1,0 +1,1 @@
+export { default as vuePluginsAutoI18n } from './plugins/vuePluginsAutoi18n'

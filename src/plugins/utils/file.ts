@@ -128,7 +128,7 @@ export function buildSetLangConfigToIndexFile() {
             }
             try {
               // 翻译配置写入主文件
-              fs.writeFileSync(filePath, `window.${option.namespace}.${option.langKey[0]}=${JSON.stringify(currentLangObj)};window.${option.namespace}.${option.langKey[1]}=${JSON.stringify(targetLangObj)};` + data); 
+              fs.writeFileSync(filePath, `window['${option.namespace}']={};window['${option.namespace}']['${option.langKey[0]}']=${JSON.stringify(currentLangObj)};window.${option.namespace}.${option.langKey[1]}=${JSON.stringify(targetLangObj)};` + data); 
               console.info('恭喜：翻译配置写入构建主文件成功🌟🌟🌟');
             } catch (err) {
               console.error('翻译配置写入构建主文件失败:', err);

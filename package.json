@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "preview": "vite build && vite preview",
     "build": "vite build"
   },
   "description": "基于vite i18n 自动翻译 插件",

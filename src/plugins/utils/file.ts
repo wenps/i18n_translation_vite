@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-04 09:45:54
+ * @LastEditTime: 2023-11-04 16:36:34
  * @FilePath: /i18n_translation_vite/src/plugins/utils/file.ts
  */
 import fs  from "fs";
@@ -18,7 +18,8 @@ import {option} from '../option'
     initLangTranslateFile(option.langKey[1], option.globalPath)
     initLangTranslateFile(option.langKey[0], option.globalPath)
   }
-  initTranslateBasicFn(option.globalPath)
+  initLangTranslateJSONFile()
+  initTranslateBasicFnFile()
 }
 
 /**
@@ -30,23 +31,9 @@ import {option} from '../option'
 export function initLangTranslateFile(key:string, Path:string) {
   const folderPath = path.join(Path, key)
   if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath); // 创建lang文件夹
-    const indexFilePath = path.join(folderPath, 'index.js')
+    fs.mkdirSync(folderPath); // 创建对应语言文件夹
     const esmIndexFilePath = path.join(folderPath, 'index.mjs')
-    fs.writeFileSync(indexFilePath, 'module.exports = {}'); // 创建
     fs.writeFileSync(esmIndexFilePath, 'export default {}'); // 创建
-  }
-}
-
-
-/**
- * @description: 获取翻译语言配置对象
- * @return {*}
- */
-export function getLangConfigObj() {
-  return {
-    [option.langKey[1]]: getLangTranslateFileContent(option.langKey[1], option.globalPath),
-    [option.langKey[0]]: getLangTranslateFileContent(option.langKey[0], option.globalPath)
   }
 }
 
@@ -56,8 +43,8 @@ export function getLangConfigObj() {
  * @param {string} Path
  * @return {*}
  */
-export function getLangTranslateFileContent(key:string, Path:string) {
-  const indexFilePath = './' + path.join(Path, key, 'index.js')
+export function getLangTranslateFileContent(key:string) {
+  const indexFilePath = './' + path.join(option.globalPath, key, 'index.js')
   const content = require(indexFilePath);
   return content || {}
 }
@@ -68,10 +55,8 @@ export function getLangTranslateFileContent(key:string, Path:string) {
  * @param {string} Path
  * @return {*}
  */
-export function setLangTranslateFileContent(key:string, Path:string, content: object) {
-  const indexFilePath = path.join(Path, key, 'index.js')
-  const esmIndexFilePath = path.join(Path, key, 'index.mjs')
-  fs.writeFileSync(indexFilePath, 'module.exports = ' + JSON.stringify(content)); // 创建
+export function setLangTranslateFileContent(key:string, content: object) {
+  const esmIndexFilePath = path.join(option.globalPath, key, 'index.mjs')
   fs.writeFileSync(esmIndexFilePath, 'export default ' + JSON.stringify(content)); // 创建
 }
 
@@ -79,7 +64,7 @@ export function setLangTranslateFileContent(key:string, Path:string, content: ob
  * @description: 生成国际化基础调用函数文件
  * @return {*}
  */
-export function initTranslateBasicFn(Path: string) {
+export function initTranslateBasicFnFile() {
   const key = option.translateKey
   const translateBasicFnText = `(function () {
     let ${key} = function (key, val, nameSpace) {
@@ -99,8 +84,70 @@ export function initTranslateBasicFn(Path: string) {
     window.${key} = window.${key} || ${key};
     window.$${key} = $${key};
   })();`
-  const indexPath = path.join(Path, 'index.js')
+  const indexPath = path.join(option.globalPath, 'index.js')
   fs.writeFileSync(indexPath, translateBasicFnText); // 创建
+}
+
+
+/**
+ * @description: 生成国际化JSON文件
+ * @param {string} Path
+ * @return {*}
+ */
+export function initLangTranslateJSONFile() {
+  const indexPath = path.join(option.globalPath, 'index.json')
+  if(!fs.existsSync(indexPath)) {
+    fs.writeFileSync(indexPath, JSON.stringify({})); // 创建
+  } else { // 同步代码到对应langKey下的配置文件中
+    setLangTranslateFileContent(option.langKey[0], getLangObjByJSONFileWithLangKey(option.langKey[0]))
+    setLangTranslateFileContent(option.langKey[1], getLangObjByJSONFileWithLangKey(option.langKey[1]))
+  }
+}
+
+/**
+ * @description: 读取国际化JSON文件
+ * @return {*}
+ */
+export function getLangTranslateJSONFile() {
+  const filePath = path.join(option.globalPath, 'index.json')
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    return content;
+  } catch (error: any) {
+    if (error.code === 'ENOENT') {
+      console.log('❌读取JSON配置文件异常，文件不存在');
+    } else {
+      console.log('❌读取JSON配置文件异常，无法读取文件');
+    }
+    return JSON.stringify({});
+  }
+}
+
+/**
+ * @description: 基于langKey获取JSON配置文件中对应语言对象
+ * @param {string} key
+ * @return {*}
+ */
+export function getLangObjByJSONFileWithLangKey(key:string) {
+  const JSONObj = JSON.parse(getLangTranslateJSONFile())
+  const langObj:any = {}
+  Object.keys(JSONObj).forEach((value)=>{
+    langObj[value] = JSONObj[value][key]
+  })
+  return langObj
+}
+
+/**
+ * @description: 设置国际化JSON文件
+ * @return {*}
+ */
+export function setLangTranslateJSONFile(content:string) {
+  const filePath = path.join(option.globalPath, 'index.json')
+  if(fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, content); 
+  } else {
+    console.log('❌JSON配置文件写入异常，文件不存在');
+  }
 }
 
 /**
@@ -108,8 +155,8 @@ export function initTranslateBasicFn(Path: string) {
  * @return {*}
  */
 export function buildSetLangConfigToIndexFile() {
-  const targetLangObj = getLangTranslateFileContent(option.langKey[1], option.globalPath)
-  const currentLangObj = getLangTranslateFileContent(option.langKey[0], option.globalPath)
+  const targetLangObj = getLangObjByJSONFileWithLangKey(option.langKey[1])
+  const currentLangObj = getLangObjByJSONFileWithLangKey(option.langKey[0])
   if(fs.existsSync(option.distPath)) {
     fs.readdir(option.distPath, (err, files) => {
       if (err) {

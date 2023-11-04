@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-02 18:38:17
+ * @LastEditTime: 2023-11-04 16:33:49
  * @FilePath: /i18n_translation_vite/src/plugins/utils/translate.ts
  */
 
@@ -61,9 +61,9 @@ export function initLangObj(obj: any) {
 // 生成国际化配置文件
 export async function googleAutoTranslate() {
   // 拿到当前缓存的原始语言
-  const curOriginLangObj = fileUtils.getLangTranslateFileContent(option.langKey[0], option.globalPath);
+  const curOriginLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0]);
   // 拿到当前缓存的目标语言
-  const curTargetLangObj = fileUtils.getLangTranslateFileContent(option.langKey[1], option.globalPath);
+  const curTargetLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[1]);
   
   // 拿到更新后的语言
   const langObj = JSON.parse(JSON.stringify(getLangObj()));
@@ -93,6 +93,20 @@ export async function googleAutoTranslate() {
     curOriginLangObj[key] = transLangObj[key];
     curTargetLangObj[key] = resultValues[index];
   });
-  fileUtils.setLangTranslateFileContent(option.langKey[0], option.globalPath, curOriginLangObj);
-  fileUtils.setLangTranslateFileContent(option.langKey[1], option.globalPath, curTargetLangObj);
+  fileUtils.setLangTranslateFileContent(option.langKey[0], curOriginLangObj);
+  fileUtils.setLangTranslateFileContent(option.langKey[1], curTargetLangObj);
+  console.log('开始写入JSON配置文件...')
+  const JSONLangObj:any = {}
+  Object.keys(curOriginLangObj).forEach(key => {
+    JSONLangObj[key] = {
+      [option.langKey[0]]: curOriginLangObj[key],
+      [option.langKey[1]]: curTargetLangObj[key]
+    }
+  })
+  try {
+    fileUtils.setLangTranslateJSONFile(JSON.stringify(JSONLangObj))
+    console.info('JSON配置文件写入成功⭐️⭐️⭐️')
+  } catch (error) {
+    console.error('❌JSON配置文件写入失败' + error)
+  }
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-03 18:27:42
+ * @LastEditTime: 2023-11-04 09:46:37
  * @FilePath: /i18n_translation_vite/src/plugins/vuePluginsAutoi18n.ts
  */
 import {optionInfo, initOption, option} from './option'
@@ -13,7 +13,8 @@ const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
 
 export default function vuePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo)
-  translateUtils.initLangObj(fileUtils.initLangFile()[option.langKey[0]])
+  fileUtils.initLangFile()
+  translateUtils.initLangObj(fileUtils.getLangConfigObj()[option.langKey[0]])
   return {
     name: 'vue-plugins-auto-i18n',
     async transform(code:string, path:string) {

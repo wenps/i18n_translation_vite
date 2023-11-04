@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-03 18:29:04
+ * @LastEditTime: 2023-11-04 09:45:54
  * @FilePath: /i18n_translation_vite/src/plugins/utils/file.ts
  */
 import fs  from "fs";
@@ -19,10 +19,6 @@ import {option} from '../option'
     initLangTranslateFile(option.langKey[0], option.globalPath)
   }
   initTranslateBasicFn(option.globalPath)
-  return {
-    [option.langKey[1]]: getLangTranslateFileContent(option.langKey[1], option.globalPath),
-    [option.langKey[0]]: getLangTranslateFileContent(option.langKey[0], option.globalPath)
-  }
 }
 
 /**
@@ -39,6 +35,18 @@ export function initLangTranslateFile(key:string, Path:string) {
     const esmIndexFilePath = path.join(folderPath, 'index.mjs')
     fs.writeFileSync(indexFilePath, 'module.exports = {}'); // 创建
     fs.writeFileSync(esmIndexFilePath, 'export default {}'); // 创建
+  }
+}
+
+
+/**
+ * @description: 获取翻译语言配置对象
+ * @return {*}
+ */
+export function getLangConfigObj() {
+  return {
+    [option.langKey[1]]: getLangTranslateFileContent(option.langKey[1], option.globalPath),
+    [option.langKey[0]]: getLangTranslateFileContent(option.langKey[0], option.globalPath)
   }
 }
 

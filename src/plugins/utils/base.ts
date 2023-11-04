@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2023-11-02 17:35:18
+ * @LastEditTime: 2023-11-04 15:08:56
  * @FilePath: /i18n_translation_vite/src/plugins/utils/base.ts
  */
 import { Node } from '@babel/types';
@@ -39,11 +39,10 @@ export const removeComments = function(code: string) {
  * @param {*} regexArray
  * @return {*}
  */
-export function checkAgainstRegexArray(value: string, regexArray: string[]) {
-  if(!regexArray.length) return false // 没有匹配规则，返回false
+export function checkAgainstRegexArray(value: string, regexArray: string[] | RegExp[]) {
   for (let i = 0; i < regexArray.length; i++) {
-    const regex = new RegExp(regexArray[i]);
-    if (regex.test(value)) {
+    const regex = typeof regexArray[i] === 'string' ? new RegExp(regexArray[i]) : regexArray[i];
+    if ((regex as RegExp).test(value)) {
       return true; // 如果符合任何一个规则，返回 true
     }
   }

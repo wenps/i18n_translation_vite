@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2023-11-03 18:06:52
+ * @LastEditTime: 2023-11-04 15:08:47
  * @FilePath: /i18n_translation_vite/src/plugins/option.ts
  */
 
@@ -9,6 +9,7 @@ const OPTION = {
   translateKey: "$t",
   excludedCall: ["$i8n", "require", "$$i8n", "console.log", "$t"],
   excludedPattern: [/\.\w+$/],
+  excludedPath: [],
   includePath: [/src\//],
   globalPath: './lang',
   distPath: '',
@@ -19,9 +20,9 @@ const OPTION = {
 
 type OptionType = {
   translateKey: string,
-  // 排除不需要国际化配置的调用方法
   excludedCall: string[], // 标记不翻译调用函数
   excludedPattern: RegExp[], // 标记不用翻译字符串
+  excludedPath: RegExp[], // 排查不需要翻译的目录下的文件
   includePath: RegExp[], // 指定需要翻译的目录下的文件
   globalPath: string, // 配置文件生成位置
   langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件

@@ -1,17 +1,18 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-01 16:35:38
- * @LastEditTime: 2023-11-01 17:29:14
+ * @LastEditTime: 2023-11-04 15:04:51
  * @FilePath: /i18n_translation_vite/src/plugins/filter/visitor/JSXText.ts
  */
 const types = require("@babel/types"); 
 import { baseUtils } from "../../utils";
+import { option } from '../../option'
 
 export default function (path: any) {
   let { node } = path;
   let value = node.value;
   // 当前jsxText是否包含中文，是否包含过滤字段
-  if (baseUtils.hasChineseSymbols(value) && !baseUtils.checkAgainstRegexArray(value, [])) {
+  if (baseUtils.hasChineseSymbols(value) && (option.excludedPattern.length && !baseUtils.checkAgainstRegexArray(value, [...option.excludedPattern]))) {
     // 生成翻译节点
     let expression = baseUtils.createI18nTranslator(value, true);
     // 生成的翻译节点包装在  types.JSXExpressionContainer  中

@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-04 16:33:49
- * @FilePath: /i18n_translation_vite/src/plugins/utils/translate.ts
+ * @LastEditTime: 2023-11-04 23:48:56
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
 import { fileUtils } from './index.js';
@@ -39,26 +39,43 @@ const translateText = async (text: string) => {
 
 export let langObj: any = {};
 
-// 设置翻译对象属性
+/**
+ * @description: 设置翻译对象属性
+ * @param {string} key
+ * @param {string} value
+ * @return {*}
+ */
 export function setLangObj(key: string, value: string) {
   if (!langObj[key]) {
     langObj[key] = value;
   }
 }
 
-// 读取翻译对象
+/**
+ * @description: 读取翻译对象
+ * @return {*}
+ */
 export function getLangObj() {
   return langObj;
 }
 
-// 初始化翻译对象
+
+/**
+ * @description: 初始化翻译对象
+ * @param {any} obj
+ * @return {*}
+ */
 export function initLangObj(obj: any) {
   if (!Object.keys(langObj)) {
     langObj = obj;
   }
 }
 
-// 生成国际化配置文件
+
+/**
+ * @description: 生成国际化配置文件
+ * @return {*}
+ */
 export async function googleAutoTranslate() {
   // 拿到当前缓存的原始语言
   const curOriginLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0]);

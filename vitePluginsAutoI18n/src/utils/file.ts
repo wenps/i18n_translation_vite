@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-04 16:36:34
- * @FilePath: /i18n_translation_vite/src/plugins/utils/file.ts
+ * @LastEditTime: 2023-11-04 23:46:45
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
 import path from 'path'
@@ -15,8 +15,8 @@ import {option} from '../option'
  export function initLangFile() {
   if (!fs.existsSync(option.globalPath)) {
     fs.mkdirSync(option.globalPath); // 创建lang文件夹
-    initLangTranslateFile(option.langKey[1], option.globalPath)
-    initLangTranslateFile(option.langKey[0], option.globalPath)
+    initLangTranslateFile(option.langKey[1])
+    initLangTranslateFile(option.langKey[0])
   }
   initLangTranslateJSONFile()
   initTranslateBasicFnFile()
@@ -25,11 +25,10 @@ import {option} from '../option'
 /**
  * @description: 生成国际化具体语言配置文件
  * @param {string} key
- * @param {string} Path
  * @return {*}
  */
-export function initLangTranslateFile(key:string, Path:string) {
-  const folderPath = path.join(Path, key)
+export function initLangTranslateFile(key:string) {
+  const folderPath = path.join(option.globalPath, key)
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath); // 创建对应语言文件夹
     const esmIndexFilePath = path.join(folderPath, 'index.mjs')
@@ -91,7 +90,6 @@ export function initTranslateBasicFnFile() {
 
 /**
  * @description: 生成国际化JSON文件
- * @param {string} Path
  * @return {*}
  */
 export function initLangTranslateJSONFile() {

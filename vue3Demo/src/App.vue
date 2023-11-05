@@ -1,14 +1,14 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2023-11-01 16:16:34
- * @FilePath: /i18n_translation_vite/src/App.vue
+ * @LastEditTime: 2023-11-05 10:39:43
+ * @FilePath: /i18n_translation_vite/vue3Demo/src/App.vue
 -->
 <template>
   <div class="main">
     <header :name="name?'小山':$emit('text')">
       <div class="title">
-        <img class="icon" :name="name?'小山':$emit('text')" :src="img1"/>
+        <img class="icon" @click="toPath" :name="name?'小山':$emit('text')" :src="img1"/>
         <p>测试</p>
         <div class="name">XiaoShan Design '小山'，芜湖，不是吧 {{ nameA('小山') }} 
         </div>
@@ -33,6 +33,9 @@ export default defineComponent({
   methods: {
     nameA(data:string) {
       return data
+    },
+    toPath() {
+      this.$router.push({ name: 'test', params: { myid: this.name }})
     }
   }
 });

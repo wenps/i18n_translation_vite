@@ -2,7 +2,8 @@
   "name": "i18n_translation_vite",
   "version": "0.0.0",
   "scripts": {
-    "build": "cd vitePluginsAutoI18n && npm run build",
+    "build:plugin": "cd vitePluginsAutoI18n && npm run build",
+    "publish:plugin": "cd vitePluginsAutoI18n && npm publish",
     "preview:vue3": "cd vue3Demo && npm run preview"
   },
   "description": "基于vite i18n 自动翻译 插件",

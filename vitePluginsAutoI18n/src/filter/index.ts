@@ -10,7 +10,7 @@ import CallExpression from "./visitor/CallExpression";
 import TemplateElement from "./visitor/TemplateElement";
 import JSXText from "./visitor/JSXText";
 
-export default function (api:any, config:any) {
+export default function () {
   return {
     visitor: {
       StringLiteral,

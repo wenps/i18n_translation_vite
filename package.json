@@ -1,11 +1,8 @@
 {
   "name": "i18n_translation_vite",
   "version": "0.0.0",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c ./rollup.config.ts --configPlugin typescript"
+    "build": "cd vitePluginsAutoI18n && npm run build"
   },
   "description": "基于vite i18n 自动翻译 插件",
   "dependencies": {

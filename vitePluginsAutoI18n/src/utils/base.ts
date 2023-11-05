@@ -66,10 +66,10 @@ export function extractFunctionName(node: Node): string {
     return name;
   }
   if (types.isCallExpression(node)) { // isCallExpression： 是否是调用表达式
-    if (types.isMemberExpression(node.callee)) {
-      callName = callObjName(node.callee, "");
+    if (types.isMemberExpression((node as any).callee)) {
+      callName = callObjName((node as any).callee, "");
     } else {
-      callName = (node.callee as any).name || "";
+      callName = ((node as any).callee as any).name || "";
     }
   }
   return callName;

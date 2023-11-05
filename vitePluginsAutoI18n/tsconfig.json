@@ -18,5 +18,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["./src", "../rollup.config.ts", "../typings.d.tss"]
+  "include": ["./src", "./rollup.config.ts", "./typings.d.tss"]
 }

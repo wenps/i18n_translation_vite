@@ -26,6 +26,7 @@
   "devDependencies": {
     "@babel/types": "^7.23.0",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@types/babel__core": "^7.20.3",
     "@types/node": "^20.3.3",
     "babel-plugin-import": "^1.13.6",
     "eslint": "^8.52.0",

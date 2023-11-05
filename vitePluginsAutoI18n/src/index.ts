@@ -7,8 +7,8 @@
 import { optionInfo, initOption, option } from './option';
 import { fileUtils, translateUtils, baseUtils } from './utils';
 import filter from './filter';
+import * as babel from '@babel/core';
 
-const babel = require("@babel/core");
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
 
 export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
@@ -29,7 +29,7 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
             plugins: [filter],
           });
           await translateUtils.googleAutoTranslate()
-          return result.code;
+          return result?.code;
         } catch (e) {
           console.error(e);
         }

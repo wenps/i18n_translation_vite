@@ -1,5 +1,5 @@
 {
-  "name": "vitepluginsautoi18n",
+  "name": "vite-plugins-auto-i18n",
   "version": "1.0.0",
   "description": "基于Google翻译api的vite自动翻译插件",
   "main": "./dist/index.cjs",

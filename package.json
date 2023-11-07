@@ -2,9 +2,9 @@
   "name": "i18n_translation_vite",
   "version": "0.0.0",
   "scripts": {
-    "build:plugin": "cd vitePluginsAutoI18n && npm run build",
-    "publish:plugin": "cd vitePluginsAutoI18n && npm publish",
-    "preview:vue3": "cd vue3Demo && npm run preview"
+    "build:plugin": "cd vitePluginsAutoI18n && pnpm build",
+    "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
+    "preview:vue3": "cd vue3Demo && pnpm preview"
   },
   "description": "基于vite i18n 自动翻译 插件",
   "dependencies": {
@@ -18,7 +18,7 @@
     "ora": "^7.0.1",
     "tunnel": "0.0.6",
     "vite-plugin-vue2": "^2.0.3",
-    "vue": "^3.0.4",
+    "vue": "^3.2.13",
     "vue-loader": "^17.2.2",
     "vue-router": "^4.2.2",
     "vue-template-compiler": "^2.7.14"

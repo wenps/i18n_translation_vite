@@ -17,7 +17,7 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
   translateUtils.initLangObj(fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0]));
 
   return {
-    name: 'vite-plugins-auto-i18n',
+    name: 'vite-plugin-auto-i18n',
     async transform(code: string, path: string) {
       if (allowedExtensions.some(ext => path.endsWith(ext))) {
         if (!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;

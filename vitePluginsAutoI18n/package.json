@@ -1,7 +1,8 @@
 {
-  "name": "vite-plugins-auto-i18n",
+  "name": "vite-plugin-auto-i18n",
   "version": "1.0.0",
   "description": "基于Google翻译api的vite自动翻译插件",
+  "keywords": ["i18n", "auto i18n", "vite i18n", "vue i18n", "react i18n"],
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

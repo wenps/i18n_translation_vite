@@ -8,6 +8,8 @@ vite auto-translation plugin based on Google api, not intrusive to the source co
 
 ***Vue2、Vue3、React***
 
+**support language：[langFile](./language.js)**
+
 ## Specificities
 
 * **Not intrusive to the source code（No more need to replace i18n in the source code）.**

@@ -88,12 +88,12 @@ window.$t.locale(langMap[lang], 'lang')
 ```
 import '../../{{ your globalPath }}/index'
 import EN from '../../{{ your globalPath }/{{ your langKey[1] }}/index.mjs'
-import CN from '../../{{ your globalPath }/{{ your originLang }/index.mjs'
+import CN from '../../{{ your globalPath }/{{ your langKey[0] }/index.mjs'
 const langMap = {
     {{ your langKey[1] }}: window?.{{ your namespace }}?.{{ your langKey[1] } || EN,
-    {{ your originLang }}: window?.{{ your namespace }}?.{{ your originLang } || CN
+    {{ your langKey[0] }}: window?.{{ your namespace }}?.{{ your langKey[0] } || CN
 }
 // window.localStorage.getItem('lang') Storing the current language type
-const lang = window.localStorage.getItem('lang') || {{ your originLang }}(defualt lang)
+const lang = window.localStorage.getItem('lang') || {{ your langKey[0] }}(defualt lang)
 window.{{ your translateKey }}.locale(langMap[lang], {{ your namespace }})
 ```

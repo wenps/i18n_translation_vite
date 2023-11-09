@@ -89,7 +89,7 @@ export async function googleAutoTranslate() {
   // 生产需要更新的语言对象
   let transLangObj: any = {};
   Object.keys(langObj).forEach((key) => {
-    if (!originLangObjMap[option.langKey[0]][key]) {
+    if (!originLangObjMap[option.originLang][key]) {
       transLangObj[key] = langObj[key];
     }
   });
@@ -104,11 +104,11 @@ export async function googleAutoTranslate() {
   let newLangObjMap:any = {}
   for (let index = 0; index < option.langKey.length; index++) {
     if(index === 0) {
-      newLangObjMap[option.langKey[0]] = transLangObj
+      newLangObjMap[option.originLang] = transLangObj
       continue
     } 
     console.info('开始自动翻译...')
-    const res = await translateText(Text, option.langKey[0], option.langKey[index]);
+    const res = await translateText(Text, option.originLang, option.langKey[index]);
     const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案
     if (resultValues.length !== Object.values(transLangObj).length) {
       console.error('翻译异常，翻译结果缺失❌')
@@ -132,7 +132,7 @@ export async function googleAutoTranslate() {
   }))
   console.log('开始写入JSON配置文件...')
   const JSONLangObj:any = {}
-  Object.keys(originLangObjMap[option.langKey[0]]).forEach(key => {
+  Object.keys(originLangObjMap[option.originLang]).forEach(key => {
     JSONLangObj[key] = {}
     option.langKey.forEach((item => {
       JSONLangObj[key][item] = originLangObjMap[item][key]

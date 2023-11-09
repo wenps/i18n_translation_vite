@@ -14,6 +14,7 @@ const OPTION = {
   globalPath: './lang',
   distPath: '',
   distKey: 'index',
+  originLang: 'zh-cn',
   langKey: ['zh-cn', 'en'],
   namespace: ''
 }
@@ -25,6 +26,7 @@ type OptionType = {
   excludedPath: RegExp[], // 排查不需要翻译的目录下的文件
   includePath: RegExp[], // 指定需要翻译的目录下的文件
   globalPath: string, // 配置文件生成位置
+  originLang: string, // 来源语言
   langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件
   namespace: string, // 命名空间
   distPath: string, // 打包后生成文件的位置 比如 ./dist/assets

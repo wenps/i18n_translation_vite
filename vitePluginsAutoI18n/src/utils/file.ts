@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-04 23:46:45
+ * @LastEditTime: 2023-11-09 17:06:05
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
@@ -15,8 +15,9 @@ import {option} from '../option'
  export function initLangFile() {
   if (!fs.existsSync(option.globalPath)) {
     fs.mkdirSync(option.globalPath); // 创建lang文件夹
-    initLangTranslateFile(option.langKey[1])
-    initLangTranslateFile(option.langKey[0])
+    option.langKey.forEach(item => {
+      initLangTranslateFile(item)
+    })
   }
   initLangTranslateJSONFile()
   initTranslateBasicFnFile()
@@ -97,8 +98,9 @@ export function initLangTranslateJSONFile() {
   if(!fs.existsSync(indexPath)) {
     fs.writeFileSync(indexPath, JSON.stringify({})); // 创建
   } else { // 同步代码到对应langKey下的配置文件中
-    setLangTranslateFileContent(option.langKey[0], getLangObjByJSONFileWithLangKey(option.langKey[0]))
-    setLangTranslateFileContent(option.langKey[1], getLangObjByJSONFileWithLangKey(option.langKey[1]))
+    option.langKey.forEach(item => {
+      setLangTranslateFileContent(item, getLangObjByJSONFileWithLangKey(item))
+    })
   }
 }
 
@@ -153,8 +155,10 @@ export function setLangTranslateJSONFile(content:string) {
  * @return {*}
  */
 export function buildSetLangConfigToIndexFile() {
-  const targetLangObj = getLangObjByJSONFileWithLangKey(option.langKey[1])
-  const currentLangObj = getLangObjByJSONFileWithLangKey(option.langKey[0])
+  let langObjMap:any = {}
+  option.langKey.forEach(item => {
+    langObjMap[item] = getLangObjByJSONFileWithLangKey(item)
+  })
   if(fs.existsSync(option.distPath)) {
     fs.readdir(option.distPath, (err, files) => {
       if (err) {
@@ -171,9 +175,13 @@ export function buildSetLangConfigToIndexFile() {
               console.error('❌构建主文件不存在，翻译配置无法写入');
               return;
             }
+            let buildLangConfigString = ''
+            Object.keys(langObjMap).forEach(item => {
+              buildLangConfigString = buildLangConfigString + `window['${option.namespace}']['${item}']=${JSON.stringify(langObjMap[item])};`
+            })
             try {
               // 翻译配置写入主文件
-              fs.writeFileSync(filePath, `window['${option.namespace}']={};window['${option.namespace}']['${option.langKey[0]}']=${JSON.stringify(currentLangObj)};window.${option.namespace}.${option.langKey[1]}=${JSON.stringify(targetLangObj)};` + data); 
+              fs.writeFileSync(filePath, `window['${option.namespace}']={};${buildLangConfigString}` + data); 
               console.info('恭喜：翻译配置写入构建主文件成功🌟🌟🌟');
             } catch (err) {
               console.error('翻译配置写入构建主文件失败:', err);

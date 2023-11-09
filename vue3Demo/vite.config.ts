@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-04 18:32:08
+ * @LastEditTime: 2023-11-09 19:22:23
  * @FilePath: /i18n_translation_vite/vue3Demo/vite.config.ts
  */
 import path from "path";
@@ -31,7 +31,8 @@ export default defineConfig({
                 globalPath: './lang',
                 namespace: 'lang',
                 distPath: './dist/assets',
-                distKey: 'index'
+                distKey: 'index',
+                langKey: ['zh-cn', 'en', 'ko'],
             }
         }),
       ]

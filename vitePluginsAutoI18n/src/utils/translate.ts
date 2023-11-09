@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-04 23:48:56
+ * @LastEditTime: 2023-11-09 19:06:03
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -15,10 +15,10 @@ const { translate } = require('@vitalets/google-translate-api');
  * @param {string} text
  * @return {*}
  */
-const translateText = async (text: string) => {
+const translateText = async (text: string, fromKey: string, toKey: string) => {
   let data = await translate(text, {
-    from: option.langKey[0],
-    to: option.langKey[1],
+    from: fromKey,
+    to: toKey,
     fetchOptions: {
       agent: tunnel.httpsOverHttp({
         proxy: {
@@ -77,17 +77,19 @@ export function initLangObj(obj: any) {
  * @return {*}
  */
 export async function googleAutoTranslate() {
-  // 拿到当前缓存的原始语言
-  const curOriginLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0]);
-  // 拿到当前缓存的目标语言
-  const curTargetLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[1]);
+  let originLangObjMap:any = {}
+
+  // 获取原始语言
+  option.langKey.forEach((item => {
+    originLangObjMap[item] = fileUtils.getLangObjByJSONFileWithLangKey(item);
+  }))
   
   // 拿到更新后的语言
   const langObj = JSON.parse(JSON.stringify(getLangObj()));
   // 生产需要更新的语言对象
   let transLangObj: any = {};
   Object.keys(langObj).forEach((key) => {
-    if (!curOriginLangObj[key]) {
+    if (!originLangObjMap[option.langKey[0]][key]) {
       transLangObj[key] = langObj[key];
     }
   });
@@ -96,29 +98,45 @@ export async function googleAutoTranslate() {
     console.info('没有需要翻译的内容！')
     return 
   }
-  console.info('开始自动翻译...')
+
   // 创建翻译文本
   let Text = Object.values(transLangObj).join('\n###\n');
-  const res = await translateText(Text);
-  const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案
-  if (resultValues.length !== Object.values(transLangObj).length) {
-    console.error('翻译异常，翻译结果缺失❌')
-    return
+  let newLangObjMap:any = {}
+  for (let index = 0; index < option.langKey.length; index++) {
+    if(index === 0) {
+      newLangObjMap[option.langKey[0]] = transLangObj
+      continue
+    } 
+    console.info('开始自动翻译...')
+    const res = await translateText(Text, option.langKey[0], option.langKey[index]);
+    const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案
+    if (resultValues.length !== Object.values(transLangObj).length) {
+      console.error('翻译异常，翻译结果缺失❌')
+      return
+    }
+    newLangObjMap[option.langKey[index]] = resultValues
+    console.info('翻译成功⭐️⭐️⭐️')
   }
-  console.info('翻译成功⭐️⭐️⭐️')
   Object.keys(transLangObj).forEach((key, index) => {
-    curOriginLangObj[key] = transLangObj[key];
-    curTargetLangObj[key] = resultValues[index];
+    option.langKey.forEach(((item, i) => {
+      if(i === 0) {
+        originLangObjMap[item][key] = newLangObjMap[item][key]
+      } else {
+        originLangObjMap[item][key] = newLangObjMap[item][index]
+      }
+    }))
   });
-  fileUtils.setLangTranslateFileContent(option.langKey[0], curOriginLangObj);
-  fileUtils.setLangTranslateFileContent(option.langKey[1], curTargetLangObj);
+  
+  option.langKey.forEach((item => {
+    fileUtils.setLangTranslateFileContent(item, originLangObjMap[item]);
+  }))
   console.log('开始写入JSON配置文件...')
   const JSONLangObj:any = {}
-  Object.keys(curOriginLangObj).forEach(key => {
-    JSONLangObj[key] = {
-      [option.langKey[0]]: curOriginLangObj[key],
-      [option.langKey[1]]: curTargetLangObj[key]
-    }
+  Object.keys(originLangObjMap[option.langKey[0]]).forEach(key => {
+    JSONLangObj[key] = {}
+    option.langKey.forEach((item => {
+      JSONLangObj[key][item] = originLangObjMap[item][key]
+    }))
   })
   try {
     fileUtils.setLangTranslateJSONFile(JSON.stringify(JSONLangObj))

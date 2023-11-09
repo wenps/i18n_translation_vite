@@ -4,7 +4,8 @@
   "scripts": {
     "build:plugin": "cd vitePluginsAutoI18n && pnpm build",
     "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
-    "preview:vue3": "cd vue3Demo && pnpm preview"
+    "preview:vue3": "cd example/vue3 && pnpm preview",
+    "preview:react": "cd example/react && pnpm preview"
   },
   "description": "基于vite i18n 自动翻译 插件",
   "dependencies": {

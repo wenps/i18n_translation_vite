@@ -37,8 +37,8 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 |     distPath     |  string  |       ✅       |                        `''`                        |                              The location of the generated files after packaging e.g. . /dist/assets<br />（`Used to inject translation configurations into packaged files`）                              |
 |      distKey      |  string  |       ✅       |                        `''`                        |                  The name of the main file of the generated file after packaging, e.g. index.xxx Default is index<br />（`Used to inject translation configurations into packaged files`）                  |
 |     namespace     |  string  |       ✅       |                        `''`                        |                                                                    Distinguish translation configurations between current projects online                                                                    |
-|   originLangKey   |  string  |       ❌       |                      `'zh-cn'`                      |                                                                  source language（Translations into other languages based on that language）                                                                  |
-| targetLangKeyList | string[] |       ❌       |                      `['en']`                      | target language（The type of language that the original language will be translated into, passed into an array to support multiple languages at once）<br />support target language（[langFile](./language.js)） |
+|    originLang    |  string  |       ❌       |                      `'zh-cn'`                      |                                                                  source language（Translations into other languages based on that language）                                                                  |
+| targetLangList | string[] |       ❌       |                      `['en']`                      | target language（The type of language that the original language will be translated into, passed into an array to support multiple languages at once）<br />support target language（[langFile](./language.js)） |
 |    buildToDist    | Boolean |       ❌       |                       `false`                       |                                                                  Whether to package the translation configuration into the main package.（）                                                                  |
 
 why need **buildToDist**?
@@ -94,11 +94,11 @@ window.$t.locale(langMap[lang], 'lang')
 ```
 import '../../{{ your globalPath }}/index'
 import CN from '../../{{ your globalPath }/{{ your originLangKey }/index.mjs'
-// if your targetLangKeyList length is zero, Otherwise, by analogy, write the targetLangKeyList with the other items.
-import EN from '../../{{ your globalPath }/{{ your targetLangKeyList[0] }}/index.mjs' 
+// if your targetLangList length is zero, Otherwise, by analogy, write the targetLangList with the other items.
+import EN from '../../{{ your globalPath }/{{ your targetLangList[0] }}/index.mjs' 
 const langMap = {
     {{ your originLangKey }}: window?.{{ your namespace }}?.{{ your originLangKey } || CN
-    {{ your targetLangKeyList[0] }}: window?.{{ your namespace }}?.{{ your targetLangKeyList[0] } || EN,
+    {{ your targetLangList[0] }}: window?.{{ your namespace }}?.{{ your targetLangList[0] } || EN,
 }
 // window.localStorage.getItem('lang') Storing the current language type
 const lang = window.localStorage.getItem('lang') || {{ your originLangKey }}(defualt lang)

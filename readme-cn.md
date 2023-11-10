@@ -37,8 +37,8 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 |     distPath     |  string  |  ✅  |                        `''`                        |                 打包后生成文件的位置 比如 ./dist/assets<br />（`用于将翻译配置注入打包文件`）                 |
 |      distKey      |  string  |  ✅  |                        `''`                        |          打包后生成文件的主文件名称，比如index.xxx 默认是index<br />（`用于将翻译配置注入打包文件`）          |
 |     namespace     |  string  |  ✅  |                        `''`                        |                                           线上区分当前项目间的翻译配置                                           |
-|   originLangKey   |  string  |  ❌  |                      `'zh-cn'`                      |                                        源语言（基于该语言翻译成其他语言）                                        |
-| targetLangKeyList | string[] |  ❌  |                      `['en']`                      | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
+|    originLang    |  string  |  ❌  |                      `'zh-cn'`                      |                                        源语言（基于该语言翻译成其他语言）                                        |
+| targetLangList | string[] |  ❌  |                      `['en']`                      | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
 |    buildToDist    | Boolean |  ❌  |                       `false`                       |                                            是否将翻译配置打包到主包中                                            |
 
 为什么需要 **buildToDist**?
@@ -95,11 +95,11 @@ window.$t.locale(langMap[lang], 'lang')
 
 ```import
 import CN from '../../{{ your globalPath }/{{ your originLangKey }/index.mjs'
-// 这里只演示了targetLangKeyList长度为零的情况，如果有多种语言就继续往下加
-import EN from '../../{{ your globalPath }/{{ your targetLangKeyList[0] }}/index.mjs'
+// 这里只演示了targetLangList长度为零的情况，如果有多种语言就继续往下加
+import EN from '../../{{ your globalPath }/{{ your targetLangList[0] }}/index.mjs'
 const langMap = {
     {{ your originLangKey }}: window?.{{ your namespace }}?.{{ your originLangKey } || CN
-    {{ your targetLangKeyList[0] }}: window?.{{ your namespace }}?.{{ your targetLangKeyList[0] } || EN,
+    {{ your targetLangList[0] }}: window?.{{ your namespace }}?.{{ your targetLangList[0] } || EN,
 }
 // window.localStorage.getItem('lang') Storing the current language type
 const lang = window.localStorage.getItem('lang') || {{ your originLangKey }}(defualt lang)

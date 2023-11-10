@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-10 17:15:47
+ * @LastEditTime: 2023-11-10 19:34:45
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import { optionInfo, option, initOption,checkOption } from './option';
@@ -15,7 +15,9 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo);
   if(!checkOption()) return {} 
   fileUtils.initLangFile();
-  translateUtils.initLangObj(fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0]));
+  const originLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0])
+  translateUtils.languageConfigCompletion(originLangObj)
+  translateUtils.initLangObj(originLangObj);
 
   return {
     name: 'vite-plugin-auto-i18n',

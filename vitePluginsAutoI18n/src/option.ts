@@ -15,7 +15,7 @@ const OPTION = {
   distPath: '',
   distKey: 'index',
   originLang: 'zh-cn',
-  targetLangKeyList: ['en'],
+  targetLangList: ['en'],
   langKey: [],
   namespace: '',
   buildToDist: false
@@ -29,7 +29,7 @@ type OptionType = {
   includePath: RegExp[], // 指定需要翻译的目录下的文件
   globalPath: string, // 配置文件生成位置
   originLang: string, // 来源语言
-  targetLangKeyList: string[], // 翻译目标语言
+  targetLangList: string[], // 翻译目标语言
   langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件
   namespace: string, // 命名空间
   buildToDist: Boolean, // 是否构建结束之后将最新的翻译重新打包到主包中
@@ -45,7 +45,7 @@ export type optionInfo = {
 
 export function initOption(optionInfo: optionInfo) {
   option = { ...OPTION, ...optionInfo.option };
-  option.langKey = [ option.originLang, ...option.targetLangKeyList ]
+  option.langKey = [ option.originLang, ...option.targetLangList ]
 }
 
 export function checkOption() {
@@ -65,7 +65,7 @@ export function checkOption() {
     console.error('❌请配置来源语言')
     return false
   }
-  if(!option.targetLangKeyList || !option.targetLangKeyList.length) {
+  if(!option.targetLangList || !option.targetLangList.length) {
     console.error('❌请配置目标翻译语言数组')
     return false
   }

@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-09 19:06:03
+ * @LastEditTime: 2023-11-10 19:31:59
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -144,4 +144,77 @@ export async function googleAutoTranslate() {
   } catch (error) {
     console.error('❌JSON配置文件写入失败' + error)
   }
+}
+
+/**
+ * @description: 新增语言类型配置补全
+ * @param {any} obj
+ * @return {*}
+ */
+export function languageConfigCompletion(obj:any){
+  if(!Object.keys(obj)) return
+  let needCompletionList:any[] = []
+  option.targetLangList.forEach((item)=>{
+    let langObj = fileUtils.getLangTranslateFileContent(item)
+    needCompletionList.push({
+      key:item,
+      curLangObj:langObj
+    })
+  })
+  needCompletionList.forEach(async (item) => {
+    await completionTranslateAndWriteConfigFile(obj, item.curLangObj, item.key)
+  })
+}
+
+/**
+ * @description: 补全新增语言翻译写入函数
+ * @param {any} langObj
+ * @param {any} curLangObj
+ * @param {string} translateKey
+ * @return {*}
+ */
+export async function completionTranslateAndWriteConfigFile(langObj:any, curLangObj:any, translateKey:string) {
+  // 生产需要更新的语言对象
+  let transLangObj: any = {};
+  Object.keys(langObj).forEach((key) => {
+    if (!curLangObj[key]) {
+      transLangObj[key] = langObj[key];
+    }
+  });
+
+  if(!Object.values(transLangObj).length) return
+
+  // 创建翻译文本
+  let Text = Object.values(transLangObj).join('\n###\n');
+
+  console.info('进入新增语言补全翻译...')
+  const res = await translateText(Text, option.originLang, translateKey);
+  const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案
+  if (resultValues.length !== Object.values(langObj).length) {
+    console.error('翻译异常，翻译结果缺失❌')
+    return
+  }
+  let newLangObjMap = resultValues
+  console.info('翻译成功⭐️⭐️⭐️')
+
+
+  Object.keys(transLangObj).forEach((key, index) => {
+    curLangObj[key] = newLangObjMap[index]
+  });
+
+  fileUtils.setLangTranslateFileContent(translateKey, curLangObj);
+
+  console.log('开始写入JSON配置文件...')
+  const JSONLangObj:any = JSON.parse(fileUtils.getLangTranslateJSONFile())
+
+  Object.keys(transLangObj).forEach(key => {
+    JSONLangObj[key][translateKey] = curLangObj[translateKey]
+  })
+  try {
+    fileUtils.setLangTranslateJSONFile(JSON.stringify(JSONLangObj))
+    console.info('JSON配置文件写入成功⭐️⭐️⭐️')
+  } catch (error) {
+    console.error('❌JSON配置文件写入失败' + error)
+  }
+  console.info('新增语言翻译补全成功⭐️⭐️⭐️')
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-09 17:06:05
+ * @LastEditTime: 2023-11-10 17:09:40
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
@@ -155,6 +155,7 @@ export function setLangTranslateJSONFile(content:string) {
  * @return {*}
  */
 export function buildSetLangConfigToIndexFile() {
+  if(!option.buildToDist) return
   let langObjMap:any = {}
   option.langKey.forEach(item => {
     langObjMap[item] = getLangObjByJSONFileWithLangKey(item)

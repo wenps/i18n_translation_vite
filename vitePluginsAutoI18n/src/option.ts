@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2023-11-10 10:08:42
+ * @LastEditTime: 2023-11-10 17:19:10
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/option.ts
  */
 
@@ -17,7 +17,8 @@ const OPTION = {
   originLang: 'zh-cn',
   targetLangKeyList: ['en'],
   langKey: [],
-  namespace: ''
+  namespace: '',
+  buildToDist: false
 }
 
 type OptionType = {
@@ -31,6 +32,7 @@ type OptionType = {
   targetLangKeyList: string[], // 翻译目标语言
   langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件
   namespace: string, // 命名空间
+  buildToDist: Boolean, // 是否构建结束之后将最新的翻译重新打包到主包中
   distPath: string, // 打包后生成文件的位置 比如 ./dist/assets
   distKey: string, // 打包后生成文件的主文件名称，比如index.xxx 默认是index
 };
@@ -44,4 +46,28 @@ export type optionInfo = {
 export function initOption(optionInfo: optionInfo) {
   option = { ...OPTION, ...optionInfo.option };
   option.langKey = [ option.originLang, ...option.targetLangKeyList ]
+}
+
+export function checkOption() {
+  if(!option.namespace) {
+    console.error('❌请配置命名空间')
+    return false
+  }
+  if(option.buildToDist && !option.distKey) {
+    console.log('❌请配置打包后生成文件的主文件名称')
+    return false
+  }
+  if(option.buildToDist && !option.distPath) {
+    console.log('❌请配置打包后生成文件的位置')
+    return false
+  }
+  if(!option.originLang) {
+    console.error('❌请配置来源语言')
+    return false
+  }
+  if(!option.targetLangKeyList || !option.targetLangKeyList.length) {
+    console.error('❌请配置目标翻译语言数组')
+    return false
+  }
+  return true
 }

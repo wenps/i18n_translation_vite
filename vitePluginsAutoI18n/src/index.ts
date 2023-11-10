@@ -1,10 +1,10 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-10 09:16:36
+ * @LastEditTime: 2023-11-10 17:15:47
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
-import { optionInfo, initOption, option } from './option';
+import { optionInfo, option, initOption,checkOption } from './option';
 import { fileUtils, translateUtils, baseUtils } from './utils';
 import filter from './filter';
 import * as babel from '@babel/core';
@@ -13,6 +13,7 @@ const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
 
 export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo);
+  if(!checkOption()) return {} 
   fileUtils.initLangFile();
   translateUtils.initLangObj(fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0]));
 

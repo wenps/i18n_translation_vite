@@ -39,6 +39,11 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 |     namespace     |  string  |       ✅       |                        `''`                        |                                                                Indicates the location of the translation configuration for the current project                                                                |
 |   originLangKey   |  string  |       ❌       |                      `'zh-cn'`                      |                                                                  source language（Translations into other languages based on that language）                                                                  |
 | targetLangKeyList | string[] |       ❌       |                      `['en']`                      | target language（The type of language that the original language will be translated into, passed into an array to support multiple languages at once）<br />support target language（[langFile](./language.js)） |
+|    buildToDist    | Boolean |       ❌       |                       `false`                       |                                                                  Whether to package the translation configuration into the main package.（）                                                                  |
+
+why need **buildToDist**?
+
+`After executing the plugin in the vite environment, the translation configuration file is just generated. If you directly build it, the project will generate the translation configuration file. However, the translation configuration file will not be packaged into the main package immediately, and you may need to package it a second time. Therefore, the buildToDist option is provided, and when the translation configuration file is created, it will be actively set to the main package, The flaw is that your packaged file may have two sets of translation configuration files.`
 
 ### config
 

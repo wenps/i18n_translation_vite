@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2023-11-04 15:08:47
- * @FilePath: /i18n_translation_vite/src/plugins/option.ts
+ * @LastEditTime: 2023-11-10 10:08:42
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/option.ts
  */
 
 const OPTION = {
@@ -15,7 +15,8 @@ const OPTION = {
   distPath: '',
   distKey: 'index',
   originLang: 'zh-cn',
-  langKey: ['zh-cn', 'en'],
+  targetLangKeyList: ['en'],
+  langKey: [],
   namespace: ''
 }
 
@@ -27,6 +28,7 @@ type OptionType = {
   includePath: RegExp[], // 指定需要翻译的目录下的文件
   globalPath: string, // 配置文件生成位置
   originLang: string, // 来源语言
+  targetLangKeyList: string[], // 翻译目标语言
   langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件
   namespace: string, // 命名空间
   distPath: string, // 打包后生成文件的位置 比如 ./dist/assets
@@ -41,4 +43,5 @@ export type optionInfo = {
 
 export function initOption(optionInfo: optionInfo) {
   option = { ...OPTION, ...optionInfo.option };
+  option.langKey = [ option.originLang, ...option.targetLangKeyList ]
 }

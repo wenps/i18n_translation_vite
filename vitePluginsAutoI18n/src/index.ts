@@ -1,8 +1,8 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-04 18:28:38
- * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/core/vuePluginsAutoi18n.ts
+ * @LastEditTime: 2023-11-10 09:16:36
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import { optionInfo, initOption, option } from './option';
 import { fileUtils, translateUtils, baseUtils } from './utils';

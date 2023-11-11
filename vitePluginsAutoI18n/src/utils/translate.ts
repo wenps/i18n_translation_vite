@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-10 19:31:59
+ * @LastEditTime: 2023-11-11 17:44:11
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -154,8 +154,9 @@ export async function googleAutoTranslate() {
 export function languageConfigCompletion(obj:any){
   if(!Object.keys(obj)) return
   let needCompletionList:any[] = []
+  const JSONobj = JSON.parse(fileUtils.getLangTranslateJSONFile())
   option.targetLangList.forEach((item)=>{
-    let langObj = fileUtils.getLangTranslateFileContent(item)
+    let langObj = fileUtils.getLangObjByJSONFileWithLangKey(item, JSONobj)
     needCompletionList.push({
       key:item,
       curLangObj:langObj

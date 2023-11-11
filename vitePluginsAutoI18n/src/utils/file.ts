@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-10 19:35:27
+ * @LastEditTime: 2023-11-11 17:42:56
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
@@ -143,8 +143,8 @@ export function getLangTranslateJSONFile() {
  * @param {string} key
  * @return {*}
  */
-export function getLangObjByJSONFileWithLangKey(key:string) {
-  const JSONObj = JSON.parse(getLangTranslateJSONFile())
+export function getLangObjByJSONFileWithLangKey(key:string, insertJSONObj:object | undefined = undefined) {
+  const JSONObj = insertJSONObj || JSON.parse(getLangTranslateJSONFile())
   const langObj:any = {}
   Object.keys(JSONObj).forEach((value)=>{
     langObj[value] = JSONObj[value][key]

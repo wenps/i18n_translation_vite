@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-10 19:34:45
+ * @LastEditTime: 2023-11-13 18:47:35
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import { optionInfo, option, initOption,checkOption } from './option';

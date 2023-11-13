@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-11 17:44:11
+ * @LastEditTime: 2023-11-13 18:45:28
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -184,6 +184,7 @@ export async function completionTranslateAndWriteConfigFile(langObj:any, curLang
   });
 
   if(!Object.values(transLangObj).length) return
+  
 
   // 创建翻译文本
   let Text = Object.values(transLangObj).join('\n###\n');
@@ -209,7 +210,7 @@ export async function completionTranslateAndWriteConfigFile(langObj:any, curLang
   const JSONLangObj:any = JSON.parse(fileUtils.getLangTranslateJSONFile())
 
   Object.keys(transLangObj).forEach(key => {
-    JSONLangObj[key][translateKey] = curLangObj[translateKey]
+    JSONLangObj[key][translateKey] = curLangObj[key]
   })
   try {
     fileUtils.setLangTranslateJSONFile(JSON.stringify(JSONLangObj))

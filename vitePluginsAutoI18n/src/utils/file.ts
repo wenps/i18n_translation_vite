@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-09 17:06:05
+ * @LastEditTime: 2023-11-11 17:42:56
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
@@ -15,10 +15,10 @@ import {option} from '../option'
  export function initLangFile() {
   if (!fs.existsSync(option.globalPath)) {
     fs.mkdirSync(option.globalPath); // 创建lang文件夹
-    option.langKey.forEach(item => {
-      initLangTranslateFile(item)
-    })
   }
+  option.langKey.forEach(item => {
+    initLangTranslateFile(item)
+  })
   initLangTranslateJSONFile()
   initTranslateBasicFnFile()
 }
@@ -44,13 +44,28 @@ export function initLangTranslateFile(key:string) {
  * @return {*}
  */
 export function getLangTranslateFileContent(key:string) {
-  const indexFilePath = './' + path.join(option.globalPath, key, 'index.js')
-  const content = require(indexFilePath);
+  const indexFilePath = './' + path.join(option.globalPath, key, 'index.mjs')
+  let content = fs.readFileSync(indexFilePath, 'utf-8');
+  content = extractExportDefaultContent(content)
   return content || {}
 }
 
 /**
- * @description: 读取国际化具体语言配置文件
+ * @description: 正则解析esm代码内容
+ * @param {string} jsCode
+ * @return {*}
+ */
+function extractExportDefaultContent(jsCode:string) {
+  const regex = /export\s+default\s+(.*)/s;
+  const match = jsCode.match(regex);
+  if (match && match[1]) {
+    return JSON.parse(match[1]);
+  }
+  return '';
+}
+
+/**
+ * @description: 写入国际化具体语言配置文件
  * @param {string} key
  * @param {string} Path
  * @return {*}
@@ -128,8 +143,8 @@ export function getLangTranslateJSONFile() {
  * @param {string} key
  * @return {*}
  */
-export function getLangObjByJSONFileWithLangKey(key:string) {
-  const JSONObj = JSON.parse(getLangTranslateJSONFile())
+export function getLangObjByJSONFileWithLangKey(key:string, insertJSONObj:object | undefined = undefined) {
+  const JSONObj = insertJSONObj || JSON.parse(getLangTranslateJSONFile())
   const langObj:any = {}
   Object.keys(JSONObj).forEach((value)=>{
     langObj[value] = JSONObj[value][key]
@@ -155,6 +170,7 @@ export function setLangTranslateJSONFile(content:string) {
  * @return {*}
  */
 export function buildSetLangConfigToIndexFile() {
+  if(!option.buildToDist) return
   let langObjMap:any = {}
   option.langKey.forEach(item => {
     langObjMap[item] = getLangObjByJSONFileWithLangKey(item)

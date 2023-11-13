@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-09 19:22:23
- * @FilePath: /i18n_translation_vite/vue3Demo/vite.config.ts
+ * @LastEditTime: 2023-11-10 19:36:45
+ * @FilePath: /i18n_translation_vite/example/vue3/vite.config.ts
  */
 import path from "path";
 import { defineConfig } from 'vite'
@@ -32,7 +32,7 @@ export default defineConfig({
                 namespace: 'lang',
                 distPath: './dist/assets',
                 distKey: 'index',
-                langKey: ['zh-cn', 'en', 'ko'],
+                targetLangList: ['en', 'ko', 'ja'],
                 originLang: 'zh-cn',
             }
         }),

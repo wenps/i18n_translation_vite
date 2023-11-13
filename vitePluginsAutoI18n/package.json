@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-auto-i18n",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "基于Google翻译api的vite自动翻译插件",
   "keywords": [
     "i18n",
@@ -13,7 +13,9 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "README-CN.md"
   ],
   "scripts": {
     "build": "rollup -c ./rollup.config.ts --configPlugin typescript"

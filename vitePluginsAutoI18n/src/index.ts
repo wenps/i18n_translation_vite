@@ -13,7 +13,8 @@ const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
 
 export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
   initOption(optionInfo);
-  if(!checkOption()) return {} 
+  // 这里ts类型要适配
+  if(!checkOption()) return {} as any
   fileUtils.initLangFile();
   const originLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0])
   translateUtils.languageConfigCompletion(originLangObj)

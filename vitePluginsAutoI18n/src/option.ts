@@ -5,6 +5,8 @@
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/option.ts
  */
 
+import { OriginLangKeyEnum } from "./enums";
+
 const OPTION = {
   translateKey: "$t",
   excludedCall: ["$i8n", "require", "$$i8n", "console.log", "$t"],
@@ -14,7 +16,7 @@ const OPTION = {
   globalPath: './lang',
   distPath: '',
   distKey: 'index',
-  originLang: 'zh-cn',
+  originLang: OriginLangKeyEnum.ZH,
   targetLangList: ['en'],
   langKey: [],
   namespace: '',
@@ -28,7 +30,7 @@ type OptionType = {
   excludedPath: RegExp[], // 排查不需要翻译的目录下的文件
   includePath: RegExp[], // 指定需要翻译的目录下的文件
   globalPath: string, // 配置文件生成位置
-  originLang: string, // 来源语言
+  originLang: OriginLangKeyEnum | string, // 来源语言
   targetLangList: string[], // 翻译目标语言
   langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件
   namespace: string, // 命名空间

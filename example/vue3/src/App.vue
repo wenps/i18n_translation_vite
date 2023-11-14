@@ -1,18 +1,15 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2023-11-05 10:39:43
- * @FilePath: /i18n_translation_vite/vue3Demo/src/App.vue
+ * @LastEditTime: 2023-11-14 13:42:37
+ * @FilePath: /i18n_translation_vite/example/vue3/src/App.vue
 -->
 <template>
   <div class="main">
     <header :name="name?'小山':$emit('text')">
       <div class="title">
         <img class="icon" @click="toPath" :name="name?'小山':$emit('text')" :src="img1"/>
-        <p>测试</p>
-        <div class="name">XiaoShan Design '小山'，芜湖，不是吧 {{ nameA('小山') }} 
-        </div>
-        <div class="name">XiaoShan  Design '小山'，芜湖，不是吧 {{ nameA('小山') }} </div>
+        自动国际化插件
       </div>
     </header>
     <main>
@@ -26,7 +23,6 @@ export default defineComponent({
   data() {
     return {
       name: 1,
-      // img1: '',
       img1: "https://www.antdv.com/assets/logo.1ef800a8.svg",
     }
   },

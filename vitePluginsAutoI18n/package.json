@@ -14,8 +14,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "README.md",
-    "README-CN.md"
+    "README*"
   ],
   "scripts": {
     "build": "rollup -c ./rollup.config.ts --configPlugin typescript"

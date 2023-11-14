@@ -7,6 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# README
+vitePluginsAutoI18n/README*
+
 # Lock File
 package-lock.json
 yarn.lock

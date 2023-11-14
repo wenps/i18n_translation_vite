@@ -2,7 +2,7 @@
   "name": "i18n_translation_vite",
   "version": "0.0.0",
   "scripts": {
-    "build:plugin": "cd vitePluginsAutoI18n && pnpm build",
+    "build:plugin": "cp README* vitePluginsAutoI18n && cd vitePluginsAutoI18n && pnpm build",
     "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
     "preview:vue3": "pnpm build:plugin && cd example/vue3 && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
     "preview:react": "pnpm build:plugin && cd example/react && pnpm link ../../vitePluginsAutoI18n && pnpm preview"

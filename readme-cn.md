@@ -26,20 +26,20 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 
 ### 配置
 
-|       参数       |   类型   | 必选 |                        默认值                        |                                                       描述                                                       |
-| :---------------: | :------: | :--: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
-|   translateKey   |  string  |  ❌  |                        `$t`                        |                                           插件转换后切换语言的默认函数                                           |
-|   excludedCall   | string[] |  ❌  | `["$i8n", "require", "$$i8n", "console.log", "$t"]` |                                              标记不会翻译的调用函数                                              |
-|  excludedPattern  | RegExp[] |  ❌  |                    `[/\.\w+$/]`                    |                                               标记不会翻译的字符串                                               |
-|   excludedPath   | RegExp[] |  ❌  |                        `[]`                        |                                               不翻译指定目录下文件                                               |
-|    includePath    | RegExp[] |  ❌  |                     `[/src\//]`                     |                                                翻译指定目录下文件                                                |
-|    globalPath    |  string  |  ❌  |                      `./lang`                      |                                               翻译配置文件生成位置                                               |
-|     distPath     |  string  |  ✅  |                        `''`                        |                 打包后生成文件的位置 比如 ./dist/assets<br />（`用于将翻译配置注入打包文件`）                 |
-|      distKey      |  string  |  ✅  |                        `''`                        |          打包后生成文件的主文件名称，比如index.xxx 默认是index<br />（`用于将翻译配置注入打包文件`）          |
-|     namespace     |  string  |  ✅  |                        `''`                        |                                           线上区分当前项目间的翻译配置                                           |
-|    originLang    |  string  |  ❌  |                      `'zh-cn'`                      |                                        源语言（基于该语言翻译成其他语言）                                        |
+|      参数      |   类型   | 必选 |                        默认值                        |                                                       描述                                                       |
+| :-------------: | :------: | :--: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
+|  translateKey  |  string  |  ❌  |                        `$t`                        |                                           插件转换后切换语言的默认函数                                           |
+|  excludedCall  | string[] |  ❌  | `["$i8n", "require", "$$i8n", "console.log", "$t"]` |                                              标记不会翻译的调用函数                                              |
+| excludedPattern | RegExp[] |  ❌  |                    `[/\.\w+$/]`                    |                                               标记不会翻译的字符串                                               |
+|  excludedPath  | RegExp[] |  ❌  |                        `[]`                        |                                               不翻译指定目录下文件                                               |
+|   includePath   | RegExp[] |  ❌  |                     `[/src\//]`                     |                                                翻译指定目录下文件                                                |
+|   globalPath   |  string  |  ❌  |                      `./lang`                      |                                               翻译配置文件生成位置                                               |
+|    distPath    |  string  |  ✅  |                        `''`                        |                 打包后生成文件的位置 比如 ./dist/assets<br />（`用于将翻译配置注入打包文件`）                 |
+|     distKey     |  string  |  ✅  |                        `''`                        |          打包后生成文件的主文件名称，比如index.xxx 默认是index<br />（`用于将翻译配置注入打包文件`）          |
+|    namespace    |  string  |  ✅  |                        `''`                        |                                           线上区分当前项目间的翻译配置                                           |
+|   originLang   |  string  |  ❌  |                      `'zh-cn'`                      |                                        源语言（基于该语言翻译成其他语言）                                        |
 | targetLangList | string[] |  ❌  |                      `['en']`                      | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
-|    buildToDist    | Boolean |  ❌  |                       `false`                       |                                            是否将翻译配置打包到主包中                                            |
+|   buildToDist   | Boolean |  ❌  |                       `false`                       |                                            是否将翻译配置打包到主包中                                            |
 
 为什么需要 **buildToDist**?
 
@@ -52,7 +52,16 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 ```
 import vitePluginAutoI18n from "../vitePluginAutoI18n/src/index";
 import createVuePlugin from '@vitejs/plugin-vue';
-const vuePlugin = createVuePlugin({ include: [/\.vue$/] })
+const vuePlugin = createVuePlugin({
+    include: [/\.vue$/],
+    // 注意这个配置必须加上，为了防止插件解析的时候创建静态的节点，解析得不到节点中的文字
+    template: {
+        compilerOptions: {
+            hoistStatic: false,
+            cacheHandlers: false,
+        }
+    } 
+})
 
 export default defineConfig({
     plugins: [

@@ -10,6 +10,8 @@ vite auto-translation plugin based on Google api, not intrusive to the source co
 
 **support language：[langFile](./language.js)**
 
+**demo project address**：[demo](https://github.com/wenps/vitePluginAutoI18nDemo)
+
 ## Specificities
 
 * **Not intrusive to the source code（No more need to replace i18n in the source code）.**

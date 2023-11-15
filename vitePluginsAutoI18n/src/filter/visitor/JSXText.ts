@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-01 16:35:38
- * @LastEditTime: 2023-11-04 15:04:51
- * @FilePath: /i18n_translation_vite/src/plugins/filter/visitor/JSXText.ts
+ * @LastEditTime: 2023-11-14 18:24:20
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/filter/visitor/JSXText.ts
  */
 const types = require("@babel/types"); 
 import { baseUtils } from "../../utils";

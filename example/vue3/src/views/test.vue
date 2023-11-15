@@ -1,6 +1,5 @@
 <template>
   <div class="content">
-    {{  }}
     <h1>vite-plugin-auto-i18n</h1>
     <h2>介绍</h2>
     <p>基于谷歌翻译api的vite自动翻译插件，优势——无需改动源码，一键翻译</p>

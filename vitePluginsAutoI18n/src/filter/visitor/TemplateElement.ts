@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-01 16:35:38
- * @LastEditTime: 2023-11-04 15:05:20
- * @FilePath: /i18n_translation_vite/src/plugins/filter/visitor/TemplateElement.ts
+ * @LastEditTime: 2023-11-14 18:24:14
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/filter/visitor/TemplateElement.ts
  */
 const types = require("@babel/types"); 
 import { option } from "../../option";
@@ -10,7 +10,6 @@ import { baseUtils } from "../../utils";
 
 export default function (path: any) {
   let { node, parent } = path;
-
   if(!node.value) return 
   
   let value = node.value.raw || node.value.cooked; // 获取模板字符串的值

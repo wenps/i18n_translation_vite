@@ -1,12 +1,12 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-15 10:13:12
+ * @LastEditTime: 2023-11-15 13:40:34
  * @FilePath: /i18n_translation_vite/example/vue3/vite.config.ts
  */
 import path from "path";
 import { defineConfig } from 'vite'
-import vuePluginsAutoI18n from "../../vitePluginsAutoI18n/src/index";
+import vuePluginsAutoI18n from "vite-plugin-auto-i18n";
 import createVuePlugin from '@vitejs/plugin-vue';
 
 const vuePlugin = createVuePlugin({

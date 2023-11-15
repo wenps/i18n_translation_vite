@@ -7,7 +7,7 @@
     "preview:vue3": "pnpm build:plugin && cd example/vue3 && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
     "preview:react": "pnpm build:plugin && cd example/react && pnpm link ../../vitePluginsAutoI18n && pnpm preview"
   },
-  "description": "基于vite i18n 自动翻译 插件",
+  "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
   "dependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",

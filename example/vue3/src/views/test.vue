@@ -118,7 +118,8 @@
     <p><code>在vite环境中执行插件后，只生成翻译配置文件。如果您直接构建它，项目将生成翻译配置文件。但翻译配置文件不会立即打包到主包中，您可能需要再次打包。</code></p>
     <p><code>因此，提供了buildToDist选项，当创建翻译配置文件时，它将主动将</code>翻译配置文件打包进 <code>主包，缺陷是您的打包文件可能有两份翻译配置文件</code></p>
     <h3>配置演示</h3>
-    <pre><code class="undefinedjs">import vitePluginAutoI18n from "../vitePluginAutoI18n/src/index";
+    <pre><code class="undefinedjs">
+import vitePluginAutoI18n from "../vitePluginAutoI18n/src/index";
 import createVuePlugin from '@vitejs/plugin-vue';
 const vuePlugin = createVuePlugin({ include: [/\.vue$/] })
 export default defineConfig({
@@ -151,16 +152,17 @@ const lang = window.localStorage.getItem('lang') || 'zhcn'
 window.$t.locale(langMap[lang], 'lang')
     </code></pre>
     <h4>演示介绍</h4>
-    <pre><code class="undefinedjs">import CN from '../../[your globalPath]/[your originLangKey]/index.mjs'
-// 这里只演示了targetLangList长度为零的情况，如果有多种语言就继续往下加
-import EN from '../../[your globalPath]/[your targetLangList[0]]/index.mjs'
-const langMap = {
-  [your originLangKey]: window?.[your namespace]?.[your originLangKey] || CN,
-  [your targetLangList[0]]: window?.[your namespace]?.[your targetLangList[0]] || EN
-}
-// window.localStorage.getItem('lang') Storing the current language type
-const lang = window.localStorage.getItem('lang') || [your originLangKey](defualt lang),
-window.[your translateKey].locale(langMap[lang], [your namespace])
+    <pre><code class="undefinedjs">
+      import CN from '../../[your globalPath]/[your originLangKey]/index.mjs'
+      // 这里只演示了targetLangList长度为零的情况，如果有多种语言就继续往下加
+      import EN from '../../[your globalPath]/[your targetLangList[0]]/index.mjs'
+      const langMap = {
+        [your originLangKey]: window?.[your namespace]?.[your originLangKey] || CN,
+        [your targetLangList[0]]: window?.[your namespace]?.[your targetLangList[0]] || EN
+      }
+      // window.localStorage.getItem('lang') Storing the current language type
+      const lang = window.localStorage.getItem('lang') || [your originLangKey](defualt lang),
+      window.[your translateKey].locale(langMap[lang], [your namespace])
     </code></pre>
   </div>
 </template>
@@ -171,5 +173,8 @@ window.[your translateKey].locale(langMap[lang], [your namespace])
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+pre {
+  display: contents !important;
 }
 </style>

@@ -1,7 +1,12 @@
 {
   "name": "vite-plugin-auto-i18n",
+<<<<<<< HEAD
   "version": "0.0.3",
   "description": "基于Google翻译api的vite自动翻译插件",
+=======
+  "version": "0.0.2",
+  "description": "vite automatic translation plugin based on Google translation api.",
+>>>>>>> f0f52b6ecc47a55d93731fe2a26692c47baff68a
   "keywords": [
     "i18n",
     "auto i18n",

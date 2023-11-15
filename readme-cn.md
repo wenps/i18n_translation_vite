@@ -10,6 +10,8 @@
 
 **支持语言：[langFile](./language.js)**
 
+demo项目地址：[demo](https://github.com/wenps/vitePluginAutoI18nDemo)
+
 ## 特点
 
 * **不影响源代码（不再需要替换源代码中的i18n）。**

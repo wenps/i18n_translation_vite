@@ -1,7 +1,7 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2023-11-14 13:42:37
+ * @LastEditTime: 2023-11-15 12:09:56
  * @FilePath: /i18n_translation_vite/example/vue3/src/App.vue
 -->
 <template>
@@ -10,6 +10,12 @@
       <div class="title">
         <img class="icon" @click="toPath" :name="name?'小山':$emit('text')" :src="img1"/>
         自动国际化插件
+      </div>
+      <div class="operation">
+        <a-button @click="changeLang('zhcn')" class="mr10">中文</a-button>
+        <a-button @click="changeLang('en')" class="mr10">英文</a-button>
+        <a-button @click="changeLang('ko')" class="mr10">韩文</a-button>
+        <a-button @click="changeLang('ja')" class="mr10">日文</a-button>
       </div>
     </header>
     <main>
@@ -32,6 +38,10 @@ export default defineComponent({
     },
     toPath() {
       this.$router.push({ name: 'test', params: { myid: this.name }})
+    },
+    changeLang(value:string) {
+      localStorage.setItem('lang', value)
+      location.reload();
     }
   }
 });
@@ -56,6 +66,7 @@ export default defineComponent({
       justify-content: space-between;
       align-items: center;
       padding-left: 60px;
+      height: inherit;
       .icon {
         height: 32px;
         width: 32px;
@@ -68,10 +79,19 @@ export default defineComponent({
         font-weight: 500;
       }
     }
+    .operation {
+      height: inherit;
+      display: flex;
+      align-items: center;
+    }
   }
   main {
     flex: 1;
+    overflow: auto;
     display: flex;
+  }
+  .mr10 {
+    margin-right: 10px;
   }
 }
 </style>

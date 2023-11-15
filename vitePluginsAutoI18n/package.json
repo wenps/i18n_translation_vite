@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-auto-i18n",
   "version": "0.0.2",
-  "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
+  "description": "vite automatic translation plugin based on Google translation api.",
   "keywords": [
     "i18n",
     "auto i18n",

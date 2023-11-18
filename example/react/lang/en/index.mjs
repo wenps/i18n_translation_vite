@@ -1,1 +1,1 @@
-export default {"qq3nkld":"hello, world!"}
+export default {}

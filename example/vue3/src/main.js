@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-09 11:48:25
- * @LastEditTime: 2023-11-01 11:55:48
- * @FilePath: /i18n_translation_vite/src/main.js
+ * @LastEditTime: 2023-11-18 10:55:48
+ * @FilePath: /i18n_translation_vite/example/vue3/src/main.js
  */
 import './lang'
 import { createApp } from 'vue'
@@ -21,3 +21,6 @@ function ae(aa) {
   return aa
 }
 ae('12小时')
+let ca = '芜湖'
+let c = `测试${a}芜湖测测`
+console.log(c);

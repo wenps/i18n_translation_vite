@@ -2,7 +2,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 18:18:51
- * @LastEditTime: 2023-11-14 18:24:35
+ * @LastEditTime: 2023-11-18 10:47:58
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/filter/visitor/StringLiteral.ts
  */
 import * as types from "@babel/types"
@@ -12,7 +12,6 @@ import { option } from '../../option'
 export default function(path:any) {
   let { node, parent } = path;
   let value = node.value;
-  console.log('node', node);
   
   // 是否存在来源语言字符，是否在默认字符串中
   if(baseUtils.hasOriginSymbols(value) && (option.excludedPattern.length && !baseUtils.checkAgainstRegexArray(value, [...option.excludedPattern]))) {

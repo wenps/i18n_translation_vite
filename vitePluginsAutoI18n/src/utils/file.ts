@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-11 17:42:56
+ * @LastEditTime: 2023-11-18 10:44:56
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
@@ -187,7 +187,6 @@ export function buildSetLangConfigToIndexFile() {
           const filePath = path.join(option.distPath, file);
           fs.readFile(filePath, 'utf-8', (err, data) => {
             if (err) {
-              console.log(filePath);
               console.error('❌构建主文件不存在，翻译配置无法写入');
               return;
             }

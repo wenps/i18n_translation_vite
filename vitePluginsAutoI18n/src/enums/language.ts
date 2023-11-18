@@ -3,5 +3,6 @@ export enum LanguageEnum {
 }
 
 export enum OriginLangKeyEnum {
-    ZH = 'zh-cn'
+    ZH = 'zh-cn',
+    EN = 'en',
 }

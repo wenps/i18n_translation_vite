@@ -5,7 +5,7 @@
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import { optionInfo, option, initOption,checkOption } from './option';
-import { fileUtils, translateUtils, baseUtils } from './utils';
+import { fileUtils, translateUtils, baseUtils, FunctionFactoryOption } from './utils';
 import filter from './filter';
 import * as babel from '@babel/core';
 
@@ -16,7 +16,7 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
   // 这里ts类型要适配
   if(!checkOption()) return {} as any
   fileUtils.initLangFile();
-  const originLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.langKey[0])
+  const originLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.originLang)
   translateUtils.languageConfigCompletion(originLangObj)
   translateUtils.initLangObj(originLangObj);
 
@@ -24,9 +24,13 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
     name: 'vite-plugin-auto-i18n',
     async transform(code: string, path: string) {
       if (allowedExtensions.some(ext => path.endsWith(ext))) {
-        if (!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;
+        // @TODOS 调试先注释，记得做适配
+        // if (!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;
         if (option.includePath.length && !baseUtils.checkAgainstRegexArray(path, option.includePath)) return code;
         if (option.excludedPath.length && baseUtils.checkAgainstRegexArray(path, option.excludedPath)) return code;
+        
+        FunctionFactoryOption.originLang = option.originLang;
+        
         try {
           let result = babel.transformSync(code, {
             configFile: false,

@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div>
-        牛逼了，我的翻译
+        hello, world!
       </div>
     </>
   )

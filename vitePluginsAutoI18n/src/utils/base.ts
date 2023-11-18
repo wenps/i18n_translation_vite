@@ -6,6 +6,8 @@
  */
 import { Node } from '@babel/types';
 import { option } from '../option'
+import { LANGUAGE_SYMBOL_MAP } from 'src/constants';
+import { FunctionFactoryOption } from './option';
 const types = require("@babel/types"); 
 
 /**
@@ -16,6 +18,16 @@ const types = require("@babel/types");
 export function hasChineseSymbols(code: string) {
   var pattern = /[\u4e00-\u9fff]/;
   return pattern.test(code);
+}
+
+/**
+ * @description: 是否包含来源语言字符
+ * @param {string} code
+ * @return {*}
+ */
+export function hasOriginSymbols(code: string) {
+  const originLang = FunctionFactoryOption.originLang;
+  return LANGUAGE_SYMBOL_MAP[originLang].test(code);
 }
 
 /**

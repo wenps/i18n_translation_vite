@@ -29,6 +29,7 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
         if (option.includePath.length && !baseUtils.checkAgainstRegexArray(path, option.includePath)) return code;
         if (option.excludedPath.length && baseUtils.checkAgainstRegexArray(path, option.excludedPath)) return code;
         
+        // record originLang
         FunctionFactoryOption.originLang = option.originLang;
         
         try {

@@ -6,13 +6,12 @@
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/filter/visitor/StringLiteral.ts
  */
 import * as types from "@babel/types"
-import { baseUtils } from "../../utils/index";
+import { FunctionFactoryOption, baseUtils } from "../../utils/index";
 import { option } from '../../option'
 
 export default function(path:any) {
   let { node, parent } = path;
   let value = node.value;
-  console.log('node', node);
   
   // 是否存在来源语言字符，是否在默认字符串中
   if(baseUtils.hasOriginSymbols(value) && (option.excludedPattern.length && !baseUtils.checkAgainstRegexArray(value, [...option.excludedPattern]))) {
@@ -22,11 +21,22 @@ export default function(path:any) {
     if(types.isImportDeclaration(parent) || parent.key === node ||(types.isCallExpression(parent) && extractFnName && option.excludedCall.includes(extractFnName))) return 
     let replaceNode
     if (types.isJSXAttribute(parent)) {
+      console.log('jsx attribute transalte');
       let expression = baseUtils.createI18nTranslator(value, true);
       replaceNode = types.jSXExpressionContainer(expression);
     } else {
-      replaceNode = baseUtils.createI18nTranslator(value, true);
+      
+      // 英文需要单独处理
+      if (FunctionFactoryOption.isEn()) {
+        // 处理jsx转译后的代码
+        if (types.isObjectProperty(parent)) {
+          replaceNode = baseUtils.createI18nTranslator(value, true);
+        }
+      } else {
+        replaceNode = baseUtils.createI18nTranslator(value, true);
+      }
     }
-    path.replaceWith(replaceNode);
+
+    replaceNode && path.replaceWith(replaceNode);
   }
 }

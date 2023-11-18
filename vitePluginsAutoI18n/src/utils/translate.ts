@@ -107,6 +107,7 @@ export async function googleAutoTranslate() {
       newLangObjMap[option.originLang] = transLangObj
       continue
     } 
+    
     console.info('开始自动翻译...')
     const res = await translateText(Text, option.originLang, option.langKey[index]);
     const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案

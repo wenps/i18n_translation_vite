@@ -5,7 +5,7 @@
  * @LastEditTime: 2023-10-31 14:37:24
  * @FilePath: /i18n_translation_vite/src/plugins/filter/visitor/CallExpression.ts
  */
-const types = require("@babel/types"); 
+import * as types from "@babel/types"
 import { translateUtils } from "../../utils/index";
 import { option } from '../../option'
 

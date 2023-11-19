@@ -9,7 +9,6 @@ import StringLiteral from "./visitor/StringLiteral";
 import CallExpression from "./visitor/CallExpression";
 import TemplateElement from "./visitor/TemplateElement";
 import JSXText from "./visitor/JSXText";
-import Program from "./visitor/Program";
 
 export default function () {
   return {
@@ -18,7 +17,6 @@ export default function () {
       JSXText,
       TemplateElement,
       CallExpression,
-      Program,
     },
   };
 };

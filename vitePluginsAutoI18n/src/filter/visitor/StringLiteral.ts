@@ -28,8 +28,8 @@ export default function(path:any) {
       
       // 英文需要单独处理
       if (FunctionFactoryOption.isEn()) {
-        // 处理jsx转译后的代码
-        if (types.isObjectProperty(parent)) {
+        // 匹配 jsx 函数
+        if (parent.callee?.name === 'jsx') {
           replaceNode = baseUtils.createI18nTranslator(value, true);
         }
       } else {

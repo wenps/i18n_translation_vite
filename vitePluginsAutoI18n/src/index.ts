@@ -38,6 +38,7 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
         
         // record originLang
         FunctionFactoryOption.originLang = option.originLang;
+        console.log(code);
         
         try {
           let result = babel.transformSync(code, {

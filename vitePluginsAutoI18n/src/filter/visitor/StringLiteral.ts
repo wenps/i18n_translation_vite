@@ -6,7 +6,7 @@
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/filter/visitor/StringLiteral.ts
  */
 import * as types from "@babel/types"
-import { baseUtils } from "../../utils/index";
+import { FunctionFactoryOption, baseUtils } from "../../utils/index";
 import { option } from '../../option'
 
 export default function(path:any) {
@@ -21,11 +21,22 @@ export default function(path:any) {
     if(types.isImportDeclaration(parent) || parent.key === node ||(types.isCallExpression(parent) && extractFnName && option.excludedCall.includes(extractFnName))) return 
     let replaceNode
     if (types.isJSXAttribute(parent)) {
+      console.log('jsx attribute transalte');
       let expression = baseUtils.createI18nTranslator(value, true);
       replaceNode = types.jSXExpressionContainer(expression);
     } else {
-      replaceNode = baseUtils.createI18nTranslator(value, true);
+      
+      // 英文需要单独处理
+      if (FunctionFactoryOption.isEn()) {
+        // 匹配 jsx 函数
+        if (parent.callee?.name === 'jsx') {
+          replaceNode = baseUtils.createI18nTranslator(value, true);
+        }
+      } else {
+        replaceNode = baseUtils.createI18nTranslator(value, true);
+      }
     }
-    path.replaceWith(replaceNode);
+
+    replaceNode && path.replaceWith(replaceNode);
   }
 }

@@ -16,7 +16,7 @@ export default function () {
       StringLiteral,
       JSXText,
       TemplateElement,
-      CallExpression
+      CallExpression,
     },
   };
 };

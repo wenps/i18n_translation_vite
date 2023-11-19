@@ -18,7 +18,7 @@ export default defineConfig({
         namespace: 'lang',
         distPath: './dist/assets',
         distKey: 'index',
-        langKey: ['zh-cn', 'zh-tw'],
+        langKey: ['ca'],
         originLang: 'en',
       }
   })],

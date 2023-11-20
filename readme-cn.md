@@ -39,7 +39,7 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 |    distPath    |  string  |  ✅  |                        `''`                        |                 打包后生成文件的位置 比如 ./dist/assets<br />（`用于将翻译配置注入打包文件`）                 |
 |     distKey     |  string  |  ✅  |                        `''`                        |          打包后生成文件的主文件名称，比如index.xxx 默认是index<br />（`用于将翻译配置注入打包文件`）          |
 |    namespace    |  string  |  ✅  |                        `''`                        |                                           线上区分当前项目间的翻译配置                                           |
-|   originLang   |  string  |  ❌  |                      `'zh-cn'`                      |                                        源语言（基于该语言翻译成其他语言）                                        |
+|   originLang   |  string  |  ❌  |                      `'zh-cn'`                      |                                 源语言（基于该语言翻译成其他语言，目前只有zhcn）                                 |
 | targetLangList | string[] |  ❌  |                      `['en']`                      | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
 |   buildToDist   | Boolean |  ❌  |                       `false`                       |                                            是否将翻译配置打包到主包中                                            |
 
@@ -92,11 +92,10 @@ import './lang' //  必须在项目的入口文件第一行引入lang文件
 
 ```
 import '../../lang/index'
-import EN from '../../lang/en/index.mjs'
-import CN from '../../lang/zh-cn/index.mjs'
+import langJSON from '../../lang/index.json'
 const langMap = {
-    en: window?.lang?.en || EN,
-    zhcn: window?.lang?.zhcn || CN
+    en: window?.lang?.en || _getJSONKey('en', langJSON),
+    zhcn: window?.lang?.zhcn || _getJSONKey('zhcn', langJSON
 }
 const lang = window.localStorage.getItem('lang') || 'zhcn'
 window.$t.locale(langMap[lang], 'lang')
@@ -105,12 +104,11 @@ window.$t.locale(langMap[lang], 'lang')
 #### 演示介绍
 
 ```import
-import CN from '../../{{ your globalPath }/{{ your originLangKey }/index.mjs'
-// 这里只演示了targetLangList长度为零的情况，如果有多种语言就继续往下加
-import EN from '../../{{ your globalPath }/{{ your targetLangList[0] }}/index.mjs'
+import '../../lang/index' // 导入翻译基础函数
+import langJSON from '../../lang/index.json // 导入翻译对象json
 const langMap = {
-    {{ your originLangKey }}: window?.{{ your namespace }}?.{{ your originLangKey } || CN
-    {{ your targetLangList[0] }}: window?.{{ your namespace }}?.{{ your targetLangList[0] } || EN,
+    {{ your originLangKey }}: window?.{{ your namespace }}?.{{ your originLangKey } || _getJSONKey('zhcn', langJSON)
+    {{ your targetLangList[0] }}: window?.{{ your namespace }}?.{{ your targetLangList[0] } || _getJSONKey('en', langJSON),
 }
 // window.localStorage.getItem('lang') Storing the current language type
 const lang = window.localStorage.getItem('lang') || {{ your originLangKey }}(defualt lang)

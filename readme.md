@@ -90,11 +90,10 @@ import './lang' // The first line of the entry file introduces the automatic tra
 
 ```
 import '../../lang/index'
-import EN from '../../lang/en/index.mjs'
-import CN from '../../lang/zh-cn/index.mjs'
+import langJSON from '../../lang/index.json
 const langMap = {
-    en: window?.lang?.en || EN,
-    zhcn: window?.lang?.zhcn || CN
+    en: window?.lang?.en || _getJSONKey('en', langJSON),
+    zhcn: window?.lang?.zhcn || _getJSONKey('zhcn', langJSON)
 }
 const lang = window.localStorage.getItem('lang') || 'zhcn'
 window.$t.locale(langMap[lang], 'lang')
@@ -103,13 +102,11 @@ window.$t.locale(langMap[lang], 'lang')
 #### Explanation
 
 ```
-import '../../{{ your globalPath }}/index'
-import CN from '../../{{ your globalPath }/{{ your originLangKey }/index.mjs'
-// if your targetLangList length is zero, Otherwise, by analogy, write the targetLangList with the other items.
-import EN from '../../{{ your globalPath }/{{ your targetLangList[0] }}/index.mjs' 
+import '../../{{ your globalPath }}/index' // Import translation base function
+import langJSON from '../../{{ your globalPath }}/index.json' // Import translation target JSON
 const langMap = {
-    {{ your originLangKey }}: window?.{{ your namespace }}?.{{ your originLangKey } || CN
-    {{ your targetLangList[0] }}: window?.{{ your namespace }}?.{{ your targetLangList[0] } || EN,
+    {{ your originLangKey }}: window?.{{ your namespace }}?.{{ your originLangKey } ||  _getJSONKey('zhcn', langJSON)
+    {{ your targetLangList[0] }}: window?.{{ your namespace }}?.{{ your targetLangList[0] } ||  _getJSONKey('en', langJSON),
 }
 // window.localStorage.getItem('lang') Storing the current language type
 const lang = window.localStorage.getItem('lang') || {{ your originLangKey }}(defualt lang)

@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-14 17:18:17
+ * @LastEditTime: 2023-11-20 13:41:26
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -127,9 +127,6 @@ export async function googleAutoTranslate() {
     }))
   });
   
-  option.langKey.forEach((item => {
-    fileUtils.setLangTranslateFileContent(item, originLangObjMap[item]);
-  }))
   console.log('开始写入JSON配置文件...')
   const JSONLangObj:any = {}
   Object.keys(originLangObjMap[option.originLang]).forEach(key => {
@@ -203,9 +200,7 @@ export async function completionTranslateAndWriteConfigFile(langObj:any, curLang
   Object.keys(transLangObj).forEach((key, index) => {
     curLangObj[key] = newLangObjMap[index]
   });
-
-  fileUtils.setLangTranslateFileContent(translateKey, curLangObj);
-
+  
   console.log('开始写入JSON配置文件...')
   const JSONLangObj:any = JSON.parse(fileUtils.getLangTranslateJSONFile())
 

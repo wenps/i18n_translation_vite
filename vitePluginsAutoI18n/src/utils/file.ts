@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-11 17:42:56
+ * @LastEditTime: 2023-11-20 13:55:32
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
@@ -16,63 +16,8 @@ import {option} from '../option'
   if (!fs.existsSync(option.globalPath)) {
     fs.mkdirSync(option.globalPath); // 创建lang文件夹
   }
-  option.langKey.forEach(item => {
-    initLangTranslateFile(item)
-  })
   initLangTranslateJSONFile()
   initTranslateBasicFnFile()
-}
-
-/**
- * @description: 生成国际化具体语言配置文件
- * @param {string} key
- * @return {*}
- */
-export function initLangTranslateFile(key:string) {
-  const folderPath = path.join(option.globalPath, key)
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath); // 创建对应语言文件夹
-    const esmIndexFilePath = path.join(folderPath, 'index.mjs')
-    fs.writeFileSync(esmIndexFilePath, 'export default {}'); // 创建
-  }
-}
-
-/**
- * @description: 读取国际化具体语言配置文件
- * @param {string} key
- * @param {string} Path
- * @return {*}
- */
-export function getLangTranslateFileContent(key:string) {
-  const indexFilePath = './' + path.join(option.globalPath, key, 'index.mjs')
-  let content = fs.readFileSync(indexFilePath, 'utf-8');
-  content = extractExportDefaultContent(content)
-  return content || {}
-}
-
-/**
- * @description: 正则解析esm代码内容
- * @param {string} jsCode
- * @return {*}
- */
-function extractExportDefaultContent(jsCode:string) {
-  const regex = /export\s+default\s+(.*)/s;
-  const match = jsCode.match(regex);
-  if (match && match[1]) {
-    return JSON.parse(match[1]);
-  }
-  return '';
-}
-
-/**
- * @description: 写入国际化具体语言配置文件
- * @param {string} key
- * @param {string} Path
- * @return {*}
- */
-export function setLangTranslateFileContent(key:string, content: object) {
-  const esmIndexFilePath = path.join(option.globalPath, key, 'index.mjs')
-  fs.writeFileSync(esmIndexFilePath, 'export default ' + JSON.stringify(content)); // 创建
 }
 
 /**
@@ -98,6 +43,14 @@ export function initTranslateBasicFnFile() {
     };
     window.${key} = window.${key} || ${key};
     window.$${key} = $${key};
+    window._getJSONKey = function (key, insertJSONObj = undefined) {
+      const JSONObj = insertJSONObj || JSON.parse(getLangTranslateJSONFile())
+      const langObj = {}
+      Object.keys(JSONObj).forEach((value)=>{
+        langObj[value] = JSONObj[value][key]
+      })
+      return langObj
+    }
   })();`
   const indexPath = path.join(option.globalPath, 'index.js')
   fs.writeFileSync(indexPath, translateBasicFnText); // 创建
@@ -112,10 +65,6 @@ export function initLangTranslateJSONFile() {
   const indexPath = path.join(option.globalPath, 'index.json')
   if(!fs.existsSync(indexPath)) {
     fs.writeFileSync(indexPath, JSON.stringify({})); // 创建
-  } else { // 同步代码到对应langKey下的配置文件中
-    option.langKey.forEach(item => {
-      setLangTranslateFileContent(item, getLangObjByJSONFileWithLangKey(item))
-    })
   }
 }
 

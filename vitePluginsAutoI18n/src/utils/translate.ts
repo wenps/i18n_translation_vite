@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-20 13:41:26
+ * @LastEditTime: 2023-11-22 14:27:38
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -128,15 +128,15 @@ export async function googleAutoTranslate() {
   });
   
   console.log('开始写入JSON配置文件...')
-  const JSONLangObj:any = {}
+  const configLangObj:any = {}
   Object.keys(originLangObjMap[option.originLang]).forEach(key => {
-    JSONLangObj[key] = {}
+    configLangObj[key] = {}
     option.langKey.forEach((item => {
-      JSONLangObj[key][item] = originLangObjMap[item][key]
+      configLangObj[key][item] = originLangObjMap[item][key]
     }))
   })
   try {
-    fileUtils.setLangTranslateJSONFile(JSON.stringify(JSONLangObj))
+    fileUtils.setLangTranslateJSONFile(configLangObj)
     console.info('JSON配置文件写入成功⭐️⭐️⭐️')
   } catch (error) {
     console.error('❌JSON配置文件写入失败' + error)
@@ -202,13 +202,13 @@ export async function completionTranslateAndWriteConfigFile(langObj:any, curLang
   });
   
   console.log('开始写入JSON配置文件...')
-  const JSONLangObj:any = JSON.parse(fileUtils.getLangTranslateJSONFile())
+  const configLangObj:any = JSON.parse(fileUtils.getLangTranslateJSONFile())
 
   Object.keys(transLangObj).forEach(key => {
-    JSONLangObj[key][translateKey] = curLangObj[key]
+    configLangObj[key][translateKey] = curLangObj[key]
   })
   try {
-    fileUtils.setLangTranslateJSONFile(JSON.stringify(JSONLangObj))
+    fileUtils.setLangTranslateJSONFile(JSON.stringify(configLangObj))
     console.info('JSON配置文件写入成功⭐️⭐️⭐️')
   } catch (error) {
     console.error('❌JSON配置文件写入失败' + error)

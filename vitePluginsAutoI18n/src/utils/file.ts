@@ -1,12 +1,13 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-20 13:55:32
+ * @LastEditTime: 2023-11-22 14:28:11
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
  */
 import fs  from "fs";
 import path from 'path'
 import {option} from '../option'
+const jsonFormat = require('json-format');
 
 /**
  * @description: 新建国际化配置文件夹
@@ -105,10 +106,11 @@ export function getLangObjByJSONFileWithLangKey(key:string, insertJSONObj:object
  * @description: 设置国际化JSON文件
  * @return {*}
  */
-export function setLangTranslateJSONFile(content:string) {
+export function setLangTranslateJSONFile(obj:object) {
   const filePath = path.join(option.globalPath, 'index.json')
+  const jsonObj = jsonFormat(obj)
   if(fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, content); 
+    fs.writeFileSync(filePath, jsonObj); 
   } else {
     console.log('❌JSON配置文件写入异常，文件不存在');
   }

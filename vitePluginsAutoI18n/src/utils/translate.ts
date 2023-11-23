@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-22 14:27:38
+ * @LastEditTime: 2023-11-23 10:08:24
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -208,7 +208,7 @@ export async function completionTranslateAndWriteConfigFile(langObj:any, curLang
     configLangObj[key][translateKey] = curLangObj[key]
   })
   try {
-    fileUtils.setLangTranslateJSONFile(JSON.stringify(configLangObj))
+    fileUtils.setLangTranslateJSONFile(configLangObj)
     console.info('JSON配置文件写入成功⭐️⭐️⭐️')
   } catch (error) {
     console.error('❌JSON配置文件写入失败' + error)

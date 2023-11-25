@@ -47,6 +47,10 @@ why need **buildToDist**?
 
 `After executing the plugin in the vite environment, the translation configuration file is just generated. If you directly build it, the project will generate the translation configuration file. However, the translation configuration file will not be packaged into the main package immediately, and you may need to package it a second time. Therefore, the buildToDist option is provided, and when the translation configuration file is created, it will be actively set to the main package, The flaw is that your packaged file may have two sets of translation configuration files.`
 
+How to **update translations**？
+
+`After executing the plugin, two files will be generated under globalPath, ` `index.js and index.json , index.js generates the relevant translation functions, while index.json is the json file that stores all the translation sources, if you want to update the translation content, you can directly update this json file. `
+
 ### config
 
 ```

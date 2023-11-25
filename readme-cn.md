@@ -49,6 +49,10 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 
 `因此，提供了buildToDist选项，当创建翻译配置文件时，它将主动将`翻译配置文件打包进 `主包，缺陷是您的打包文件可能有两份翻译配置文件`
 
+如何**更新翻译**？
+
+`执行插件之后 globalPath 下会生成两个文件`，`分别是 index.js 和 index.json , index.js 这里生成了相关的翻译函数，而index.json 则是存储了所有的翻译源的json文件，如果希望更新翻译内容直接更新这个json文件即可。`
+
 ### 配置演示
 
 ```

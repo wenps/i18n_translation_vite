@@ -8,10 +8,13 @@ import { optionInfo, option, initOption,checkOption } from './option';
 import { fileUtils, translateUtils, baseUtils, FunctionFactoryOption } from './utils';
 import filter from './filter';
 import * as babel from '@babel/core';
+import { ResolvedConfig} from 'vite'
 
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
 
 export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
+  let config: ResolvedConfig;
+
   initOption(optionInfo);
   // 这里ts类型要适配
   if(!checkOption()) return {} as any
@@ -22,6 +25,10 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
 
   return {
     name: 'vite-plugin-auto-i18n',
+    configResolved(resolvedConfig: ResolvedConfig) {
+      // 存储最终解析的配置
+      config = resolvedConfig
+    },
     async transform(code: string, path: string) {
       if (allowedExtensions.some(ext => path.endsWith(ext))) {
         // @TODOS 调试先注释，记得做适配
@@ -36,7 +43,11 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
             configFile: false,
             plugins: [filter],
           });
-          await translateUtils.googleAutoTranslate()
+          if (config.command === 'serve') {
+            console.log(222);
+            
+            await translateUtils.googleAutoTranslate()
+          } 
           return result?.code;
         } catch (e) {
           console.error(e);

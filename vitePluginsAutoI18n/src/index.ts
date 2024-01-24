@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-15 10:23:16
+ * @LastEditTime: 2024-01-23 09:44:03
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import { optionInfo, option, initOption,checkOption } from './option';
@@ -44,8 +44,6 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
             plugins: [filter],
           });
           if (config.command === 'serve') {
-            console.log(222);
-            
             await translateUtils.googleAutoTranslate()
           } 
           return result?.code;

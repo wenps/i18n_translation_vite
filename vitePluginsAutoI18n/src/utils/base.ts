@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2023-11-04 15:08:56
- * @FilePath: /i18n_translation_vite/src/plugins/utils/base.ts
+ * @LastEditTime: 2024-01-31 17:49:07
+ * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/base.ts
  */
 import { Node } from '@babel/types';
 import { option } from '../option'
@@ -68,7 +68,6 @@ export function checkAgainstRegexArray(value: string, regexArray: string[] | Reg
  */
 export function extractFunctionName(node: Node): string {
   let callName = "";
-  // 多级命名空间,如：xxx.xxx.xxx
   function callObjName(callObj: any, name: string): string {
     name += "." + (callObj.property as any).name;
     if (types.isMemberExpression(callObj.object)) { // isMemberExpression： 是否是成员表达式

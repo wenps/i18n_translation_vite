@@ -7,46 +7,44 @@
 
 import { OriginLangKeyEnum } from "./enums";
 
-const OPTION = {
+const DEFAULT_OPTION = {
   translateKey: "$t",
+  /** 标记不翻译调用函数 */
   excludedCall: ["$i8n", "require", "$$i8n", "console.log", "$t"],
+  /** 标记不用翻译字符串 */
   excludedPattern: [/\.\w+$/],
-  excludedPath: [],
+  /** 排查不需要翻译的目录下的文件  */
+  excludedPath: [] as string[],
+  /** 指定需要翻译的目录下的文件 */
   includePath: [/src\//],
+  /** 配置文件生成位置 */
   globalPath: './lang',
+  /** 打包后生成文件的位置 比如 ./dist/assets */
   distPath: '',
+  /** 打包后生成文件的主文件名称，比如index.xxx 默认是index */
   distKey: 'index',
-  originLang: OriginLangKeyEnum.ZH,
+  /** 来源语言 */
+  originLang: OriginLangKeyEnum.ZH as OriginLangKeyEnum | string,
+  /** 翻译目标语言 */
   targetLangList: ['en'],
-  langKey: [],
+  /** 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件 */
+  langKey: [] as string[],
+  /** 命名空间 */
   namespace: '',
+  /** 是否构建结束之后将最新的翻译重新打包到主包中 */
   buildToDist: false
 }
 
-type OptionType = {
-  translateKey: string,
-  excludedCall: string[], // 标记不翻译调用函数
-  excludedPattern: RegExp[], // 标记不用翻译字符串
-  excludedPath: RegExp[], // 排查不需要翻译的目录下的文件
-  includePath: RegExp[], // 指定需要翻译的目录下的文件
-  globalPath: string, // 配置文件生成位置
-  originLang: OriginLangKeyEnum | string, // 来源语言
-  targetLangList: string[], // 翻译目标语言
-  langKey: string[], // 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件
-  namespace: string, // 命名空间
-  buildToDist: Boolean, // 是否构建结束之后将最新的翻译重新打包到主包中
-  distPath: string, // 打包后生成文件的位置 比如 ./dist/assets
-  distKey: string, // 打包后生成文件的主文件名称，比如index.xxx 默认是index
-};
+type OptionType = typeof DEFAULT_OPTION
 
-export let option: OptionType = { ...OPTION };
+export let option: OptionType = { ...DEFAULT_OPTION };
 
 export type optionInfo = {
   option: Partial<OptionType>;
 }
 
 export function initOption(optionInfo: optionInfo) {
-  option = { ...OPTION, ...optionInfo.option };
+  option = { ...DEFAULT_OPTION, ...optionInfo.option };
   option.langKey = [ option.originLang, ...option.targetLangList ]
 }
 

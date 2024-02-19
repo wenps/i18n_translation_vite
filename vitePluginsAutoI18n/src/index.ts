@@ -4,28 +4,28 @@
  * @LastEditTime: 2024-01-23 09:44:03
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
-import { optionInfo, option, initOption,checkOption } from './option';
+import { optionInfo, option, initOption, checkOption } from './option';
 import { fileUtils, translateUtils, baseUtils, FunctionFactoryOption } from './utils';
 import filter from './filter';
 import * as babel from '@babel/core';
-import { ResolvedConfig} from 'vite'
+import { ResolvedConfig, Plugin } from 'vite'
 
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
 
-export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
+export default function vitePluginsAutoI18n(optionInfo: optionInfo): any/* 不同vite版本的Plugin类型定义不同，无法兼容 */ {
+  const name = 'vite-plugin-auto-i18n'
   let config: ResolvedConfig;
 
   initOption(optionInfo);
-  // 这里ts类型要适配
-  if(!checkOption()) return {} as any
+
+  if(!checkOption()) return { name }
   fileUtils.initLangFile();
   const originLangObj = fileUtils.getLangObjByJSONFileWithLangKey(option.originLang)
   translateUtils.languageConfigCompletion(originLangObj)
   translateUtils.initLangObj(originLangObj);
-
-  return {
-    name: 'vite-plugin-auto-i18n',
-    configResolved(resolvedConfig: ResolvedConfig) {
+  const plugin: Plugin = {
+    name,
+    configResolved(resolvedConfig) {
       // 存储最终解析的配置
       config = resolvedConfig
     },
@@ -61,4 +61,6 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo) {
       await fileUtils.buildSetLangConfigToIndexFile();
     }
   };
+
+  return plugin
 }

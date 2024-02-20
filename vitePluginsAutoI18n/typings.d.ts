@@ -1,1 +1,1 @@
-declare module '@babel/core';
+declare module 'json-format';

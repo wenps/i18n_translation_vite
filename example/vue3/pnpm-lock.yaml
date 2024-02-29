@@ -72,9 +72,6 @@ devDependencies:
   vite:
     specifier: ^2.8.6
     version: 2.9.17(less@4.2.0)(sass@1.71.0)
-  vite-plugin-auto-i18n:
-    specifier: link:..\..\vitePluginsAutoI18n
-    version: link:../../vitePluginsAutoI18n
   vite-plugin-legacy:
     specifier: ^2.1.0
     version: 2.1.0(vite@2.9.17)

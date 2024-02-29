@@ -5,7 +5,8 @@
     "build:plugin": "cp readme* vitePluginsAutoI18n && cd vitePluginsAutoI18n && pnpm build",
     "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
     "preview:vue3": "pnpm build:plugin && cd example/vue3 && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
-    "preview:react": "pnpm build:plugin && cd example/react && pnpm link ../../vitePluginsAutoI18n && pnpm preview"
+    "preview:react": "pnpm build:plugin && cd example/react && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
+    "preview": "node script/preview.cjs"
   },
   "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
   "dependencies": {
@@ -15,6 +16,7 @@
     "@vitalets/google-translate-api": "^9.2.0",
     "@vitejs/plugin-vue": "^1.10.2",
     "ant-design-vue": "^3.2.20",
+    "json-format": "^1.0.1",
     "marked": "^7.0.1",
     "ora": "^7.0.1",
     "tunnel": "0.0.6",
@@ -26,9 +28,11 @@
   },
   "devDependencies": {
     "@babel/types": "^7.23.0",
+    "@inquirer/prompts": "^4.1.0",
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/babel__core": "^7.20.3",
     "@types/node": "^20.3.3",
+    "@types/shelljs": "^0.8.15",
     "babel-plugin-import": "^1.13.6",
     "eslint": "^8.52.0",
     "eslint-plugin-vue": "^9.15.1",
@@ -38,6 +42,7 @@
     "rollup-plugin-dts": "^6.1.0",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
+    "shelljs": "^0.8.5",
     "typescript": "^5.1.6",
     "vite": "^2.8.6",
     "vite-plugin-legacy": "^2.1.0"

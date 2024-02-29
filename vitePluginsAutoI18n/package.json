@@ -28,18 +28,5 @@
   "bugs": {
     "url": "https://github.com/wenps/i18n_translation_vite/issues"
   },
-  "homepage": "https://github.com/wenps/i18n_translation_vite#readme",
-  "dependencies": {
-    "@babel/preset-env": "^7.23.2",
-    "@babel/preset-typescript": "^7.23.2",
-    "@vitalets/google-translate-api": "^9.2.0",
-    "babel-plugin-import": "^1.13.8",
-    "json-format": "^1.0.1",
-    "tunnel": "0.0.6",
-    "typescript": "^5.2.2"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@types/node": "^20.8.10"
-  }
+  "homepage": "https://github.com/wenps/i18n_translation_vite#readme"
 }

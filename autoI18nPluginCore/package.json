@@ -1,0 +1,33 @@
+{
+  "name": "auto-auto-plugin-core",
+  "version": "0.0.8",
+  "description": "vite, webpack automatic translation plugin core code.",
+  "keywords": [
+    "i18n",
+    "auto i18n",
+    "vite i18n",
+    "webpack i18n",
+    "vue i18n",
+    "react i18n"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README*"
+  ],
+  "scripts": {
+    "build": "rollup -c ./rollup.config.ts --configPlugin typescript"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wenps/i18n_translation_vite.git"
+  },
+  "author": "wenps,Winfans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wenps/i18n_translation_vite/issues"
+  },
+  "homepage": "https://github.com/wenps/i18n_translation_vite#readme"
+}

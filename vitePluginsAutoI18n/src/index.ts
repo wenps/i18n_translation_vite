@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-03-01 13:34:01
+ * @LastEditTime: 2024-03-01 22:56:37
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import {
@@ -45,11 +45,11 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo): any {
         if (option.excludedPath.length && baseUtils.checkAgainstRegexArray(path, option.excludedPath)) return code;
 
         FunctionFactoryOption.originLang = option.originLang;
-
+        
         try {
           let result = babel.transformSync(code, {
             configFile: false,
-            plugins: [filter],
+            plugins: [filter.default],
           });
           if (config.command === 'serve') {
             await translateUtils.googleAutoTranslate();

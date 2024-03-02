@@ -2,17 +2,20 @@
   "name": "i18n_translation_vite",
   "version": "0.0.0",
   "scripts": {
-    "build:plugin": "cp readme* vitePluginsAutoI18n && cd vitePluginsAutoI18n && pnpm build",
+    "build": "node script/build.js",
+    "build:vite": "copy readme* vitePluginsAutoI18n && cd vitePluginsAutoI18n && pnpm build",
+    "build:webpack": "copy readme* webpackPluginsAutoI18n && cd webpackPluginsAutoI18n && pnpm build",
     "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
     "preview:vue3": "pnpm build:plugin && cd example/vue3 && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
     "preview:react": "pnpm build:plugin && cd example/react && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
-    "preview": "node script/preview.cjs"
+    "preview": "node script/preview.js"
   },
   "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
   "dependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-typescript": "^7.23.2",
+    "@rollup/plugin-alias": "^5.1.0",
     "@vitalets/google-translate-api": "^9.2.0",
     "@vitejs/plugin-vue": "^1.10.2",
     "ant-design-vue": "^3.2.20",

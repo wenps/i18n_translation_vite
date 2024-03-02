@@ -1,4 +1,4 @@
-import { OriginLangKeyEnum } from "src/enums";
+import { OriginLangKeyEnum } from "../enums";
 
 export type FunctionFactoryOptions = { 
     orignLang: OriginLangKeyEnum | string;

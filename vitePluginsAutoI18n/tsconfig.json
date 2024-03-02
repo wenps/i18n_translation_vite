@@ -1,7 +1,10 @@
 {
   "extends": ["../tsconfig.json"],
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "core/*": ["../autoI18nPluginCore/*"]
+    }
   },
   "include": ["./src", "./rollup.config.ts", "./typings.d.ts"]
 }

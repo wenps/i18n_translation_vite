@@ -3,13 +3,15 @@ import typescript from '@rollup/plugin-typescript';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
 import dts from 'rollup-plugin-dts';
+import alias from '@rollup/plugin-alias';
+import nodeResolve from '@rollup/plugin-node-resolve';
+
+function resolve(...filePaths: string[]) {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  return path.resolve(__dirname, ...filePaths);
+}
 
 const input = resolve('./src/index.ts');
-
-function resolve(filePath: string) {
-  const __dirname = path.dirname(fileURLToPath(import.meta.url));
-  return path.resolve(__dirname, filePath);
-}
 
 const buildConfig = defineConfig({
   input: input,
@@ -24,8 +26,12 @@ const buildConfig = defineConfig({
     },
   ],
   plugins: [
-    typescript({
-      tsconfig: resolve('./tsconfig.json'),
+    typescript(),
+    nodeResolve(),
+    alias({
+      entries: [
+        { find: 'core', replacement: '../autoI18nPluginCore' }
+      ]
     }),
   ],
 });

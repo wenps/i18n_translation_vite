@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "preview": "vite",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -12,7 +12,6 @@
     "@vitejs/plugin-vue2": "^2.3.1",
     "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",
-    "vite-plugin-auto-i18n": "0.0.6",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",

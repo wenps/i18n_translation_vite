@@ -15,4 +15,12 @@
     };
     window.$t = window.$t || $t;
     window.$$t = $$t;
+    window._getJSONKey = function (key, insertJSONObj = undefined) {
+      const JSONObj = insertJSONObj || JSON.parse(getLangTranslateJSONFile())
+      const langObj = {}
+      Object.keys(JSONObj).forEach((value)=>{
+        langObj[value] = JSONObj[value][key]
+      })
+      return langObj
+    }
   })();

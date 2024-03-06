@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2023-11-23 10:08:24
+ * @LastEditTime: 2024-01-23 09:50:27
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
  */
 
@@ -10,9 +10,13 @@ import { option } from '../option';
 const tunnel = require('tunnel');
 const { translate } = require('@vitalets/google-translate-api');
 
+type langObj = { [key: string]: string }
+
 /**
  * @description: 调用翻译API
  * @param {string} text
+ * @param {string} fromKey
+ * @param {string} toKey
  * @return {*}
  */
 const translateText = async (text: string, fromKey: string, toKey: string) => {
@@ -36,8 +40,7 @@ const translateText = async (text: string, fromKey: string, toKey: string) => {
   });
   return data['text'] || '';
 };
-
-export let langObj: any = {};
+export let langObj: langObj = {};
 
 /**
  * @description: 设置翻译对象属性
@@ -60,12 +63,13 @@ export function getLangObj() {
 }
 
 
+
 /**
  * @description: 初始化翻译对象
- * @param {any} obj
+ * @param {langObj} obj
  * @return {*}
  */
-export function initLangObj(obj: any) {
+export function initLangObj(obj: langObj) {
   if (!Object.keys(langObj)) {
     langObj = obj;
   }

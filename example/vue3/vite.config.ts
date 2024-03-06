@@ -19,6 +19,16 @@ const vuePlugin = createVuePlugin({
     } 
 })
 
+const i18nPlugin = vuePluginsAutoI18n({
+    option:{
+        globalPath: './lang',
+        namespace: 'lang',
+        distPath: './dist/assets',
+        distKey: 'index',
+        targetLangList: ['en', 'ko', 'ja']
+    }
+})
+
 export default defineConfig({
     resolve: {  
         // 设置目录别名
@@ -34,15 +44,6 @@ export default defineConfig({
     },
     plugins: [
         vuePlugin,
-        vuePluginsAutoI18n({
-            option:{
-                globalPath: './lang',
-                namespace: 'lang',
-                distPath: './dist/assets',
-                distKey: 'index',
-                targetLangList: ['en', 'ko', 'ja'],
-                originLang: 'zh-cn',
-            }
-        }),
+        i18nPlugin
       ]
 });

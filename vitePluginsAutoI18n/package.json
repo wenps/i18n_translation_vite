@@ -24,7 +24,7 @@
     "url": "git+https://github.com/wenps/i18n_translation_vite.git"
   },
   "author": "wenps,Winfans",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/wenps/i18n_translation_vite/issues"
   },

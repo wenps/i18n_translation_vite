@@ -3,6 +3,9 @@
 const run = async () => {
     const shell = require('shelljs')
     const argMap = require('./utils').parseArgsToMap()
+    shell.cd('autoI18nPluginCore')
+    shell.exec('pnpm build')
+    shell.cd('..')
     const choices = ['vite', 'webpack'].map(type => {
         return {
             name: type,

@@ -28,7 +28,6 @@ const run = async () => {
         default: choices[0].value
     })
     shell.cd(`example/${example}`)
-    shell.exec('pnpm link ../../vitePluginsAutoI18n')
     shell.exec('pnpm preview')
 }
 

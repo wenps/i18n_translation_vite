@@ -28,5 +28,23 @@
   "bugs": {
     "url": "https://github.com/wenps/i18n_translation_vite/issues"
   },
-  "homepage": "https://github.com/wenps/i18n_translation_vite#readme"
+  "homepage": "https://github.com/wenps/i18n_translation_vite#readme",
+  "dependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.2",
+    "auto-auto-plugin-core": "workspace"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.23.0",
+    "rollup": "^4.3.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/babel__core": "^7.20.3",
+    "@types/node": "^20.3.3",
+    "babel-plugin-import": "^1.13.6",
+    "typescript": "^5.1.6",
+    "vite": "^2.8.6",
+    "vite-plugin-legacy": "^2.1.0"
+  }
 }

@@ -7,7 +7,7 @@
 import fs  from "fs";
 import path from 'path'
 import {option} from '../option'
-import jsonFormat from 'json-format'
+const jsonFormat = require('json-format')
 
 /**
  * @description: 新建国际化配置文件夹

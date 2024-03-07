@@ -3,50 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "build": "node script/build.js",
-    "build:vite": "copy readme* vitePluginsAutoI18n && cd vitePluginsAutoI18n && pnpm build",
-    "build:webpack": "copy readme* webpackPluginsAutoI18n && cd webpackPluginsAutoI18n && pnpm build",
     "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
-    "preview:vue3": "pnpm build:plugin && cd example/vue3 && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
-    "preview:react": "pnpm build:plugin && cd example/react && pnpm link ../../vitePluginsAutoI18n && pnpm preview",
     "preview": "node script/preview.js"
   },
   "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
-  "dependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/preset-env": "^7.23.2",
-    "@babel/preset-typescript": "^7.23.2",
-    "@rollup/plugin-alias": "^5.1.0",
-    "@vitalets/google-translate-api": "^9.2.0",
-    "@vitejs/plugin-vue": "^1.10.2",
-    "ant-design-vue": "^3.2.20",
-    "json-format": "^1.0.1",
-    "tunnel": "0.0.6",
-    "vite-plugin-vue2": "^2.0.3",
-    "vue": "^3.2.13",
-    "vue-loader": "^17.2.2",
-    "vue-router": "^4.2.2",
-    "vue-template-compiler": "^2.7.14"
-  },
   "devDependencies": {
-    "@babel/types": "^7.23.0",
     "@inquirer/prompts": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@types/babel__core": "^7.20.3",
     "@types/node": "^20.3.3",
     "@types/shelljs": "^0.8.15",
-    "babel-plugin-import": "^1.13.6",
-    "eslint": "^8.52.0",
-    "eslint-plugin-vue": "^9.15.1",
-    "less": "^4.2.0",
-    "pinia": "^2.1.4",
-    "rollup": "^4.3.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "sass": "^1.63.6",
-    "sass-loader": "^13.3.2",
-    "shelljs": "^0.8.5",
-    "typescript": "^5.1.6",
-    "vite": "^2.8.6",
-    "vite-plugin-legacy": "^2.1.0"
+    "shelljs": "^0.8.5"
   }
 }

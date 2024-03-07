@@ -14,7 +14,7 @@ import {
   option,
   initOption,
   checkOption
-} from 'core/src'
+} from 'auto-auto-plugin-core'
 import * as babel from '@babel/core';
 import { ResolvedConfig, Plugin } from 'vite';
 

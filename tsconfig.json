@@ -4,7 +4,7 @@
     "lib": ["ESNext"],
     "module": "ESNext",
     "skipLibCheck": true,
-
+    "allowImportingTsExtensions": true,
     "moduleResolution": "node",
     "noEmit": true,
     "isolatedModules": true,

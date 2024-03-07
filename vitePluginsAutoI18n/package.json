@@ -33,7 +33,7 @@
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-typescript": "^7.23.2",
-    "auto-auto-plugin-core": "workspace"
+    "auto-i18n-plugin-core": "workspace"
   },
   "devDependencies": {
     "@babel/types": "^7.23.0",

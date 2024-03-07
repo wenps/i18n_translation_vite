@@ -187,7 +187,7 @@ importers:
       '@rollup/plugin-typescript': ^11.1.5
       '@types/babel__core': ^7.20.3
       '@types/node': ^20.3.3
-      auto-auto-plugin-core: workspace
+      auto-i18n-plugin-core: workspace
       babel-plugin-import: ^1.13.6
       rollup: ^4.3.0
       rollup-plugin-dts: ^6.1.0
@@ -198,7 +198,7 @@ importers:
       '@babel/core': 7.23.9
       '@babel/preset-env': 7.23.9_@babel+core@7.23.9
       '@babel/preset-typescript': 7.23.3_@babel+core@7.23.9
-      auto-auto-plugin-core: link:../autoI18nPluginCore
+      auto-i18n-plugin-core: link:../autoI18nPluginCore
     devDependencies:
       '@babel/types': 7.23.9
       '@rollup/plugin-typescript': 11.1.6_bsxv5przm4ycrs3eh4zvdtkb2u

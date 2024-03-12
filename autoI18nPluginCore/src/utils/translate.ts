@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2024-01-23 09:50:27
- * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/translate.ts
+ * @LastEditTime: 2024-03-12 13:36:44
+ * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate.ts
  */
 
 import { fileUtils } from './index.js';
@@ -26,7 +26,7 @@ const translateText = async (text: string, fromKey: string, toKey: string) => {
     fetchOptions: {
       agent: tunnel.httpsOverHttp({
         proxy: {
-          port: 7890,
+          port: option.post,
           host: '127.0.0.1',
           headers: {
             'User-Agent': 'Node'

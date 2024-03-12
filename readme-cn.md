@@ -42,6 +42,7 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 |   originLang   |  string  |  ❌  |                      `'zh-cn'`                      |                                 源语言（基于该语言翻译成其他语言，目前只有zhcn）                                 |
 | targetLangList | string[] |  ❌  |                      `['en']`                      | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
 |   buildToDist   | Boolean |  ❌  |                       `false`                       |                                            是否将翻译配置打包到主包中                                            |
+|      post      |  number  |  ❌  |                       `7890`                       |                    访问翻译api需要代理工具因此需要保证代理端口和请求端口一致，这里默认是7890                    |
 
 为什么需要 **buildToDist**?
 
@@ -52,6 +53,12 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 如何**更新翻译**？
 
 `执行插件之后 globalPath 下会生成两个文件`，`分别是 index.js 和 index.json , index.js 这里生成了相关的翻译函数，而index.json 则是存储了所有的翻译源的json文件，如果希望更新翻译内容直接更新这个json文件即可。`
+
+### 注意
+
+* **插件使用需要梯子，因为需要调用谷歌翻译api。后续会支持有道翻译api，但是这个需要用户自行提供密钥。**
+* **插件翻译失败时可以先检查下当前的梯子代理端口是否是7890，因为插件默认使用的是7890端口进行请求。0.0.10版本后将支持配置端口号。**
+* **谷歌翻译是免费的翻译，所以频繁请求可能会出现请求过多问题，对此可以几个小时之后再请求。**
 
 ### 配置演示
 

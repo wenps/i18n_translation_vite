@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2023-11-10 17:19:10
- * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/option.ts
+ * @LastEditTime: 2024-03-12 13:36:20
+ * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/option.ts
  */
 
 import { OriginLangKeyEnum } from "./enums";
@@ -32,7 +32,9 @@ const DEFAULT_OPTION = {
   /** 命名空间 */
   namespace: '',
   /** 是否构建结束之后将最新的翻译重新打包到主包中 */
-  buildToDist: false
+  buildToDist: false,
+  /** 代理端口 */
+  post: 7890
 }
 
 type OptionType = typeof DEFAULT_OPTION

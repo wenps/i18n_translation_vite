@@ -1,7 +1,7 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-11-23 15:52:50
- * @LastEditTime: 2023-11-23 16:03:09
+ * @LastEditTime: 2024-04-03 17:59:37
  * @FilePath: /i18n_translation_vite/example/vue2/src/App.vue
 -->
 <template>
@@ -61,5 +61,8 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+main {
+  padding: 20px;
 }
 </style>

@@ -118,7 +118,8 @@
     <p><code>在vite环境中执行插件后，只生成翻译配置文件。如果您直接构建它，项目将生成翻译配置文件。但翻译配置文件不会立即打包到主包中，您可能需要再次打包。</code></p>
     <p><code>因此，提供了buildToDist选项，当创建翻译配置文件时，它将主动将</code>翻译配置文件打包进 <code>主包，缺陷是您的打包文件可能有两份翻译配置文件</code></p>
     <h3>配置演示</h3>
-    <pre><code class="undefinedjs">
+    <pre>
+      <code class="undefinedjs">
 import vitePluginAutoI18n from "../vitePluginAutoI18n/src/index";
 import createVuePlugin from '@vitejs/plugin-vue';
 const vuePlugin = createVuePlugin({ include: [/\.vue$/] })
@@ -135,7 +136,8 @@ export default defineConfig({
     })
   ]
 });
-    </code></pre>
+    </code>
+  </pre>
     <h3>main.js</h3>
     <pre><code class="undefinedjs">import './lang' //  必须在项目的入口文件第一行引入lang文件
     </code></pre>

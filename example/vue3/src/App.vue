@@ -1,7 +1,7 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2023-11-15 12:09:56
+ * @LastEditTime: 2024-04-03 18:01:22
  * @FilePath: /i18n_translation_vite/example/vue3/src/App.vue
 -->
 <template>
@@ -47,6 +47,9 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+main {
+  padding: 20px;
+}
 .main {
   width: 100vw;
   height: 100vh;

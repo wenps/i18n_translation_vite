@@ -1,11 +1,11 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2024-03-12 13:36:20
+ * @LastEditTime: 2024-04-03 18:59:29
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/option.ts
  */
 
-import { OriginLangKeyEnum } from "./enums";
+import { OriginLangKeyEnum, TranslateApiEnum } from "./enums";
 
 const DEFAULT_OPTION = {
   translateKey: "$t",
@@ -34,7 +34,12 @@ const DEFAULT_OPTION = {
   /** 是否构建结束之后将最新的翻译重新打包到主包中 */
   buildToDist: false,
   /** 代理端口 */
-  post: 7890
+  post: 7890,
+  /** 翻译类型 */
+  translate: TranslateApiEnum.google,
+  /** 有道AppId */
+  youdaoAppId: '',
+
 }
 
 type OptionType = typeof DEFAULT_OPTION

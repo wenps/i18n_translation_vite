@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-02-29 13:34:34
- * @LastEditTime: 2024-02-29 14:53:04
+ * @LastEditTime: 2024-04-03 18:07:43
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/index.ts
  */
 export * from './option.ts'

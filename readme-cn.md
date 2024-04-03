@@ -42,7 +42,7 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 |   originLang   |  string  |  ❌  |                      `'zh-cn'`                      |                                 源语言（基于该语言翻译成其他语言，目前只有zhcn）                                 |
 | targetLangList | string[] |  ❌  |                      `['en']`                      | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
 |   buildToDist   | Boolean |  ❌  |                       `false`                       |                                            是否将翻译配置打包到主包中                                            |
-|      post      |  number  |  ❌  |                       `7890`                       |                    访问翻译api需要代理工具因此需要保证代理端口和请求端口一致，这里默认是7890                    |
+|      post      |  number  |  ❌  |                       `7890`                       |          访问翻译api需要代理工具因此需要保证代理端口和请求端口一致，这里默认是7890，谷歌翻译情况下适用          |
 
 为什么需要 **buildToDist**?
 

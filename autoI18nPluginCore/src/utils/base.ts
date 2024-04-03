@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2024-03-01 11:42:55
+ * @LastEditTime: 2024-04-03 19:01:15
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/base.ts
  */
 import { Node } from '@babel/types';
@@ -161,3 +161,20 @@ export const unicodeToChinese = (str: string) => {
     return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
   });
 };
+
+/**
+ * @description: 有道翻译 标识截取
+ * @param {string} q
+ * @return {*}
+ */
+export function truncate(q:string) {
+  // 检查输入字符串的长度
+  if (q.length <= 20) {
+    // 如果长度小于等于20，直接返回原字符串
+    return q;
+  } else {
+    // 如果长度大于20，截取前10个字符和后10个字符，并在中间插入长度信息
+    const len = q.length;
+    return q.substring(0, 10) + len + q.substring(len - 10);
+  }
+}

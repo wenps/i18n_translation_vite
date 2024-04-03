@@ -42,7 +42,7 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 |   originLang   |  string  |       ❌       |                      `'zh-cn'`                      |                                                                  source language（Translations into other languages based on that language）                                                                  |
 | targetLangList | string[] |       ❌       |                      `['en']`                      | target language（The type of language that the original language will be translated into, passed into an array to support multiple languages at once）<br />support target language（[langFile](./language.js)） |
 |   buildToDist   | Boolean |       ❌       |                       `false`                       |                                                                  Whether to package the translation configuration into the main package.（）                                                                  |
-|      post      |  number  |       ❌       |                       `7890`                       |                 To access the translation API, a proxy tool is required, so it is necessary to ensure that the proxy port and the request port are consistent. The default port here is 7890.                 |
+|      post      |  number  |       ❌       |                       `7890`                       |  To access the translation API, a proxy tool is required, so it is necessary to ensure that the proxy port and the request port are consistent. The default port here is 7890. Applies to Google Translate  |
 
 why need **buildToDist**?
 

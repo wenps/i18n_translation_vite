@@ -1,25 +1,29 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2024-03-12 13:36:44
+ * @LastEditTime: 2024-04-03 19:05:09
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate.ts
  */
 
 import { fileUtils } from './index.js';
 import { option } from '../option';
+import { TranslateApiEnum } from 'src/enums/index.js';
+import { truncate } from './base.js';
 const tunnel = require('tunnel');
 const { translate } = require('@vitalets/google-translate-api');
+const CryptoJS = require('crypto-js')
+const axios = require('axios')
 
 type langObj = { [key: string]: string }
 
 /**
- * @description: 调用翻译API
+ * @description: 调用谷歌翻译API
  * @param {string} text
  * @param {string} fromKey
  * @param {string} toKey
  * @return {*}
  */
-const translateText = async (text: string, fromKey: string, toKey: string) => {
+const GoogleTranslate = async (text: string, fromKey: string, toKey: string) => {
   let data = await translate(text, {
     from: fromKey,
     to: toKey,
@@ -40,6 +44,48 @@ const translateText = async (text: string, fromKey: string, toKey: string) => {
   });
   return data['text'] || '';
 };
+
+/**
+ * @description: 调用有道翻译API
+ * @param {string} text
+ * @param {string} fromKey
+ * @param {string} toKey
+ * @return {*}
+ */
+const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => {
+  let key = '';
+  let salt = (new Date).getTime();
+  let curtime = Math.round(new Date().getTime()/1000);
+  let str = option.youdaoAppId + truncate(text) + salt + curtime + key;
+  let sign = CryptoJS.SHA256(str).toString(CryptoJS.enc.Hex);
+  const data = {
+    q: text,
+    appKey: option.youdaoAppId,
+    salt,
+    from: fromKey,
+    to: toKey,
+    sign,
+    signType: "v3",
+    curtime,
+  };
+  return axios.post('https://openapi.youdao.com/api', data)
+    .then((response:any) => {
+      // 请求成功，返回响应数据
+      return response.data['translation'];
+    })
+    .catch((error:Error) => {
+      // 请求失败，返回错误信息
+      return Promise.reject(error);
+    });
+}
+
+// 翻译映射map
+const TranslateFnMap = {
+  [TranslateApiEnum.google]: GoogleTranslate,
+  [TranslateApiEnum.youdao]: YoudaoTranslate
+}
+
+
 export let langObj: langObj = {};
 
 /**
@@ -112,7 +158,7 @@ export async function googleAutoTranslate() {
       continue
     } 
     console.info('开始自动翻译...')
-    const res = await translateText(Text, option.originLang, option.langKey[index]);
+    const res = await TranslateFnMap[option.translate](Text, option.originLang, option.langKey[index]);
     const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案
     if (resultValues.length !== Object.values(transLangObj).length) {
       console.error('翻译异常，翻译结果缺失❌')
@@ -191,7 +237,7 @@ export async function completionTranslateAndWriteConfigFile(langObj:any, curLang
   let Text = Object.values(transLangObj).join('\n###\n');
 
   console.info('进入新增语言补全翻译...')
-  const res = await translateText(Text, option.originLang, translateKey);
+  const res = await TranslateFnMap[option.translate](Text, option.originLang, translateKey);
   const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()); // 拆分文案
   if (resultValues.length !== Object.values(langObj).length) {
     console.error('翻译异常，翻译结果缺失❌')

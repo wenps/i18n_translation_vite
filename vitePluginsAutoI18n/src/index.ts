@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-03-01 22:56:37
+ * @LastEditTime: 2024-04-06 17:05:08
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import {
@@ -19,6 +19,7 @@ import * as babel from '@babel/core';
 import { ResolvedConfig, Plugin } from 'vite';
 
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx'];
+
 
 export default function vitePluginsAutoI18n(optionInfo: optionInfo): any {
   const name = 'vite-plugin-auto-i18n';
@@ -52,7 +53,7 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo): any {
             plugins: [filter.default],
           });
           if (config.command === 'serve') {
-            await translateUtils.googleAutoTranslate();
+            await translateUtils.autoTranslate();
           }
           return result?.code;
         } catch (e) {
@@ -62,7 +63,7 @@ export default function vitePluginsAutoI18n(optionInfo: optionInfo): any {
     },
     async buildEnd() {
       console.info('构建阶段批量翻译');
-      await translateUtils.googleAutoTranslate();
+      await translateUtils.autoTranslate();
     },
     async closeBundle() {
       // 翻译配置写入主文件

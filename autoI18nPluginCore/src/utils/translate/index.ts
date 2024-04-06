@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2024-04-04 15:16:12
+ * @LastEditTime: 2024-04-06 17:17:19
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate/index.ts
  */
 
@@ -52,7 +52,7 @@ export function initLangObj(obj: langObj) {
  * @description: 生成国际化配置文件
  * @return {*}
  */
-export async function googleAutoTranslate() {
+export async function autoTranslate() {
   let originLangObjMap:any = {}
 
   // 获取原始语言

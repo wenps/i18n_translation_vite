@@ -1,5 +1,5 @@
-import { OriginLangKeyEnum } from "../enums";
+import { YouDaoOriginLangKeyEnum, GoogleOriginLangKeyEnum } from "../enums";
 
 export type FunctionFactoryOptions = { 
-    orignLang: OriginLangKeyEnum | string;
+    orignLang: YouDaoOriginLangKeyEnum | GoogleOriginLangKeyEnum | string;
 }

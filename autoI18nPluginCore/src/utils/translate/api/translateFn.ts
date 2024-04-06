@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-04-04 15:12:55
- * @LastEditTime: 2024-04-04 15:15:15
+ * @LastEditTime: 2024-04-06 17:29:28
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate/api/translateFn.ts
  */
 
@@ -67,10 +67,13 @@ const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => 
   };
   return axios.post('https://openapi.youdao.com/api', data)
     .then((response:any) => {
+      // todo 这里数据返回异常还要调试
       // 请求成功，返回响应数据
-      return response.data['translation'];
+      return '';
     })
     .catch((error:Error) => {
+      console.log(error);
+      
       // 请求失败，返回错误信息
       return Promise.reject(error);
     });

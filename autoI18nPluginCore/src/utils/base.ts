@@ -1,13 +1,14 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2024-04-03 19:01:15
+ * @LastEditTime: 2024-04-06 15:52:10
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/base.ts
  */
 import { Node } from '@babel/types';
 import { option } from '../option'
-import { LANGUAGE_SYMBOL_MAP } from '../constants';
+import { TRANSLATE_LANG_KEY_ENUM_MAP } from '../constants';
 import { FunctionFactoryOption } from './option';
+import { GoogleOriginLangKeyEnum, TranslateApiEnum, YouDaoOriginLangKeyEnum } from 'src/enums';
 const types = require("@babel/types"); 
 
 /**
@@ -27,7 +28,7 @@ export function hasChineseSymbols(code: string) {
  */
 export function hasOriginSymbols(code: string) {
   const originLang = FunctionFactoryOption.originLang;
-  return LANGUAGE_SYMBOL_MAP[originLang].test(code);
+  return generateOriginLangRegexMap(option.translate)[originLang].test(code);
 }
 
 /**
@@ -176,5 +177,17 @@ export function truncate(q:string) {
     // 如果长度大于20，截取前10个字符和后10个字符，并在中间插入长度信息
     const len = q.length;
     return q.substring(0, 10) + len + q.substring(len - 10);
+  }
+}
+
+/**
+ * @description: 生成源语言正则映射
+ * @param {TranslateApiEnum} TranslateApiKey
+ * @return {*}
+ */
+export function generateOriginLangRegexMap(TranslateApiKey: TranslateApiEnum): Record<GoogleOriginLangKeyEnum | YouDaoOriginLangKeyEnum | string, RegExp> {
+  return {
+    [TRANSLATE_LANG_KEY_ENUM_MAP[TranslateApiKey].ZH]: /[\u4e00-\u9fff]/,
+    [TRANSLATE_LANG_KEY_ENUM_MAP[TranslateApiKey].EN]: /[a-zA-Z]/,
   }
 }

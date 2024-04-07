@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-04-06 17:02:41
+ * @LastEditTime: 2024-04-07 09:45:08
  * @FilePath: /i18n_translation_vite/example/vue2/vite.config.ts
  */
 import path from "path";
@@ -33,7 +33,7 @@ export default defineConfig({
                 targetLangList: ['en', 'ko', 'ja'],
                 originLang: 'zh-CHS',
                 translate: 'Youdao' as any,
-                youdaoAppId: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j'
+                youdaoAppId: '4cdb9baea8066fef'
             }
         }),
       ]

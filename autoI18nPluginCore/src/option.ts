@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2024-04-06 15:54:19
+ * @LastEditTime: 2024-04-07 18:16:10
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/option.ts
  */
 
@@ -37,9 +37,10 @@ const DEFAULT_OPTION = {
   post: 7890,
   /** 翻译类型 */
   translate: TranslateApiEnum.google,
-  /** 有道AppId */
+  /** 有道应用Id */
   youdaoAppId: '',
-
+  /** 有道应用Key */
+  youdaoAppKey: ''
 }
 
 type OptionType = typeof DEFAULT_OPTION

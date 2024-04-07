@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-04-04 15:12:55
- * @LastEditTime: 2024-04-07 18:10:01
+ * @LastEditTime: 2024-04-07 18:25:32
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate/api/translateFn.ts
  */
 
@@ -50,12 +50,11 @@ const GoogleTranslate = async (text: string, fromKey: string, toKey: string) => 
  * @return {*}
  */
 const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => {
-  let key = '';
   let salt = (new Date).getTime();
   let curtime = Math.round(new Date().getTime() / 1000);
-  let str = option.youdaoAppId + truncate(text) + salt + curtime + key;
+  let str = option.youdaoAppId + truncate(text) + salt + curtime + option.youdaoAppKey;
   let sign = CryptoJS.SHA256(str).toString(CryptoJS.enc.Hex);
-  console.log(text);
+
   
   const data = {
     q: text,
@@ -73,10 +72,8 @@ const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => 
     }
   })
     .then((response:any) => {
-      console.log(response);
-      // todo 这里数据返回异常还要调试
       // 请求成功，返回响应数据
-      return '';
+      return response.translation;
     })
     .catch((error: Error) => {
       console.log(error);

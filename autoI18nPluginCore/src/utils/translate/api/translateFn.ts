@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-04-04 15:12:55
- * @LastEditTime: 2024-04-07 18:25:32
+ * @LastEditTime: 2024-04-07 18:31:05
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate/api/translateFn.ts
  */
 
@@ -73,7 +73,7 @@ const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => 
   })
     .then((response:any) => {
       // 请求成功，返回响应数据
-      return response.translation;
+      return response.data.translation;
     })
     .catch((error: Error) => {
       console.log(error);

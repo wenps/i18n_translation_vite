@@ -1,25 +1,16 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2024-04-06 15:52:10
+ * @LastEditTime: 2024-04-07 19:41:37
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/base.ts
  */
 import { Node } from '@babel/types';
 import { option } from '../option'
-import { TRANSLATE_LANG_KEY_ENUM_MAP } from '../constants';
 import { FunctionFactoryOption } from './option';
-import { GoogleOriginLangKeyEnum, TranslateApiEnum, YouDaoOriginLangKeyEnum } from 'src/enums';
+import { REGEX_MAP, YOUDAO_TRANSLATE_KEY_CONVERT_MAP } from 'src/constants';
+import { OriginLangKeyEnum, TranslateApiEnum } from 'src/enums';
 const types = require("@babel/types"); 
 
-/**
- * @description: 是否包含中文字符
- * @param {string} code
- * @return {*}
- */
-export function hasChineseSymbols(code: string) {
-  var pattern = /[\u4e00-\u9fff]/;
-  return pattern.test(code);
-}
 
 /**
  * @description: 是否包含来源语言字符
@@ -27,8 +18,8 @@ export function hasChineseSymbols(code: string) {
  * @return {*}
  */
 export function hasOriginSymbols(code: string) {
-  const originLang = FunctionFactoryOption.originLang;
-  return generateOriginLangRegexMap(option.translate)[originLang].test(code);
+  const originLang = FunctionFactoryOption.originLang as OriginLangKeyEnum;
+  return REGEX_MAP[originLang].test(code);
 }
 
 /**
@@ -181,13 +172,10 @@ export function truncate(q:string) {
 }
 
 /**
- * @description: 生成源语言正则映射
- * @param {TranslateApiEnum} TranslateApiKey
+ * @description: 翻译key映射函数
+ * @param {string} key
  * @return {*}
  */
-export function generateOriginLangRegexMap(TranslateApiKey: TranslateApiEnum): Record<GoogleOriginLangKeyEnum | YouDaoOriginLangKeyEnum | string, RegExp> {
-  return {
-    [TRANSLATE_LANG_KEY_ENUM_MAP[TranslateApiKey].ZH]: /[\u4e00-\u9fff]/,
-    [TRANSLATE_LANG_KEY_ENUM_MAP[TranslateApiKey].EN]: /[a-zA-Z]/,
-  }
+export function getTranslateKey(key: string) {
+  return option.translate === TranslateApiEnum.youdao ? YOUDAO_TRANSLATE_KEY_CONVERT_MAP[key] || key : key
 }

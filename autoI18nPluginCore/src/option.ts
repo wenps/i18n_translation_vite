@@ -1,11 +1,11 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2024-04-07 18:16:10
+ * @LastEditTime: 2024-04-07 19:40:06
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/option.ts
  */
 
-import { YouDaoOriginLangKeyEnum, GoogleOriginLangKeyEnum, TranslateApiEnum } from "./enums";
+import { OriginLangKeyEnum, TranslateApiEnum } from "./enums";
 
 const DEFAULT_OPTION = {
   translateKey: "$t",
@@ -24,7 +24,7 @@ const DEFAULT_OPTION = {
   /** 打包后生成文件的主文件名称，比如index.xxx 默认是index */
   distKey: 'index',
   /** 来源语言 */
-  originLang: GoogleOriginLangKeyEnum.ZH as GoogleOriginLangKeyEnum | YouDaoOriginLangKeyEnum | string,
+  originLang: OriginLangKeyEnum.ZH as OriginLangKeyEnum | string,
   /** 翻译目标语言 */
   targetLangList: ['en'],
   /** 语言key，用于请求谷歌api和生成配置文件下对应语言的内容文件 */

@@ -1,12 +1,12 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-04-04 15:12:55
- * @LastEditTime: 2024-04-07 18:31:05
+ * @LastEditTime: 2024-04-07 19:33:38
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate/api/translateFn.ts
  */
 
 import { TranslateApiEnum } from 'src/enums/index.js';
-import { truncate } from 'src/utils/base';
+import { getTranslateKey, truncate } from 'src/utils/base';
 import { option } from 'src/option';
 const tunnel = require('tunnel');
 const { translate } = require('@vitalets/google-translate-api');
@@ -60,8 +60,8 @@ const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => 
     q: text,
     appKey: option.youdaoAppId,
     salt,
-    from: fromKey,
-    to: toKey,
+    from: getTranslateKey(fromKey),
+    to: getTranslateKey(toKey),
     sign,
     signType: "v3",
     curtime,

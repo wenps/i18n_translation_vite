@@ -27,7 +27,6 @@ const run = async () => {
     shell.cp('readme*', dir)
     shell.cd(dir)
     shell.exec('pnpm build')
-
 }
 
 run()

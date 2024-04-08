@@ -1,7 +1,7 @@
 {
-  "extends": ["../tsconfig.json"],
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "include": ["./src", "./rollup.config.ts", "./typings.d.ts"]
+    "extends": ["../tsconfig.json"],
+    "compilerOptions": {
+        "baseUrl": "."
+    },
+    "include": ["./src", "./rollup.config.ts", "./typings.d.ts"]
 }

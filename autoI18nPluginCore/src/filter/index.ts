@@ -5,18 +5,18 @@
  * @FilePath: /i18n_translation_vite/src/plugins/filter/index.ts
  */
 
-import StringLiteral from "./visitor/StringLiteral";
-import CallExpression from "./visitor/CallExpression";
-import TemplateElement from "./visitor/TemplateElement";
-import JSXText from "./visitor/JSXText";
+import StringLiteral from './visitor/StringLiteral'
+import CallExpression from './visitor/CallExpression'
+import TemplateElement from './visitor/TemplateElement'
+import JSXText from './visitor/JSXText'
 
 export default function () {
-  return {
-    visitor: {
-      StringLiteral,
-      JSXText,
-      TemplateElement,
-      CallExpression
-    },
-  };
-};
+    return {
+        visitor: {
+            StringLiteral,
+            JSXText,
+            TemplateElement,
+            CallExpression
+        }
+    }
+}

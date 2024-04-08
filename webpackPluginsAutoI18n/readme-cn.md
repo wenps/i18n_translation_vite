@@ -6,7 +6,7 @@
 
 ### 支持
 
-***Vue2、Vue3、React***
+**_Vue2、Vue3、React_**
 
 **支持语言：[langFile](./language.js)**
 
@@ -14,9 +14,9 @@ demo项目地址：[demo](https://github.com/wenps/vitePluginAutoI18nDemo)
 
 ## 特点
 
-* **不影响源代码（不再需要替换源代码中的i18n）。**
-* **一键翻译.**
-* **支持** `js, ts, jsx, tsx` **和其他类型文件**
+-   **不影响源代码（不再需要替换源代码中的i18n）。**
+-   **一键翻译.**
+-   **支持** `js, ts, jsx, tsx` **和其他类型文件**
 
 ## 使用
 
@@ -28,20 +28,20 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 
 ### 配置
 
-|      参数      |   类型   | 必选 |                        默认值                        |                                                       描述                                                       |
-| :-------------: | :------: | :--: | :---------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
-|  translateKey  |  string  |  ❌  |                        `$t`                        |                                           插件转换后切换语言的默认函数                                           |
-|  excludedCall  | string[] |  ❌  | `["$i8n", "require", "$$i8n", "console.log", "$t"]` |                                              标记不会翻译的调用函数                                              |
-| excludedPattern | RegExp[] |  ❌  |                    `[/\.\w+$/]`                    |                                               标记不会翻译的字符串                                               |
-|  excludedPath  | RegExp[] |  ❌  |                        `[]`                        |                                               不翻译指定目录下文件                                               |
-|   includePath   | RegExp[] |  ❌  |                     `[/src\//]`                     |                                                翻译指定目录下文件                                                |
-|   globalPath   |  string  |  ❌  |                      `./lang`                      |                                               翻译配置文件生成位置                                               |
-|    distPath    |  string  |  ✅  |                        `''`                        |                 打包后生成文件的位置 比如 ./dist/assets<br />（`用于将翻译配置注入打包文件`）                 |
-|     distKey     |  string  |  ✅  |                        `''`                        |          打包后生成文件的主文件名称，比如index.xxx 默认是index<br />（`用于将翻译配置注入打包文件`）          |
-|    namespace    |  string  |  ✅  |                        `''`                        |                                           线上区分当前项目间的翻译配置                                           |
-|   originLang   |  string  |  ❌  |                      `'zh-cn'`                      |                                 源语言（基于该语言翻译成其他语言，目前只有zhcn）                                 |
-| targetLangList | string[] |  ❌  |                      `['en']`                      | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
-|   buildToDist   | Boolean |  ❌  |                       `false`                       |                                            是否将翻译配置打包到主包中                                            |
+|      参数       |   类型   | 必选 |                       默认值                        |                                                        描述                                                         |
+| :-------------: | :------: | :--: | :-------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
+|  translateKey   |  string  |  ❌  |                        `$t`                         |                                            插件转换后切换语言的默认函数                                             |
+|  excludedCall   | string[] |  ❌  | `["$i8n", "require", "$$i8n", "console.log", "$t"]` |                                               标记不会翻译的调用函数                                                |
+| excludedPattern | RegExp[] |  ❌  |                    `[/\.\w+$/]`                     |                                                标记不会翻译的字符串                                                 |
+|  excludedPath   | RegExp[] |  ❌  |                        `[]`                         |                                                不翻译指定目录下文件                                                 |
+|   includePath   | RegExp[] |  ❌  |                     `[/src\//]`                     |                                                 翻译指定目录下文件                                                  |
+|   globalPath    |  string  |  ❌  |                      `./lang`                       |                                                翻译配置文件生成位置                                                 |
+|    distPath     |  string  |  ✅  |                        `''`                         |                    打包后生成文件的位置 比如 ./dist/assets<br />（`用于将翻译配置注入打包文件`）                    |
+|     distKey     |  string  |  ✅  |                        `''`                         |             打包后生成文件的主文件名称，比如index.xxx 默认是index<br />（`用于将翻译配置注入打包文件`）             |
+|    namespace    |  string  |  ✅  |                        `''`                         |                                            线上区分当前项目间的翻译配置                                             |
+|   originLang    |  string  |  ❌  |                      `'zh-cn'`                      |                                  源语言（基于该语言翻译成其他语言，目前只有zhcn）                                   |
+| targetLangList  | string[] |  ❌  |                      `['en']`                       | 目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）<br />支持语言类型（[langFile](./language.js)） |
+|   buildToDist   | Boolean  |  ❌  |                       `false`                       |                                             是否将翻译配置打包到主包中                                              |
 
 为什么需要 **buildToDist**?
 
@@ -66,7 +66,7 @@ const vuePlugin = createVuePlugin({
             hoistStatic: false,
             cacheHandlers: false,
         }
-    } 
+    }
 })
 
 export default defineConfig({

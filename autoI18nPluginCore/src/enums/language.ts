@@ -5,11 +5,9 @@
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/enums/language.ts
  */
 // 待补充...
-export enum LanguageEnum {
-}
+export enum LanguageEnum {}
 
 export enum OriginLangKeyEnum {
     ZH = 'zh-cn',
-    EN = 'en',
+    EN = 'en'
 }
-

@@ -6,9 +6,9 @@ const run = async () => {
     const { select } = require('@inquirer/prompts')
     const fs = require('fs')
     const util = require('util')
-    
+
     shell.exec('pnpm build p=vite')
-    
+
     const readdir = util.promisify(fs.readdir)
     // 读取文件夹内容
     const files = await readdir('example', { withFileTypes: true })
@@ -21,7 +21,7 @@ const run = async () => {
                 value: folder.name
             }
         })
-    
+
     const example = await select({
         message: 'please select preview example ——',
         choices: choices,

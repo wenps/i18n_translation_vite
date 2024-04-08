@@ -1,9 +1,9 @@
 export interface interRouter {
-    name: string,
+    name: string
     mate: {
-        en_name: string,
-        zh_name: string,
-        [props:string]: any
+        en_name: string
+        zh_name: string
+        [props: string]: any
     }
-    [props:string]: any
+    [props: string]: any
 }

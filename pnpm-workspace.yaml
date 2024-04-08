@@ -1,5 +1,5 @@
 packages:
-  - "autoI18nPluginCore"
-  - "vitePluginsAutoI18n"
-  -  "webpackPluginsAutoI18n"
-  - "example/*"
+    - 'autoI18nPluginCore'
+    - 'vitePluginsAutoI18n'
+    - 'webpackPluginsAutoI18n'
+    - 'example/*'

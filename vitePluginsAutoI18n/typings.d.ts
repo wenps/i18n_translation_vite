@@ -1,1 +1,1 @@
-declare module 'json-format';
+declare module 'json-format'

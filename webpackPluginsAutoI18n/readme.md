@@ -6,7 +6,7 @@ vite auto-translation plugin based on Google api, not intrusive to the source co
 
 ### Support
 
-***Vue2、Vue3、React***
+**_Vue2、Vue3、React_**
 
 **support language：[langFile](./language.js)**
 
@@ -14,9 +14,9 @@ vite auto-translation plugin based on Google api, not intrusive to the source co
 
 ## Specificities
 
-* **Not intrusive to the source code（No more need to replace i18n in the source code）.**
-* **Fully automatic translation.**
-* **Support**  `js, ts, jsx, tsx` **and other types of files**
+-   **Not intrusive to the source code（No more need to replace i18n in the source code）.**
+-   **Fully automatic translation.**
+-   **Support** `js, ts, jsx, tsx` **and other types of files**
 
 ## Usage
 
@@ -28,20 +28,20 @@ npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
 
 ### Option
 
-|    parameter    | typology | required field |                     default value                     |                                                                                                 descriptions                                                                                                 |
-| :-------------: | :------: | :------------: | :---------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  translateKey  |  string  |       ❌       |                        `$t`                        |                                                                       Default function for switching languages after plugin conversion                                                                       |
-|  excludedCall  | string[] |       ❌       | `["$i8n", "require", "$$i8n", "console.log", "$t"]` |                                                                                Marking does not translate the calling function                                                                                |
-| excludedPattern | RegExp[] |       ❌       |                    `[/\.\w+$/]`                    |                                                                                      Marking strings without translation                                                                                      |
-|  excludedPath  | RegExp[] |       ❌       |                        `[]`                        |                                                                        Specify a directory of files that do not need to be translated                                                                        |
-|   includePath   | RegExp[] |       ❌       |                     `[/src\//]`                     |                                                                              Specify the directory of the files to be translated                                                                              |
-|   globalPath   |  string  |       ❌       |                      `./lang`                      |                                                                                    Translation profile generation location                                                                                    |
-|    distPath    |  string  |       ✅       |                        `''`                        |                              The location of the generated files after packaging e.g. . /dist/assets<br />（`Used to inject translation configurations into packaged files`）                              |
-|     distKey     |  string  |       ✅       |                        `''`                        |                  The name of the main file of the generated file after packaging, e.g. index.xxx Default is index<br />（`Used to inject translation configurations into packaged files`）                  |
-|    namespace    |  string  |       ✅       |                        `''`                        |                                                                    Distinguish translation configurations between current projects online                                                                    |
-|   originLang   |  string  |       ❌       |                      `'zh-cn'`                      |                                                                  source language（Translations into other languages based on that language）                                                                  |
-| targetLangList | string[] |       ❌       |                      `['en']`                      | target language（The type of language that the original language will be translated into, passed into an array to support multiple languages at once）<br />support target language（[langFile](./language.js)） |
-|   buildToDist   | Boolean |       ❌       |                       `false`                       |                                                                  Whether to package the translation configuration into the main package.（）                                                                  |
+|    parameter    | typology | required field |                    default value                    |                                                                                                   descriptions                                                                                                   |
+| :-------------: | :------: | :------------: | :-------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  translateKey   |  string  |       ❌       |                        `$t`                         |                                                                         Default function for switching languages after plugin conversion                                                                         |
+|  excludedCall   | string[] |       ❌       | `["$i8n", "require", "$$i8n", "console.log", "$t"]` |                                                                                 Marking does not translate the calling function                                                                                  |
+| excludedPattern | RegExp[] |       ❌       |                    `[/\.\w+$/]`                     |                                                                                       Marking strings without translation                                                                                        |
+|  excludedPath   | RegExp[] |       ❌       |                        `[]`                         |                                                                          Specify a directory of files that do not need to be translated                                                                          |
+|   includePath   | RegExp[] |       ❌       |                     `[/src\//]`                     |                                                                               Specify the directory of the files to be translated                                                                                |
+|   globalPath    |  string  |       ❌       |                      `./lang`                       |                                                                                     Translation profile generation location                                                                                      |
+|    distPath     |  string  |       ✅       |                        `''`                         |                                 The location of the generated files after packaging e.g. . /dist/assets<br />（`Used to inject translation configurations into packaged files`）                                 |
+|     distKey     |  string  |       ✅       |                        `''`                         |                    The name of the main file of the generated file after packaging, e.g. index.xxx Default is index<br />（`Used to inject translation configurations into packaged files`）                     |
+|    namespace    |  string  |       ✅       |                        `''`                         |                                                                      Distinguish translation configurations between current projects online                                                                      |
+|   originLang    |  string  |       ❌       |                      `'zh-cn'`                      |                                                                   source language（Translations into other languages based on that language）                                                                    |
+| targetLangList  | string[] |       ❌       |                      `['en']`                       | target language（The type of language that the original language will be translated into, passed into an array to support multiple languages at once）<br />support target language（[langFile](./language.js)） |
+|   buildToDist   | Boolean  |       ❌       |                       `false`                       |                                                                   Whether to package the translation configuration into the main package.（）                                                                    |
 
 why need **buildToDist**?
 
@@ -64,7 +64,7 @@ const vuePlugin = createVuePlugin({
             hoistStatic: false,
             cacheHandlers: false,
         }
-    } 
+    }
 })
 
 export default defineConfig({

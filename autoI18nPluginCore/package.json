@@ -1,53 +1,53 @@
 {
-  "name": "auto-i18n-plugin-core",
-  "version": "0.0.8",
-  "description": "vite, webpack automatic translation plugin core code.",
-  "keywords": [
-    "i18n",
-    "auto i18n",
-    "vite i18n",
-    "webpack i18n",
-    "vue i18n",
-    "react i18n"
-  ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "README*"
-  ],
-  "scripts": {
-    "build": "rollup -c ./rollup.config.ts --configPlugin typescript"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wenps/i18n_translation_vite.git"
-  },
-  "author": "wenps,Winfans",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wenps/i18n_translation_vite/issues"
-  },
-  "homepage": "https://github.com/wenps/i18n_translation_vite#readme",
-  "dependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/preset-env": "^7.23.2",
-    "@babel/preset-typescript": "^7.23.2",
-    "@vitalets/google-translate-api": "^9.2.0",
-    "json-format": "^1.0.1",
-    "tunnel": "0.0.6"
-  },
-  "devDependencies": {
-    "@babel/types": "^7.23.0",
-    "rollup": "^4.3.0",
-    "@rollup/plugin-alias": "^5.1.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@types/babel__core": "^7.20.3",
-    "@types/node": "^20.3.3",
-    "babel-plugin-import": "^1.13.6",
-    "typescript": "^5.1.6"
-  }
+    "name": "auto-i18n-plugin-core",
+    "version": "0.0.8",
+    "description": "vite, webpack automatic translation plugin core code.",
+    "keywords": [
+        "i18n",
+        "auto i18n",
+        "vite i18n",
+        "webpack i18n",
+        "vue i18n",
+        "react i18n"
+    ],
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "README*"
+    ],
+    "scripts": {
+        "build": "rollup -c ./rollup.config.ts --configPlugin typescript"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wenps/i18n_translation_vite.git"
+    },
+    "author": "wenps,Winfans",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/wenps/i18n_translation_vite/issues"
+    },
+    "homepage": "https://github.com/wenps/i18n_translation_vite#readme",
+    "dependencies": {
+        "@babel/core": "^7.23.2",
+        "@babel/preset-env": "^7.23.2",
+        "@babel/preset-typescript": "^7.23.2",
+        "@vitalets/google-translate-api": "^9.2.0",
+        "json-format": "^1.0.1",
+        "tunnel": "0.0.6"
+    },
+    "devDependencies": {
+        "@babel/types": "^7.23.0",
+        "rollup": "^4.3.0",
+        "@rollup/plugin-alias": "^5.1.0",
+        "rollup-plugin-dts": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-typescript": "^11.1.5",
+        "@types/babel__core": "^7.20.3",
+        "@types/node": "^20.3.3",
+        "babel-plugin-import": "^1.13.6",
+        "typescript": "^5.1.6"
+    }
 }

@@ -1,20 +1,25 @@
 {
-  "name": "i18n_translation_vite",
-  "version": "0.0.0",
-  "scripts": {
-    "build": "node script/build.js",
-    "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
-    "preview": "node script/preview.js"
-  },
-  "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
-  "devDependencies": {
-    "@inquirer/prompts": "^4.1.0",
-    "@types/node": "^20.3.3",
-    "@types/shelljs": "^0.8.15",
-    "shelljs": "^0.8.5"
-  },
-  "dependencies": {
-    "axios": "^1.6.8",
-    "crypto-js": "^4.2.0"
-  }
+    "name": "i18n_translation_vite",
+    "version": "0.0.0",
+    "scripts": {
+        "build": "node script/build.js",
+        "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
+        "preview": "node script/preview.js",
+        "format": "npx prettier . --write",
+        "prepare": "husky install"
+    },
+    "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
+    "devDependencies": {
+        "@inquirer/prompts": "^4.1.0",
+        "@types/node": "^20.3.3",
+        "@types/shelljs": "^0.8.15",
+        "husky": "^8.0.0",
+        "prettier": "^3.2.5",
+        "pretty-quick": "^4.0.0",
+        "shelljs": "^0.8.5"
+    },
+    "dependencies": {
+        "axios": "^1.6.8",
+        "crypto-js": "^4.2.0"
+    }
 }

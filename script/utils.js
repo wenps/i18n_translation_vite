@@ -6,9 +6,7 @@ const parseArgsToMap = () => {
 
     process.argv.forEach(arg => {
         const [key, value] = arg.split('=')
-        if (value) {
-            args.set(key, value)
-        }
+        args.set(key, value)
     })
     return args
 }

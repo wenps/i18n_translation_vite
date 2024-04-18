@@ -68,9 +68,15 @@ importers:
             '@types/babel__core':
                 specifier: ^7.20.3
                 version: 7.20.5
+            '@types/crypto-js':
+                specifier: ^4.2.2
+                version: 4.2.2
             '@types/node':
                 specifier: ^20.3.3
                 version: 20.11.19
+            '@types/tunnel':
+                specifier: ^0.0.7
+                version: 0.0.7
             babel-plugin-import:
                 specifier: ^1.13.6
                 version: 1.13.8
@@ -3336,6 +3342,13 @@ packages:
             '@babel/types': 7.23.9
         dev: true
 
+    /@types/crypto-js@4.2.2:
+        resolution:
+            {
+                integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==
+            }
+        dev: true
+
     /@types/estree@0.0.39:
         resolution:
             {
@@ -3467,6 +3480,15 @@ packages:
             }
         dependencies:
             '@types/glob': 7.2.0
+            '@types/node': 20.11.19
+        dev: true
+
+    /@types/tunnel@0.0.7:
+        resolution:
+            {
+                integrity: sha512-VYKjZSmb2PvUwXoux4Gy4LAk7kzOB1ktkjyL4lxvpkqL2adgR+Qrh/yFyWluvJgIXWFicqs7XuzPI2NbTO/r3Q==
+            }
+        dependencies:
             '@types/node': 20.11.19
         dev: true
 
@@ -12786,6 +12808,7 @@ packages:
             {
                 integrity: sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==
             }
+        hasBin: true
         dev: true
 
     /opn@5.5.0:

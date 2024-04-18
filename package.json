@@ -2,9 +2,10 @@
     "name": "i18n_translation_vite",
     "version": "0.0.0",
     "scripts": {
+        "dev": "node script/build.js d",
+        "preview": "node script/preview.js",
         "build": "node script/build.js",
         "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
-        "preview": "node script/preview.js",
         "format": "npx prettier . --write",
         "prepare": "husky install"
     },

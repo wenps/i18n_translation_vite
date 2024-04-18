@@ -46,7 +46,9 @@
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-typescript": "^11.1.5",
         "@types/babel__core": "^7.20.3",
+        "@types/crypto-js": "^4.2.2",
         "@types/node": "^20.3.3",
+        "@types/tunnel": "^0.0.7",
         "babel-plugin-import": "^1.13.6",
         "typescript": "^5.1.6"
     }

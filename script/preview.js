@@ -1,14 +1,10 @@
 // @ts-check
+const shell = require('shelljs')
+const { select } = require('@inquirer/prompts')
+const fs = require('fs')
+const util = require('util')
 
 const run = async () => {
-    const shell = require('shelljs')
-    const argMap = require('./utils').parseArgsToMap()
-    const { select } = require('@inquirer/prompts')
-    const fs = require('fs')
-    const util = require('util')
-
-    shell.exec('pnpm build p=vite')
-
     const readdir = util.promisify(fs.readdir)
     // 读取文件夹内容
     const files = await readdir('example', { withFileTypes: true })
@@ -27,6 +23,7 @@ const run = async () => {
         choices: choices,
         default: choices[0].value
     })
+
     shell.cd(`example/${example}`)
     shell.exec('pnpm preview')
 }

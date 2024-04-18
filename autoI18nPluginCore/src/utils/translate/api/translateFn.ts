@@ -8,10 +8,10 @@
 import { TranslateApiEnum } from 'src/enums/index.js'
 import { getTranslateKey, truncate } from 'src/utils/base'
 import { option } from 'src/option'
-const tunnel = require('tunnel')
-const { translate } = require('@vitalets/google-translate-api')
-const CryptoJS = require('crypto-js')
-const axios = require('axios')
+import tunnel from 'tunnel'
+import { translate } from '@vitalets/google-translate-api'
+import CryptoJS from 'crypto-js'
+import axios from 'axios'
 
 /**
  * @description: 调用谷歌翻译API
@@ -73,13 +73,12 @@ const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => 
         })
         .then((response: any) => {
             // 请求成功，返回响应数据
-            return response.data.translation
+            return response.data.translation?.[0] || ''
         })
-        .catch((error: Error) => {
-            console.log(error)
-
+        .catch((_error: Error) => {
             // 请求失败，返回错误信息
-            return Promise.reject(error)
+            // return Promise.reject(error)
+            return ''
         })
 }
 

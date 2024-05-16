@@ -70,6 +70,12 @@ const YoudaoTranslate = async (text: string, fromKey: string, toKey: string) => 
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
+            // whistle本地调试
+            // proxy: {
+            //     port: 8899,
+            //     host: '127.0.0.1',
+            //     protocol: 'http'
+            // }
         })
         .then((response: any) => {
             // 请求成功，返回响应数据

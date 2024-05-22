@@ -6,5 +6,5 @@
  */
 export * as baseUtils from './base'
 export * as fileUtils from './file'
-export * as translateUtils from './translate/index'
+export * as translateUtils from './translate'
 export * from './option'

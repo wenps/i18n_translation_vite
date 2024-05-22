@@ -7,7 +7,6 @@
 
 import { fileUtils } from 'src/index.js'
 import { option } from 'src/option'
-import TranslateFnMap from './api/translateFn'
 
 type langObj = { [key: string]: string }
 
@@ -72,7 +71,7 @@ export async function autoTranslate() {
     }
 
     // 创建翻译文本
-    let Text = Object.values(transLangObj).join('\n###\n')
+    let text = Object.values(transLangObj).join('\n###\n')
     let newLangObjMap: any = {}
     for (let index = 0; index < option.langKey.length; index++) {
         if (index === 0) {
@@ -80,8 +79,8 @@ export async function autoTranslate() {
             continue
         }
         console.info('开始自动翻译...')
-        const res = await TranslateFnMap[option.translate](
-            Text,
+        const res = await option.translator.translate(
+            text,
             option.originLang,
             option.langKey[index]
         )
@@ -163,10 +162,10 @@ export async function completionTranslateAndWriteConfigFile(
     if (!Object.values(transLangObj).length) return
 
     // 创建翻译文本
-    let Text = Object.values(transLangObj).join('\n###\n')
+    let text = Object.values(transLangObj).join('\n###\n')
 
     console.info('进入新增语言补全翻译...')
-    const res = await TranslateFnMap[option.translate](Text, option.originLang, translateKey)
+    const res = await option.translator.translate(text, option.originLang, translateKey)
     const resultValues = res.split(/\n *# *# *# *\n/).map((v: string) => v.trim()) // 拆分文案
     if (resultValues.length !== Object.values(langObj).length) {
         console.error('翻译异常，翻译结果缺失❌')

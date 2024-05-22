@@ -1,5 +1,6 @@
 import axios, { AxiosProxyConfig } from 'axios'
 import { Translator } from '.'
+import CryptoJS from 'crypto-js'
 
 export interface YoudaoTranslatorOption {
     appId: string
@@ -8,6 +9,7 @@ export interface YoudaoTranslatorOption {
 }
 
 export class YoudaoTranslator extends Translator {
+    /** 有道的语言类型映射不标准，需要手动控制 */
     private readonly YOUDAO_TRANSLATE_KEY_CONVERT_MAP: Record<string, string> = {
         'zh-cn': 'zh-CHS',
         'zh-tw': 'zh-CHT'

@@ -7,8 +7,8 @@
 import { Node } from '@babel/types'
 import { option } from '../option'
 import { FunctionFactoryOption } from './option'
-import { REGEX_MAP, YOUDAO_TRANSLATE_KEY_CONVERT_MAP } from 'src/constants'
-import { OriginLangKeyEnum, TranslateApiEnum } from 'src/enums'
+import { REGEX_MAP } from 'src/constants'
+import { OriginLangKeyEnum } from 'src/enums'
 const types = require('@babel/types')
 
 /**
@@ -170,15 +170,4 @@ export function truncate(q: string) {
         const len = q.length
         return q.substring(0, 10) + len + q.substring(len - 10)
     }
-}
-
-/**
- * @description: 翻译key映射函数
- * @param {string} key
- * @return {*}
- */
-export function getTranslateKey(key: string) {
-    return option.translate === TranslateApiEnum.youdao
-        ? YOUDAO_TRANSLATE_KEY_CONVERT_MAP[key] || key
-        : key
 }

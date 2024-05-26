@@ -5,7 +5,7 @@
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate/index.ts
  */
 
-import { fileUtils } from 'src/index.js'
+import * as fileUtils from './file'
 import { option } from 'src/option'
 
 type langObj = { [key: string]: string }

@@ -1,5 +1,5 @@
 import { translate } from '@vitalets/google-translate-api'
-import { Translator } from '.'
+import { Translator } from './translator'
 import tunnel from 'tunnel'
 
 export interface GoogleTranslatorOption {

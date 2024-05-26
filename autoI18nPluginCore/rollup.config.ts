@@ -3,6 +3,7 @@ import typescript from '@rollup/plugin-typescript'
 import path from 'node:path'
 import { fileURLToPath } from 'url'
 import dts from 'rollup-plugin-dts'
+import externals from 'rollup-plugin-node-externals'
 
 const input = resolve('./src/index.ts')
 
@@ -24,6 +25,7 @@ const buildConfig = defineConfig({
         }
     ],
     plugins: [
+        externals(),
         typescript({
             tsconfig: resolve('./tsconfig.json')
         })

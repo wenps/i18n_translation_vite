@@ -5,7 +5,7 @@
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/option.ts
  */
 
-import { cloneDeep } from 'lodash-es'
+import cloneDeep from 'lodash/cloneDeep'
 import { OriginLangKeyEnum } from './enums'
 import { YoudaoTranslator, GoogleTranslator, Translator, TranslatorOption } from './translator'
 export { YoudaoTranslator, GoogleTranslator, Translator }

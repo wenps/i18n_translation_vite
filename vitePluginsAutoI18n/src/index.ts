@@ -18,8 +18,6 @@ import {
 import * as babel from '@babel/core'
 import { ResolvedConfig, Plugin } from 'vite'
 
-export { translator } from 'auto-i18n-plugin-core'
-
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx']
 
 export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {

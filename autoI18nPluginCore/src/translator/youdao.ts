@@ -1,5 +1,5 @@
 import axios, { AxiosProxyConfig } from 'axios'
-import { Translator } from '.'
+import { Translator } from './translator'
 import CryptoJS from 'crypto-js'
 
 export interface YoudaoTranslatorOption {

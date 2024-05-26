@@ -6,7 +6,8 @@
  */
 import path from 'path'
 import { defineConfig } from 'vite'
-import vuePluginsAutoI18n, { translator } from 'vite-plugin-auto-i18n'
+import vuePluginsAutoI18n from 'vite-plugin-auto-i18n'
+import { GoogleTranslator } from 'auto-i18n-plugin-core'
 import vue from '@vitejs/plugin-vue2'
 
 export default defineConfig({
@@ -32,7 +33,7 @@ export default defineConfig({
                 distKey: 'index',
                 targetLangList: ['en', 'ko', 'ja'],
                 originLang: 'zh-cn',
-                translator: new translator.GoogleTranslator({
+                translator: new GoogleTranslator({
                     proxyOption: {
                         host: '127.0.0.1',
                         port: 7890,

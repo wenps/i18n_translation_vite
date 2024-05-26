@@ -10,21 +10,22 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue2": "^2.3.1",
+        "ant-design-vue": "^1.7.8",
         "core-js": "^2.6.5",
         "register-service-worker": "^1.6.2",
         "vue": "^2.6.10",
         "vue-class-component": "^7.0.2",
         "vue-property-decorator": "^8.1.0",
         "vue-router": "^3.0.3",
-        "vuex": "^3.0.1",
-        "ant-design-vue": "^1.7.8",
-        "vite-plugin-auto-i18n": "workspace"
+        "vuex": "^3.0.1"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "^3.0.5",
         "@vue/cli-plugin-pwa": "^3.0.5",
         "@vue/cli-plugin-typescript": "^3.0.5",
         "@vue/cli-service": "^3.0.5",
+        "vite-plugin-auto-i18n": "workspace:^0.0.8",
+        "auto-i18n-plugin-core": "workspace:^0.0.8",
         "typescript": "^3.4.3",
         "vite": "^5.0.2",
         "vite-plugin-html": "^3.2.0",

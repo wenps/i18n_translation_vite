@@ -17,6 +17,7 @@ import {
 } from 'auto-i18n-plugin-core'
 import * as babel from '@babel/core'
 import { ResolvedConfig, Plugin } from 'vite'
+export * from 'auto-i18n-plugin-core'
 
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx']
 

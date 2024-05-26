@@ -6,8 +6,7 @@
  */
 import path from 'path'
 import { defineConfig } from 'vite'
-import vuePluginsAutoI18n from 'vite-plugin-auto-i18n'
-import { GoogleTranslator } from 'auto-i18n-plugin-core'
+import vuePluginsAutoI18n, { GoogleTranslator } from 'vite-plugin-auto-i18n'
 import vue from '@vitejs/plugin-vue2'
 
 export default defineConfig({

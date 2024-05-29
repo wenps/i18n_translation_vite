@@ -1,6 +1,11 @@
+import { throttle } from 'lodash'
+
 export interface TranslatorOption {
+    /** 实际的请求方法 */
     fetchMethod: (text: string, fromKey: string, toKey: string) => Promise<string>
     name?: string
+    /** 节流间隔（默认不开启） */
+    throttle?: number
 }
 
 export class Translator {
@@ -8,6 +13,13 @@ export class Translator {
 
     constructor(option: TranslatorOption) {
         this.option = option
+        if (this.option.throttle) {
+            // FIXME: 需要更换一种节流的实现，这种会有bug
+            this.option.fetchMethod = throttle(
+                this.option.fetchMethod.bind(this),
+                this.option.throttle
+            )
+        }
     }
 
     protected getErrorMessage(error: unknown) {

@@ -6,6 +6,7 @@ export interface YoudaoTranslatorOption {
     appId: string
     appKey: string
     proxy?: AxiosProxyConfig
+    throttle?: number
 }
 
 export class YoudaoTranslator extends Translator {
@@ -58,7 +59,8 @@ export class YoudaoTranslator extends Translator {
                 })
                 // 请求成功，返回响应数据
                 return response.data.translation?.[0] || ''
-            }
+            },
+            throttle: option.throttle
         })
     }
 }

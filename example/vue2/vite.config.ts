@@ -39,7 +39,8 @@ export default defineConfig({
                         host: '127.0.0.1',
                         port: 8899,
                         protocol: 'http'
-                    }
+                    },
+                    throttle: 200
                 })
                 // translator: new GoogleTranslator({
                 //     proxyOption: {

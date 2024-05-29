@@ -56,7 +56,7 @@ type OptionType = typeof DEFAULT_OPTION
 export let option: OptionType = { ...DEFAULT_OPTION }
 
 export type OptionInfo = {
-    option: Partial<OptionType>
+    option: Partial<OptionType> // TODO: 没有区分必填项与非必填项
 }
 
 function generateUserOption(optionInfo: OptionInfo) {
@@ -65,6 +65,7 @@ function generateUserOption(optionInfo: OptionInfo) {
     userOption.translator ||= userOption.translatorOption
         ? new Translator(userOption.translatorOption)
         : undefined
+    if (!userOption.translator) delete userOption.translator
     return userOption
 }
 

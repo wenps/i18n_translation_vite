@@ -10,10 +10,3 @@ export const REGEX_MAP = {
     [OriginLangKeyEnum.ZH]: /[\u4e00-\u9fff]/,
     [OriginLangKeyEnum.EN]: /[a-zA-Z]/
 }
-
-export const YOUDAO_TRANSLATE_KEY_CONVERT_MAP = {
-    'zh-cn': 'zh-CHS',
-    'zh-tw': 'zh-CHT'
-} as {
-    [key: string]: string
-}

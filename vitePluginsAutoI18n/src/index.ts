@@ -10,17 +10,18 @@ import {
     translateUtils,
     baseUtils,
     FunctionFactoryOption,
-    optionInfo,
+    OptionInfo,
     option,
     initOption,
     checkOption
 } from 'auto-i18n-plugin-core'
 import * as babel from '@babel/core'
 import { ResolvedConfig, Plugin } from 'vite'
+export * from 'auto-i18n-plugin-core'
 
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx']
 
-export default function vitePluginsAutoI18n(optionInfo: optionInfo): any {
+export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
     const name = 'vite-plugin-auto-i18n'
     let config: ResolvedConfig
 

@@ -49,6 +49,9 @@ importers:
             json-format:
                 specifier: ^1.0.1
                 version: 1.0.1
+            lodash:
+                specifier: ^4.17.21
+                version: 4.17.21
             tunnel:
                 specifier: 0.0.6
                 version: 0.0.6
@@ -71,6 +74,9 @@ importers:
             '@types/crypto-js':
                 specifier: ^4.2.2
                 version: 4.2.2
+            '@types/lodash':
+                specifier: ^4.17.4
+                version: 4.17.4
             '@types/node':
                 specifier: ^20.3.3
                 version: 20.11.19
@@ -86,6 +92,9 @@ importers:
             rollup-plugin-dts:
                 specifier: ^6.1.0
                 version: 6.1.0(rollup@4.12.0)(typescript@5.3.3)
+            rollup-plugin-node-externals:
+                specifier: ^7.1.2
+                version: 7.1.2(rollup@4.12.0)
             typescript:
                 specifier: ^5.1.6
                 version: 5.3.3
@@ -147,9 +156,6 @@ importers:
             register-service-worker:
                 specifier: ^1.6.2
                 version: 1.7.2
-            vite-plugin-auto-i18n:
-                specifier: workspace
-                version: link:../../vitePluginsAutoI18n
             vue:
                 specifier: ^2.6.10
                 version: 2.7.16
@@ -184,6 +190,9 @@ importers:
             vite:
                 specifier: ^5.0.2
                 version: 5.1.5
+            vite-plugin-auto-i18n:
+                specifier: workspace:^0.0.8
+                version: link:../../vitePluginsAutoI18n
             vite-plugin-html:
                 specifier: ^3.2.0
                 version: 3.2.2(vite@5.1.5)
@@ -306,6 +315,9 @@ importers:
             rollup-plugin-dts:
                 specifier: ^6.1.0
                 version: 6.1.0(rollup@4.12.0)(typescript@5.3.3)
+            rollup-plugin-node-externals:
+                specifier: ^7.1.2
+                version: 7.1.2(rollup@4.12.0)
             typescript:
                 specifier: ^5.1.6
                 version: 5.3.3
@@ -3386,6 +3398,13 @@ packages:
             }
         dev: true
 
+    /@types/lodash@4.17.4:
+        resolution:
+            {
+                integrity: sha512-wYCP26ZLxaT3R39kiN2+HcJ4kTd3U1waI/cY7ivWYqFP6pW3ZNpvi6Wd6PHZx7T/t8z0vlkXMg3QYLa7DZ/IJQ==
+            }
+        dev: true
+
     /@types/minimatch@5.1.2:
         resolution:
             {
@@ -6004,6 +6023,7 @@ packages:
                 integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==
             }
         engines: { node: '>= 8.10.0' }
+        requiresBuild: true
         dependencies:
             anymatch: 3.1.3
             braces: 3.0.2
@@ -14696,6 +14716,18 @@ packages:
             typescript: 5.3.3
         optionalDependencies:
             '@babel/code-frame': 7.23.5
+        dev: true
+
+    /rollup-plugin-node-externals@7.1.2(rollup@4.12.0):
+        resolution:
+            {
+                integrity: sha512-cVJFKs+ulZxpMmn/s+oi431d93Jq5+G7Sc5ixWDrL2k+Gj+MqXg0KMNWgKf8Mw5qpaG4jVDpsvuqFfiCvRcGeA==
+            }
+        engines: { node: '>= 21 || ^20.6.0 || ^18.19.0' }
+        peerDependencies:
+            rollup: ^3.0.0 || ^4.0.0
+        dependencies:
+            rollup: 4.12.0
         dev: true
 
     /rollup-plugin-terser@7.0.2(rollup@2.79.1):

@@ -3,6 +3,7 @@ import typescript from '@rollup/plugin-typescript'
 import path from 'node:path'
 import { fileURLToPath } from 'url'
 import dts from 'rollup-plugin-dts'
+import externals from 'rollup-plugin-node-externals'
 
 function resolve(...filePaths: string[]) {
     const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -23,7 +24,7 @@ const buildConfig = defineConfig({
             format: 'cjs'
         }
     ],
-    plugins: [typescript()]
+    plugins: [typescript(), externals()]
 })
 
 const dtsConfig = defineConfig({

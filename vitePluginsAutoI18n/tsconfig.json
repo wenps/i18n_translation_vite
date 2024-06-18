@@ -1,11 +1,7 @@
 {
     "extends": ["../tsconfig.json"],
     "compilerOptions": {
-        "baseUrl": ".",
-        "allowImportingTsExtensions": true,
-        "paths": {
-            "core/*": ["../autoI18nPluginCore/*"]
-        }
+        "baseUrl": "."
     },
     "include": ["./src", "./rollup.config.ts", "./typings.d.ts"]
 }

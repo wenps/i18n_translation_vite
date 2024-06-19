@@ -15,7 +15,7 @@
         "ant-design-vue": "^3.2.20",
         "json-format": "^1.0.1",
         "tunnel": "0.0.6",
-        "vite-plugin-auto-i18n": "workspace",
+        "vite-plugin-auto-i18n": "workspace:*",
         "vue": "^3.2.13",
         "vue-loader": "^17.2.2",
         "vue-router": "^4.2.2"

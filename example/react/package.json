@@ -12,7 +12,7 @@
     "dependencies": {
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "vite-plugin-auto-i18n": "workspace"
+        "vite-plugin-auto-i18n": "workspace:*"
     },
     "devDependencies": {
         "@types/react": "^18.2.15",

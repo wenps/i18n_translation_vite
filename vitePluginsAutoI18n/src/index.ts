@@ -46,7 +46,6 @@ export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
             }
         },
         async transform(code: string, path: string) {
-            if (disabled) return
             if (allowedExtensions.some(ext => path.endsWith(ext))) {
                 // @TODOS 调试先注释，记得做适配
                 // if (!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;
@@ -69,6 +68,7 @@ export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
                         plugins: [filter.default]
                     })
                     if (config.command === 'serve') {
+                        if (disabled) return
                         await translateUtils.autoTranslate()
                     }
                     return result?.code

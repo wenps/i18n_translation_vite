@@ -62,8 +62,8 @@ class IntervalQueue<T extends any[], U extends any> {
     }
 }
 
-const interval = <T extends any[], U extends any>(fn: (...args: T) => U, delay: number) => {
-    const queue = new IntervalQueue(fn, delay)
+const interval = <T extends unknown[], U extends unknown>(fn: (...args: T) => U, delay: number) => {
+    const queue = new IntervalQueue(fn.bind(null), delay)
     return (...args: T) => {
         return queue.execute(...args)
     }
@@ -75,10 +75,7 @@ export class Translator {
     constructor(option: TranslatorOption) {
         this.option = option
         if (this.option.interval) {
-            this.option.fetchMethod = interval(
-                this.option.fetchMethod.bind(this),
-                this.option.interval
-            )
+            this.option.fetchMethod = interval(this.option.fetchMethod, this.option.interval)
         }
     }
 

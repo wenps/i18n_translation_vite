@@ -29,3 +29,5 @@ build
 *.njsproj
 *.sln
 *.sw?
+
+example/**/lang

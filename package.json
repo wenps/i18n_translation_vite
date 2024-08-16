@@ -6,6 +6,7 @@
         "preview": "node script/preview.js",
         "build": "node script/build.js",
         "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
+        "publishWp:plugin": "cd webpackPluginsAutoI18n && pnpm publish",
         "format": "npx prettier . --write",
         "prepare": "husky install"
     },

@@ -1,4 +1,4 @@
-# vue2_webpack
+# vue2-webpack
 
 ## Project setup
 ```

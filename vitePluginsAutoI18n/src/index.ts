@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-06-20 19:21:09
+ * @LastEditTime: 2024-11-18 19:15:13
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import {
@@ -68,9 +68,9 @@ export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
                         plugins: [filter.default]
                     })
                     if (config.command === 'serve') {
-                        if (disabled) return result?.code
                         await translateUtils.autoTranslate()
                     }
+
                     return result?.code
                 } catch (e) {
                     console.error(e)

@@ -1,12 +1,12 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-04-07 19:13:49
+ * @LastEditTime: 2024-11-18 19:10:08
  * @FilePath: /i18n_translation_vite/example/vue2/vite.config.ts
  */
 import path from 'path'
 import { defineConfig } from 'vite'
-import vuePluginsAutoI18n, { GoogleTranslator, YoudaoTranslator } from 'vite-plugin-auto-i18n'
+import vuePluginsAutoI18n, { YoudaoTranslator } from '../../vitePluginsAutoI18n/src/index'
 import vue from '@vitejs/plugin-vue2'
 
 export default defineConfig({

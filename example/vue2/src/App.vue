@@ -1,7 +1,7 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-11-23 15:52:50
- * @LastEditTime: 2024-04-03 17:59:37
+ * @LastEditTime: 2024-11-18 19:06:36
  * @FilePath: /i18n_translation_vite/example/vue2/src/App.vue
 -->
 <template>
@@ -9,7 +9,12 @@
         <div class="main">
             <header :name="name ? '小山' : $emit('text')">
                 <div class="title">
-                    <img class="icon" :name="name ? '小山' : $emit('text')" :src="img1" />
+                    <img
+                        class="icon"
+                        @click="jump"
+                        :name="name ? '小山' : $emit('text')"
+                        :src="img1"
+                    />
                     自动国际化插件
                 </div>
                 <div class="operation">
@@ -37,6 +42,11 @@ export default {
         changeLang(value) {
             localStorage.setItem('lang', value)
             location.reload()
+        },
+        jump() {
+            this.$router.push({
+                name: 'about'
+            })
         }
     }
 }

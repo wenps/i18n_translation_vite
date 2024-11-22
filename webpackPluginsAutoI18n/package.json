@@ -30,16 +30,20 @@
     },
     "homepage": "https://github.com/wenps/i18n_translation_vite#readme",
     "dependencies": {
-        "auto-i18n-plugin-core": "workspace:^"
+        "@types/webpack": "^5.28.5",
+        "@types/webpack-sources": "^3.2.3",
+        "auto-i18n-plugin-core": "workspace:^",
+        "webpack": "^5.96.1",
+        "webpack-sources": "^3.2.3"
     },
     "devDependencies": {
         "@babel/types": "^7.23.0",
-        "rollup": "^4.3.0",
-        "rollup-plugin-dts": "^6.1.0",
         "@rollup/plugin-typescript": "^11.1.5",
         "@types/babel__core": "^7.20.3",
         "@types/node": "^20.3.3",
         "babel-plugin-import": "^1.13.6",
+        "rollup": "^4.3.0",
+        "rollup-plugin-dts": "^6.1.0",
         "rollup-plugin-node-externals": "^7.1.2",
         "typescript": "^5.1.6",
         "vite": "^2.8.6",

@@ -1,7 +1,6 @@
 import { LoaderContext } from 'webpack'
 import * as core from 'auto-i18n-plugin-core'
-
-const babel = require('@babel/core')
+import * as babel from '@babel/core'
 /**
  * @description: 默认参数类型
  * @return {*}

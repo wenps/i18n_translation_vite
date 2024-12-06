@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-03-01 11:27:03
- * @LastEditTime: 2024-12-06 17:43:55
+ * @LastEditTime: 2024-12-06 18:16:28
  * @FilePath: /i18n_translation_vite/webpackPluginsAutoI18n/src/index.ts
  */
 import webpack from 'webpack'
@@ -48,12 +48,20 @@ export default class webpackPluginsAutoI18n {
                     enforce: 'post', // 后置loader
                     use: [
                         {
+                            // 基于loader批量收集目标翻译内容
                             loader: path.resolve(__dirname, './Loader/index')
                         }
                     ]
                 })
             }
             callback()
+        })
+        // 构建阶段 批量翻译
+        compiler.hooks.emit.tap('webpackPluginsAutoI18n', async _compilation => {
+            console.info('构建阶段批量翻译')
+            await translateUtils.autoTranslate()
+            // todo 暂不支持写入到主文件，webpack 感觉并不需要
+            console.info('翻译完成✔')
         })
     }
 }

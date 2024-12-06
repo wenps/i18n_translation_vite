@@ -2,7 +2,8 @@
     "extends": ["../tsconfig.json"],
     "compilerOptions": {
         "baseUrl": ".",
-        "noEmit": true // 或者 "emitDeclarationOnly": true
+        "noEmit": true, // 或者 "emitDeclarationOnly": true
+        "noImplicitAny": false // 允许使用 any 类型
     },
     "include": ["./src", "./rollup.config.ts", "./typings.d.ts"]
 }

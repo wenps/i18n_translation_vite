@@ -4,12 +4,12 @@ import path from 'node:path'
 import { fileURLToPath } from 'url'
 import dts from 'rollup-plugin-dts'
 
-const input = resolve('./src/index.ts')
-
 function resolve(filePath: string) {
     const __dirname = path.dirname(fileURLToPath(import.meta.url))
     return path.resolve(__dirname, filePath)
 }
+
+const input = resolve('./src/index.ts')
 
 const buildConfig = defineConfig({
     input: input,

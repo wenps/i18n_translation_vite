@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2023-11-22 14:28:11
- * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/utils/file.ts
+ * @LastEditTime: 2024-12-07 15:11:01
+ * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/file.ts
  */
 import fs from 'fs'
 import path from 'path'
@@ -45,7 +45,7 @@ export function initTranslateBasicFnFile() {
     window.${key} = window.${key} || ${key};
     window.$${key} = $${key};
     window._getJSONKey = function (key, insertJSONObj = undefined) {
-      const JSONObj = insertJSONObj || JSON.parse(getLangTranslateJSONFile())
+      const JSONObj = insertJSONObj
       const langObj = {}
       Object.keys(JSONObj).forEach((value)=>{
         langObj[value] = JSONObj[value][key]
@@ -54,7 +54,10 @@ export function initTranslateBasicFnFile() {
     }
   })();`
     const indexPath = path.join(option.globalPath, 'index.js')
-    fs.writeFileSync(indexPath, translateBasicFnText) // 创建
+    if (!fs.existsSync(indexPath)) {
+        // 不存在就创建
+        fs.writeFileSync(indexPath, translateBasicFnText) // 创建
+    }
 }
 
 /**
@@ -64,6 +67,7 @@ export function initTranslateBasicFnFile() {
 export function initLangTranslateJSONFile() {
     const indexPath = path.join(option.globalPath, 'index.json')
     if (!fs.existsSync(indexPath)) {
+        // 不存在就创建
         fs.writeFileSync(indexPath, JSON.stringify({})) // 创建
     }
 }

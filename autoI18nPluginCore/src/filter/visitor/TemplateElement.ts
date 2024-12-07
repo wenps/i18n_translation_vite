@@ -1,16 +1,14 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-01 16:35:38
- * @LastEditTime: 2023-11-18 13:39:26
- * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/filter/visitor/TemplateElement.ts
+ * @LastEditTime: 2024-12-07 15:41:22
+ * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/filter/visitor/TemplateElement.ts
  */
 const types = require('@babel/types')
 import { option } from '../../option'
 import { baseUtils, translateUtils } from '../../utils'
 
 export default function (path: any) {
-    console.log('template element')
-
     let { node, parent } = path
     if (!node.value) return
 

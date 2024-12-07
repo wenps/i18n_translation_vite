@@ -5,27 +5,27 @@
  * @FilePath: /i18n_translation_vite/vue3Demo/src/router/index.ts
  */
 
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 export const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: () => import("../views/Home.vue"),
-    mate: {
-        isCore: true
+    {
+        path: '/',
+        name: 'home',
+        component: () => import('../views/Home.vue'),
+        mate: {
+            isCore: true
+        }
+    },
+    {
+        path: '/test',
+        name: 'test',
+        component: () => import('../views/test.vue'),
+        mate: {
+            isCore: true
+        }
     }
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: () => import("../views/test.vue"),
-    mate: {
-        isCore: true
-    }
-  },
 ]
 
 export default createRouter({
-  history: createWebHistory(),
-  routes,
+    history: createWebHistory(),
+    routes
 })

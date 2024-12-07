@@ -8,7 +8,7 @@ import '../../lang/index'
 import langJSON from '../../lang/index.json'
 const langMap = {
     en: window?.lang?.en || _getJSONKey('en', langJSON),
-    zhcn: window?.lang?.zhcn || _getJSONKey('zhcn', langJSON),
+    zhcn: window?.lang?.zhcn || _getJSONKey('zhcn', langJSON)
 }
 const lang = window.localStorage.getItem('lang') || 'zhcn'
 window.$t.locale(langMap[lang], 'lang')

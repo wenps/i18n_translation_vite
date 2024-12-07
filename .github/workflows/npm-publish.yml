@@ -4,34 +4,34 @@
 name: Node.js Package
 
 on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]
+    pull_request:
+        branches:
+            - main
+        types: [closed]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.20.0
-      - run: npm i -g pnpm
-      - run: pnpm i
-      - run: pnpm build:plugin
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16.20.0
+            - run: npm i -g pnpm
+            - run: pnpm i
+            - run: pnpm build:plugin
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.20.0
-          registry-url: https://registry.npmjs.org/
-      - run: npm i -g pnpm
-      - run: pnpm i
-      - run: pnpm publish:plugin
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    publish-npm:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16.20.0
+                  registry-url: https://registry.npmjs.org/
+            - run: npm i -g pnpm
+            - run: pnpm i
+            - run: pnpm publish:plugin
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.npm_token}}

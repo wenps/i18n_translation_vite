@@ -1,7 +1,7 @@
 /*
  * @Date: 2024-11-22 16:04:42
  * @LastEditors: xiaoshan
- * @LastEditTime: 2024-11-22 16:35:13
+ * @LastEditTime: 2024-12-07 16:57:58
  * @FilePath: /i18n_translation_vite/example/vue2_webpack/vue.config.js
  */
 const webpackPluginsAutoI18nCore = require('webpack-plugin-auto-i18n')
@@ -24,7 +24,7 @@ module.exports = {
                     namespace: 'lang',
                     distPath: './dist/assets',
                     distKey: 'index',
-                    targetLangList: ['en', 'ko', 'ja'],
+                    targetLangList: ['en', 'ko', 'ja', 'ru'],
                     originLang: 'zh-cn',
                     translator: new YoudaoTranslator({
                         appId: '4cdb9baea8066fef',

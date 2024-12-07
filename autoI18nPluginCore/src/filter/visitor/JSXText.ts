@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-01 16:35:38
- * @LastEditTime: 2023-11-14 18:24:20
- * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/filter/visitor/JSXText.ts
+ * @LastEditTime: 2024-12-07 16:45:20
+ * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/filter/visitor/JSXText.ts
  */
 import * as types from '@babel/types'
 import { baseUtils } from '../../utils'
@@ -13,7 +13,7 @@ export default function (path: any) {
 
     let { node } = path
     let value = node.value
-    // 当前jsxText是否包含中文，是否包含过滤字段
+    // 是否存在来源语言字符，是否在默认字符串中
     if (
         baseUtils.hasOriginSymbols(value) &&
         option.excludedPattern.length &&

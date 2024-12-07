@@ -1,0 +1,338 @@
+{
+	"e3j62": {
+		"zh-cn": "介绍",
+		"en": "introduce",
+		"ko": "소개",
+		"ja": "紹介します",
+		"ru": "представ"
+	},
+	"9xgbc210": {
+		"zh-cn": "基于谷歌翻译api的vite自动翻译插件，优势——无需改动源码，一键翻译",
+		"en": "vite automatic translation plug-in based on Google Translate api, advantage - no need to change the source code, one-click translation",
+		"ko": "구글 번역 api 기반 vite 자동 번역 플러그인-소스 변경 없이, 버튼 한 번으로 번역할 수 있음",
+		"ja": "google翻訳apiをベースとしたvite自動翻訳プラグインの利点——ソースコードを変更することなく、ワンクリックで翻訳できます",
+		"ru": "Основываясь на автоматическом переводимом плагине vite, основанной на google переводчике api, преимущество — нет необходимости менять исходный код, Один ключ перевода"
+	},
+	"hr5e2": {
+		"zh-cn": "支持",
+		"en": "support",
+		"ko": "지지",
+		"ja": "支持します",
+		"ru": "поддержива"
+	},
+	"wxbiabf": {
+		"zh-cn": "支持语言：[langFile]",
+		"en": "Supported language: [langFile]",
+		"ko": "지원 언어:[langfile]",
+		"ja": "サポート言語:[langFile]です。",
+		"ru": "Язык поддержки: [langFile]"
+	},
+	"k38g2": {
+		"zh-cn": "特点",
+		"en": "peculiarity",
+		"ko": "특 점",
+		"ja": "特徴です",
+		"ru": "особен"
+	},
+	"5r7wejo": {
+		"zh-cn": "不影响源代码（不再需要替换源代码中的i18n）。",
+		"en": "The source code is not affected (i18n in the source code no longer needs to be replaced).",
+		"ko": "소스 코드에 영향을 주지 않음 (소스 코드 i18n을 더 이상 바꿀 필요가 없음).",
+		"ja": "ソースコードに影響しません(i18nを置き換える必要はありません)。",
+		"ru": "Не влияет на исходный код (больше нет необходимости заменять i18n в исходном коде)."
+	},
+	"utkm5y5": {
+		"zh-cn": "一键翻译.",
+		"en": "One-click translation.",
+		"ko": "원클릭 번역.",
+		"ja": "ワンクリックで翻訳します。",
+		"ru": "Один ключ на перевод."
+	},
+	"3cygkr7": {
+		"zh-cn": "和其他类型文件",
+		"en": "And other types of files",
+		"ko": "그리고 다른 파일들 말입니다",
+		"ja": "他の種類のファイルもあります",
+		"ru": "И другие типы файлов"
+	},
+	"e5xl2": {
+		"zh-cn": "使用",
+		"en": "Use",
+		"ko": "사용",
+		"ja": "使います",
+		"ru": "использова"
+	},
+	"gbj02": {
+		"zh-cn": "安装",
+		"en": "Install",
+		"ko": "설치",
+		"ja": "取り付けます",
+		"ru": "установк"
+	},
+	"pewx2": {
+		"zh-cn": "配置",
+		"en": "disposition",
+		"ko": "설정",
+		"ja": "配置します",
+		"ru": "конфигурац"
+	},
+	"esxa2": {
+		"zh-cn": "参数",
+		"en": "argument",
+		"ko": "파라메터",
+		"ja": "パラメータです",
+		"ru": "параметр"
+	},
+	"lnjk2": {
+		"zh-cn": "类型",
+		"en": "type",
+		"ko": "유형",
+		"ja": "タイプです",
+		"ru": "тип"
+	},
+	"h2w42": {
+		"zh-cn": "必选",
+		"en": "Required",
+		"ko": "반드시 선택",
+		"ja": "必ず選びます",
+		"ru": "Будет выбра"
+	},
+	"nxrsg3": {
+		"zh-cn": "默认值",
+		"en": "Default value",
+		"ko": "기본값",
+		"ja": "デフォルト値です",
+		"ru": "Умолчаливое значение"
+	},
+	"hrlt2": {
+		"zh-cn": "描述",
+		"en": "Description",
+		"ko": "설명",
+		"ja": "記述します",
+		"ru": "описыва"
+	},
+	"p53n5re": {
+		"zh-cn": "插件转换后切换语言的默认函数",
+		"en": "Default function for switching languages after plugin conversion",
+		"ko": "플러그인 변환 후 언어의 기본 함수를 전환합니다",
+		"ja": "プラグイン変換後に言語のデフォルト関数を切り替える",
+		"ru": "Функция по умолчанию для изменения языка после преобразования плагина"
+	},
+	"ne3sy8b": {
+		"zh-cn": "标记不会翻译的调用函数",
+		"en": "Flags calling functions that will not be translated",
+		"ko": "번역되지 않는 함수를 호출합니다",
+		"ja": "翻訳されない呼び出し関数をマークします",
+		"ru": "Функция вызова, которую маркер не может перевести"
+	},
+	"f3598ra": {
+		"zh-cn": "标记不会翻译的字符串",
+		"en": "Tag a string that will not be translated",
+		"ko": "번역되지 않는 문자열을 표시합니다",
+		"ja": "翻訳できない文字列をマークします",
+		"ru": "Отметьте строки, которые не могут быть переведены"
+	},
+	"m6u8yra": {
+		"zh-cn": "不翻译指定目录下文件",
+		"en": "Does not translate files in the specified directory",
+		"ko": "지정한 디렉터리에 있는 파일이 번역되지 않습니다",
+		"ja": "指定されたディレクトリのファイルは翻訳しません。",
+		"ru": "Не переводить файл в указанном каталоге"
+	},
+	"6pfhiu9": {
+		"zh-cn": "翻译指定目录下文件",
+		"en": "Translate files in the specified directory",
+		"ko": "지정한 디렉터리에 있는 파일을 번역합니다",
+		"ja": "指定されたディレクトリのファイルを翻訳します。",
+		"ru": "Переведи файл в указанном каталоге"
+	},
+	"ln967ca": {
+		"zh-cn": "翻译配置文件生成位置",
+		"en": "Translation profile generation location",
+		"ko": "프로필 생성 위치를 번역합니다",
+		"ja": "翻訳プロファイル生成位置",
+		"ru": "Перевод конфигурации генерирует местоположение"
+	},
+	"vdo0cwr": {
+		"zh-cn": "打包后生成文件的位置 比如 ./dist/assets",
+		"en": "The location of the generated file after packaging such as./dist/assets",
+		"ko": "예를 들어./dist/assets처럼 압축된 파일의 위치이다",
+		"ja": "./dist/assetsのように、パッケージされたファイルを作成する場所です。",
+		"ru": "Расположение файла после упаковки, например,.dist /assets"
+	},
+	"rrgh3fd": {
+		"zh-cn": "用于将翻译配置注入打包文件",
+		"en": "Used to inject the translation configuration into the package file",
+		"ko": "압축 파일에 번역 설정을 주입하는 데 사용합니다",
+		"ja": "翻訳構成をパッケージファイルに注入します",
+		"ru": "Используется для загрузки конфигурации в упаковочный файл"
+	},
+	"ye3wg8y": {
+		"zh-cn": "打包后生成文件的主文件名称，比如index.xxx 默认是index",
+		"en": "The main file name of the generated file after packaging, for example, index.xxx defaults to index",
+		"ko": "인덱스.xxx와 같이 압축된 파일의 기본 파일 이름은 인덱스다",
+		"ja": "例えばindex.xxxはデフォルトでindexです。",
+		"ru": "Основное название файла, созданного после упаковки, например, index.xxx по умолчанию index"
+	},
+	"k486tve": {
+		"zh-cn": "线上区分当前项目间的翻译配置",
+		"en": "Differentiate translation configurations between current projects online",
+		"ko": "온라인에서는 현재 항목 간의 번역 설정을 구분합니다",
+		"ja": "現在の項目間の翻訳配置を線上で区別します。",
+		"ru": "Линия разделяет конфигурацию перевода между текущими проектами"
+	},
+	"z0yx8lh": {
+		"zh-cn": "源语言（基于该语言翻译成其他语言）",
+		"en": "Source language (based on translation into other languages)",
+		"ko": "원본 언어 (이 언어에서 다른 언어로 번역)",
+		"ja": "ソース言語(その言語に基づいて他の言語に翻訳されます)",
+		"ru": "Исходный язык (основан на переводе на другие языки)"
+	},
+	"ahrg1gy": {
+		"zh-cn": "目标语言（原始语言将被翻译成的语言类型，接受一个数组，支持多种语言）",
+		"en": "Target language (the type of language into which the original language will be translated, accepts an array, supports multiple languages)",
+		"ko": "대상 언어 (원시 언어가 번역될 언어 형식, 하나의 배열을 수용하며 다중 언어 지원)",
+		"ja": "対象言語(元の言語が翻訳される言語のタイプ。1つの配列を受け入れ、複数の言語に対応します。)",
+		"ru": "Целенаправленный язык (тип языка, который будет переведен на оригинальный язык, принимает группу и поддерживает несколько языков)"
+	},
+	"krdm6ai": {
+		"zh-cn": "支持语言类型（[langFile]）",
+		"en": "Supported language type ([langFile])",
+		"ko": "지원하는 언어 형식 ([langfile])",
+		"ja": "サポート言語タイプ([langFile])です。",
+		"ru": "Поддержка типов языков (langFile)"
+	},
+	"z4q27fd": {
+		"zh-cn": "是否将翻译配置打包到主包中",
+		"en": "Whether to package the translation configuration into the master package",
+		"ko": "번역 설정을 마스터 패키지로 압축할지 여부입니다",
+		"ja": "翻訳構成をメインパッケージに梱包しますか",
+		"ru": "Упаковывать ли конфигурацию перевода в главный пакет"
+	},
+	"w0fi2r5": {
+		"zh-cn": "为什么需要",
+		"en": "Why do you need",
+		"ko": "왜 우리가",
+		"ja": "なぜ必要なのですか",
+		"ru": "Зачем?"
+	},
+	"yzcto221": {
+		"zh-cn": "在vite环境中执行插件后，只生成翻译配置文件。如果您直接构建它，项目将生成翻译配置文件。但翻译配置文件不会立即打包到主包中，您可能需要再次打包。",
+		"en": "After the plug-in is executed in the vite environment, only the translation profile is generated. If you build it directly, the project will generate a translation profile. However, the translation profile is not immediately packaged into the main package, and you may need to package it again.",
+		"ko": "vite 환경에서 플러그인을 실행한 후 번역 프로필만 생성된다.직접 빌드하면, 프로젝트는 번역 프로필을 생성합니다.그러나 번역 프로필은 메인 패키지로 바로 압축되지 않으며 다시 압축해야 할 수도 있습니다.",
+		"ja": "vite環境でプラグインを実行すると、翻訳プロファイルのみが生成されます。直接構築した場合、プロジェクトは翻訳プロファイルを作成します。翻訳プロファイルはすぐにメインパッケージに梱包されませんので、再度梱包する必要があります。",
+		"ru": "После выполнения плагина в среде vite, генерируется только профиль перевода. Если вы создадите его непосредственно, то проект создаст профиль перевода. Но перевод конфигураций не будет упакован в главный пакет сразу же, и, возможно, вам придется упаковать его снова."
+	},
+	"jypfzs10": {
+		"zh-cn": "因此，提供了buildToDist选项，当创建翻译配置文件时，它将主动将",
+		"en": "Therefore, the buildToDist option is provided, which will be active when the translation profile is created",
+		"ko": "따라서 buildtodist 옵션이 제공되어 번역 프로필을 만들 때 자동으로 변환한다",
+		"ja": "そのため、翻訳プロファイルを作成するときに、buildToDistオプションを提供します。",
+		"ru": "Таким образом, была предложена опция buildToDist, которая проявит инициативу при создании профиля перевода"
+	},
+	"7nexml9": {
+		"zh-cn": "翻译配置文件打包进",
+		"en": "The translation configuration file is packaged",
+		"ko": "프로필 압축을 번역합니다",
+		"ja": "翻訳プロファイルを梱包します。",
+		"ru": "Переведи профиль"
+	},
+	"fxk14dn": {
+		"zh-cn": "主包，缺陷是您的打包文件可能有两份翻译配置文件",
+		"en": "For the main package, the drawback is that your package file may have two translation profiles",
+		"ko": "주 패키지의 문제점은 패키지에 두 개의 번역 프로필이 있을 수 있다는 것입니다",
+		"ja": "メインパッケージの欠陥は、翻訳プロファイルが2つある可能性がありますパッケージファイル",
+		"ru": "Главная ошибка в Том, что в вашем папке может быть два переведённых файла"
+	},
+	"iuyotj4": {
+		"zh-cn": "配置演示",
+		"en": "Configuration demonstration",
+		"ko": "프리젠테이션 설정",
+		"ja": "構成デモです",
+		"ru": "Демо-компоновка"
+	},
+	"c9npl315": {
+		"zh-cn": "import \"./lang\" //  必须在项目的入口文件第一行引入lang文件",
+		"en": "import \"./lang\" // The lang file must be imported on the first line of the project's entry file",
+		"ko": "import\"./lang\"//는 프로젝트의 엔트리 파일의 첫 번째 줄에 lang 파일을 가져와야 한다",
+		"ja": "import \"./lang\" //プロジェクトのエントリファイルの最初の行にlangファイルを導入する必要があります。",
+		"ru": "import /lang/должен быть представлен в первой строке входного файла проекта"
+	},
+	"o63r6sa": {
+		"zh-cn": "演示配置lang文件",
+		"en": "Demonstration configuration lang file",
+		"ko": "lang 파일 설정 프리젠테이션",
+		"ja": "langファイルの構成を実演します",
+		"ru": "Демо конфигурация файлов lang"
+	},
+	"eiiemg4": {
+		"zh-cn": "演示介绍",
+		"en": "Presentation and introduction",
+		"ko": "프레젠테이션 소개",
+		"ja": "プレゼンの紹介です",
+		"ru": "Презентация."
+	},
+	"t0f3e5i0": {
+		"zh-cn": "import CN from \"../../[your globalPath]/[your originLangKey]/index.mjs\"\n    // 这里只演示了targetLangList长度为零的情况，如果有多种语言就继续往下加\n    import EN from \"../../[your globalPath]/[your targetLangList[0]]/index.mjs\"\n    const langMap = {\n      [your originLangKey]: window?.[your namespace]?.[your originLangKey] || CN,\n      [your targetLangList[0]]: window?.[your namespace]?.[your targetLangList[0]] || EN\n    }\n    // window.localStorage.getItem(\"lang\") Storing the current language type\n    const lang = window.localStorage.getItem(\"lang\") || [your originLangKey](defualt lang),\n    window.[your translateKey].locale(langMap[lang], [your namespace])",
+		"en": "import CN from \".. /.. /[your globalPath]/[your originLangKey]/index.mjs\"\n// This only demonstrates that the targetLangList length is zero; if there are multiple languages, add further\nimport EN from \".. /.. /[your globalPath]/[your targetLangList[0]]/index.mjs\"\nconst langMap = {\n[your originLangKey]: window? .[your namespace]? .[your originLangKey] || CN,\n[your targetLangList[0]]: window? .[your namespace]? .[your targetLangList[0]] || EN\n}\n// window.localStorage.getItem(\"lang\") Storing the current language type\nconst lang = window.localStorage.getItem(\"lang\") || [your originLangKey](defualt lang),\nwindow.[your translateKey].locale(langMap[lang], [your namespace])",
+		"ko": "from cn을 가져오기\".../..[your globalpath]/[your originlangkey]/index.mjs\".\n//이것은 targetlanglist 가 0인 경우만 보여 주며, 여러 언어가 있으면 계속 추가한다\n\"import en from\".../..[your globalpath]/[your targetlanglist [0]/index.mjs\"\nconst langmap = {\n[your originlangkey]:window?. [your namespace]?. [your originlangkey] | | cn,\n[your targetlanglist]:window?. [your namespace]?. [your targetlanglist [10]] | | en\n}\n//window. localstorage. getitem (\"랑\") storing the current language type\nconst랑 = window. localstorage. getitem (\"랑\") | | [your originlangkey] (defualt랑),\n[translatekey].locale(langmap [lang], [your namespace])",
+		"ja": "import CN from \"です/..です/[your globalPath]/[your originLangKey]/index.mjsです。\n//ここではtargetLangListの長さがゼロの場合だけをお見せしましたが、複数の言語がある場合はさらに追加します。\nimport EN from \"です/..です/[your globalPath]/[your targetLangList[0]]/index.mjs\"です。\nconst langMap ={です\n[your originLangKey]: windowですか?[your namespace]ですか?. [your originlangkey] | | cn、\n[your targetLangList[0]]: windowですか?[your namespace]ですか?. [your targetlanglist[で]]| | en\n}です\n/ / window . localstorage . getitem (\" (\") storing theチームn si-theme-font type\nconst (= window . localstorage . getitem (\" (\" |) | [your originlangkey] (defualt()、\nwindow.[your translateKey].locale(langMap[lang], [your namespace])",
+		"ru": "import CN from. / … [ваш globalPath] [ваш originLangKey]/index mjs]\n// здесь показаны только случаи, когда длина таргетланглиста равна нулю, и если существует несколько языков, то следует продолжать добавлять ниже\nimport EN from. / … [ваш глобалпат] [ваш таргетланглист [0] /index mjs]\nconst langMap =\nУинслоу? [your namespace]? [your originLangKey] - да-да CN,\nУинслоу? [your namespace]? - [your targetLangList [0]] - да-да EN\n,\n/ / window localStorage, getItem (\" лэнг \") Storing the год language type\nConst lang = window, localStorage getItem (\" лэнг \")-да-да [your originLangKey] (defualt лэнг),\n[ваш транслейтеки] [langMap] [lang] [ваш намespace]"
+	},
+	"g5z62": {
+		"zh-cn": "小山",
+		"en": "hill",
+		"ko": "언덕은",
+		"ja": "小山です",
+		"ru": "холм"
+	},
+	"xsbfmc7": {
+		"zh-cn": "自动国际化插件",
+		"en": "Automatic internationalization plugin",
+		"ko": "자동 국제화 플러그인",
+		"ja": "自動国際化プラグイン",
+		"ru": "Автоматический интернациональный плагин"
+	},
+	"dure2": {
+		"zh-cn": "中文",
+		"en": "Chinese",
+		"ko": "중국어",
+		"ja": "中文",
+		"ru": "китайск"
+	},
+	"mtva2": {
+		"zh-cn": "英文",
+		"en": "English",
+		"ko": "영어",
+		"ja": "英語です",
+		"ru": "английск"
+	},
+	"qe9q2": {
+		"zh-cn": "韩文",
+		"en": "Korean",
+		"ko": "한글",
+		"ja": "ハングルです",
+		"ru": "корейск"
+	},
+	"hw022": {
+		"zh-cn": "日文",
+		"en": "Japanese",
+		"ko": "일본어",
+		"ja": "日本語です",
+		"ru": "японск"
+	},
+	"ntcyybl": {
+		"zh-cn": "m-feedback组件只能包含一个子元素",
+		"en": "The m-feedback component can contain only one child element",
+		"ko": "m-feedback 컴포넌트에는 하나의 서브 컴포넌트만 포함된다",
+		"ja": "m-feedbackコンポーネントは1つの部分要素しか含みません",
+		"ru": "Компонент m-feedback может содержать только Один подэлемент"
+	},
+	"mofwsij": {
+		"zh-cn": "lazyLoad组件只能包含一个子元素",
+		"en": "The lazyLoad component can contain only one child element",
+		"ko": "lazyload 컴포넌트는 하나의 자식 컴포넌트만 포함할 수 있다",
+		"ja": "lazyLoadコンポーネントは1つのサブ要素しか含みません",
+		"ru": "Компонент lazyLoad может содержать только Один подэлемент"
+	}
+}

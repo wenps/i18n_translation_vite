@@ -30,4 +30,4 @@ build
 *.sln
 *.sw?
 
-example/**/lang
+# example/**/lang

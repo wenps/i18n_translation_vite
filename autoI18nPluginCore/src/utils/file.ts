@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2024-12-07 15:11:01
+ * @LastEditTime: 2024-12-07 16:28:31
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/file.ts
  */
 import fs from 'fs'
@@ -29,18 +29,14 @@ export function initTranslateBasicFnFile() {
     const key = option.translateKey
     const translateBasicFnText = `(function () {
     let ${key} = function (key, val, nameSpace) {
-      const langPackage = ${key}[nameSpace] ? ${key}[nameSpace] : ${key}.package
+      const langPackage = ${key}[nameSpace]
       return (langPackage || {})[key] || val;
     };
     let $${key} = function (val) {
       return val;
     };
     ${key}.locale = function (locale, nameSpace) {
-      if (nameSpace) {
-        ${key}[nameSpace] = locale || {};
-      } else {
-        ${key}.package = locale || {};
-      }
+      ${key}[nameSpace] = locale || {};
     };
     window.${key} = window.${key} || ${key};
     window.$${key} = $${key};

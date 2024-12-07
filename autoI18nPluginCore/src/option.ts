@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2024-04-07 19:40:06
+ * @LastEditTime: 2024-12-07 16:39:02
  * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/option.ts
  */
 
@@ -12,14 +12,15 @@ export { YoudaoTranslator, GoogleTranslator, Translator }
 export type { TranslatorOption }
 
 const DEFAULT_OPTION = {
+    /** 翻译调用函数 */
     translateKey: '$t',
     /** 标记不翻译调用函数 */
     excludedCall: ['$i8n', 'require', '$$i8n', 'console.log', '$t'],
     /** 标记不用翻译字符串 */
     excludedPattern: [/\.\w+$/],
-    /** 排查不需要翻译的目录下的文件  */
+    /** 排查不需要翻译的目录下的文件（白名单）  */
     excludedPath: [] as string[],
-    /** 指定需要翻译的目录下的文件 */
+    /** 指定需要翻译的目录下的文件（黑名单） */
     includePath: [/src\//],
     /** 配置文件生成位置 */
     globalPath: './lang',
@@ -75,6 +76,10 @@ export function initOption(optionInfo: OptionInfo) {
 }
 
 export function checkOption() {
+    if (!option.translateKey) {
+        console.error('❌请配置翻译调用函数')
+        return false
+    }
     if (!option.namespace) {
         console.error('❌请配置命名空间')
         return false

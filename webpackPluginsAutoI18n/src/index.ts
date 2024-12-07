@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-03-01 11:27:03
- * @LastEditTime: 2024-12-06 18:16:28
+ * @LastEditTime: 2024-12-07 15:17:13
  * @FilePath: /i18n_translation_vite/webpackPluginsAutoI18n/src/index.ts
  */
 import webpack from 'webpack'
@@ -49,7 +49,7 @@ export default class webpackPluginsAutoI18n {
                     use: [
                         {
                             // 基于loader批量收集目标翻译内容
-                            loader: path.resolve(__dirname, './Loader/index')
+                            loader: path.resolve(__dirname, './Loader/index.cjs')
                         }
                     ]
                 })

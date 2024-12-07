@@ -8,13 +8,18 @@ import * as babel from '@babel/core'
 type option = {
     [key: string]: any
 }
-
+/**
+ * @description: 核心loader 作用是过滤代码的目标语言，生成基础国际化key——value映射
+ * @param {*} source
+ * @return {*}
+ */
 module.exports = function (source): string {
     // 获取核心插件配置及函数
     const { baseUtils, option, FunctionFactoryOption, filter } = core
     // 获取全局实例
     const global = this as unknown as LoaderContext<option>
 
+    // 黑白名单过滤
     if (
         option.includePath.length &&
         !baseUtils.checkAgainstRegexArray(global.resourcePath, option.includePath)
@@ -26,10 +31,10 @@ module.exports = function (source): string {
     )
         return source
 
-    // 设置
     FunctionFactoryOption.originLang = option.originLang
 
     try {
+        // 过滤代码语言
         let result = babel.transformSync(source, {
             configFile: false,
             plugins: [filter.default]

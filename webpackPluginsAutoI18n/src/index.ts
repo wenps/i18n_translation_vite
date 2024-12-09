@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2024-03-01 11:27:03
- * @LastEditTime: 2024-12-07 15:17:13
+ * @LastEditTime: 2024-12-09 10:16:07
  * @FilePath: /i18n_translation_vite/webpackPluginsAutoI18n/src/index.ts
  */
 import webpack from 'webpack'
@@ -19,8 +19,8 @@ export * from 'auto-i18n-plugin-core'
 
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx']
 
-// 生成基础路径正则
-function generateFileExtensionRegex(extensions) {
+// 生成基础后缀正则
+function generateFileExtensionRegex(extensions: string[]) {
     // 将扩展名数组转换为正则表达式字符串
     const regexString = extensions.map(ext => ext.replace('.', '\\.')).join('|')
     // 返回完整的正则表达式

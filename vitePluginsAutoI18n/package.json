@@ -1,7 +1,7 @@
 {
     "name": "vite-plugin-auto-i18n",
     "version": "0.0.8",
-    "description": "vite automatic translation plugin based on Google translation api.",
+    "description": "Vite automatic translation plugin compatible with Rollup",
     "keywords": [
         "i18n",
         "auto i18n",

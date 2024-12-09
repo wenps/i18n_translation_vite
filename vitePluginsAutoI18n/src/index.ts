@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-11-18 19:15:13
+ * @LastEditTime: 2024-12-09 14:28:49
  * @FilePath: /i18n_translation_vite/vitePluginsAutoI18n/src/index.ts
  */
 import {
@@ -46,9 +46,8 @@ export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
             }
         },
         async transform(code: string, path: string) {
+            // todo 没有目标语言直接返回
             if (allowedExtensions.some(ext => path.endsWith(ext))) {
-                // @TODOS 调试先注释，记得做适配
-                // if (!baseUtils.hasChineseSymbols(baseUtils.unicodeToChinese(code))) return code;
                 if (
                     option.includePath.length &&
                     !baseUtils.checkAgainstRegexArray(path, option.includePath)

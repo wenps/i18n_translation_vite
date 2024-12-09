@@ -1,6 +1,6 @@
 {
-    "name": "i18n_translation_vite",
-    "version": "0.0.0",
+    "name": "i18n_auto_translation",
+    "version": "0.0.1",
     "scripts": {
         "dev": "node script/build.js d",
         "preview": "node script/preview.js",
@@ -10,7 +10,7 @@
         "format": "npx prettier . --write",
         "prepare": "husky install"
     },
-    "description": "vite auto-translation plugin based on Google api, not intrusive to the source code.",
+    "description": "Web automatic translation, supports custom translators, default support for Youdao Translation and Google Translate, compatible with webpack, vite, rollup and other build and development tools, allowing you to translate with just one click.",
     "devDependencies": {
         "@inquirer/prompts": "^4.1.0",
         "@types/node": "^20.3.3",

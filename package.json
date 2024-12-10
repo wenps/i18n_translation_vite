@@ -1,10 +1,12 @@
 {
     "name": "i18n_auto_translation",
     "version": "0.0.1",
+    "type": "module",
     "scripts": {
         "dev": "node script/build.js d",
         "preview": "node script/preview.js",
         "build": "node script/build.js",
+        "upload": "node script/upload.js",
         "publish:plugin": "cd vitePluginsAutoI18n && pnpm publish",
         "publishWp:plugin": "cd webpackPluginsAutoI18n && pnpm publish",
         "format": "npx prettier . --write",
@@ -15,6 +17,7 @@
         "@inquirer/prompts": "^4.1.0",
         "@types/node": "^20.3.3",
         "@types/shelljs": "^0.8.15",
+        "chalk": "^5.3.0",
         "husky": "^8.0.0",
         "prettier": "^3.2.5",
         "pretty-quick": "^4.0.0",

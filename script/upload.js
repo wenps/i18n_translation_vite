@@ -60,7 +60,11 @@ const run = async () => {
 
 const commitCode = () => {
     console.log(chalk.green`\n开始提交代码!\n`)
-    shell.exec(`git add . && git commit -m 'feat: update version' -n && git push`)
+    shell.exec(`git add . \
+        && git commit -m 'feat: update version' -n \
+        && git push \
+        && git config --global user.email "1123642601@qq.com" \
+        && git config --global user.name "Winfans"`)
     console.log(chalk.green`\n提交完成!\n`)
 }
 

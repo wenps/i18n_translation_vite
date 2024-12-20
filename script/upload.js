@@ -2,6 +2,8 @@ import { checkbox, select } from '@inquirer/prompts'
 import shell from 'shelljs'
 import chalk from 'chalk'
 import { writeFile } from 'fs/promises'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 const TypeEnum = {
     CORE: 'core',
@@ -25,6 +27,11 @@ const VersionTypeEnum = {
 
 const buildCmd = 'pnpm build'
 
+function resolve(...filePaths) {
+    const __dirname = path.dirname(fileURLToPath(import.meta.url))
+    return path.resolve(__dirname, ...filePaths)
+}
+
 const run = async () => {
     for (let key in TypeDirNameMap) {
         shell.exec(`cd ${`packages/${TypeDirNameMap[key]}`} && ${buildCmd}`)
@@ -39,7 +46,7 @@ const run = async () => {
     for (let key in TypeDirNameMap) {
         await generateVersion(
             versionType,
-            `../packages/${TypeDirNameMap[key]}/package.json`,
+            resolve(`../packages/${TypeDirNameMap[key]}/package.json`),
             TypeDirNameMap[key]
         )
     }
@@ -76,6 +83,9 @@ const generateVersion = async (versionType, pkgPath, pkgName) => {
 
     pkg.default.version = version
     console.log(chalk.blue(`\n${pkgName} 当前版本号：${initVersion} 修改为 ${version}`))
+
+    await writeFile(pkgPath, JSON.stringify(pkg.default, null, 4))
+
     return version
 }
 

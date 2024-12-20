@@ -63,8 +63,8 @@ const commitCode = () => {
     shell.exec(`git add . \
         && git commit -m 'feat: update version' -n \
         && git push \
-        && git config user.email "1123642601@qq.com" \
-        && git config user.name "Winfans"`)
+        && git config --global user.email "1123642601@qq.com" \
+        && git config --global user.name "Winfans"`)
     console.log(chalk.green`\n提交完成!\n`)
 }
 

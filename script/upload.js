@@ -26,6 +26,8 @@ const VersionTypeEnum = {
 
 const buildCmd = 'pnpm build'
 
+const publishCmd = 'pnpm publish'
+
 function resolve(...filePaths) {
     const __dirname = path.dirname(fileURLToPath(import.meta.url))
     return path.resolve(__dirname, ...filePaths)
@@ -52,6 +54,8 @@ const run = async () => {
     console.log(chalk.green`\n修改完成!\n`)
 
     commitCode()
+
+    uploadPackage()
 }
 
 const commitCode = () => {
@@ -86,6 +90,12 @@ const generateVersion = async (versionType, pkgPath, pkgName) => {
     await writeFile(pkgPath, JSON.stringify(pkg.default, null, 4))
 
     return version
+}
+
+const uploadPackage = () => {
+    for (let key in TypeDirNameMap) {
+        shell.exec(`cd ${`packages/${TypeDirNameMap[key]}`} && ${publishCmd}`)
+    }
 }
 
 run()

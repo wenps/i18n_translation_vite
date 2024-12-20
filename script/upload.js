@@ -1,4 +1,3 @@
-import { checkbox, select } from '@inquirer/prompts'
 import shell from 'shelljs'
 import chalk from 'chalk'
 import { writeFile } from 'fs/promises'

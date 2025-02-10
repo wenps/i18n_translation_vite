@@ -3,11 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "preview": "vite",
-        "i18n": "vite build -- i18n",
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "dev": "vite"
     },
     "dependencies": {
         "@vitejs/plugin-vue2": "^2.3.1",
@@ -25,9 +21,9 @@
         "@vue/cli-plugin-pwa": "^3.0.5",
         "@vue/cli-plugin-typescript": "^3.0.5",
         "@vue/cli-service": "^3.0.5",
-        "vite-plugin-auto-i18n": "workspace:*",
-        "typescript": "^3.4.3",
+        "typescript": "^5.7.3",
         "vite": "^5.0.2",
+        "vite-auto-i18n-plugin": "workspace:*",
         "vite-plugin-html": "^3.2.0",
         "vite-plugin-vue2": "^2.0.3",
         "vue-template-compiler": "^2.6.10"

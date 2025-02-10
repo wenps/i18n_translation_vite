@@ -1,4 +1,4 @@
-# vite-plugin-auto-i18n
+# vite-auto-i18n-plugin
 
 ## 介绍
 
@@ -23,7 +23,7 @@ demo项目地址：[demo](https://github.com/wenps/vitePluginAutoI18nDemo)
 ### 安装
 
 ```
-npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
+npm i vite-auto-i18n-plugin -D # yarn add vite-auto-i18n-plugin -D
 ```
 
 ### 配置

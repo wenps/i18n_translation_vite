@@ -1,38 +1,41 @@
 {
-    "name": "i18n_translation_vite",
-    "version": "0.0.0",
+    "name": "vue3 example",
+    "version": "1.0.0",
+    "private": true,
     "scripts": {
         "dev": "vite",
-        "preview": "vite build && vite preview",
-        "build": "vite build"
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "eslint --ext .js,.vue,.ts src",
+        "lint:fix": "eslint --ext .js,.vue,.ts src --fix"
     },
-    "description": "基于vite i18n 自动翻译 插件",
+    "description": "vue3 示例",
     "dependencies": {
+        "@vitalets/google-translate-api": "^9.2.0",
+        "ant-design-vue": "^3.2.20",
+        "vue": "^3.3.0",
+        "vue-router": "^4.2.2",
+        "pinia": "^2.1.4"
+    },
+    "devDependencies": {
+        "vite-auto-i18n-plugin": "workspace:*",
         "@babel/core": "^7.23.2",
         "@babel/preset-env": "^7.23.2",
         "@babel/preset-typescript": "^7.23.2",
-        "@vitalets/google-translate-api": "^9.2.0",
-        "ant-design-vue": "^3.2.20",
-        "json-format": "^1.0.1",
-        "tunnel": "0.0.6",
-        "vite-plugin-auto-i18n": "workspace:*",
-        "vue": "^3.2.13",
-        "vue-loader": "^17.2.2",
-        "vue-router": "^4.2.2"
-    },
-    "devDependencies": {
         "@types/node": "^20.3.3",
         "@vitejs/plugin-vue": "^5.0.4",
         "babel-plugin-import": "^1.13.6",
         "eslint": "^8.52.0",
         "eslint-plugin-vue": "^9.15.1",
+        "json-format": "^1.0.1",
         "less": "^4.2.0",
-        "pinia": "^2.1.4",
         "sass": "^1.63.6",
         "sass-loader": "^13.3.2",
+        "tunnel": "0.0.6",
         "typescript": "^5.1.6",
         "vite": "^5.1.5",
         "vite-plugin-legacy": "^2.1.0",
+        "vue-loader": "^17.2.2",
         "vue-template-compiler": "^2.7.16"
     }
 }

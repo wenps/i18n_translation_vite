@@ -1,13 +1,13 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2023-11-15 13:40:34
+ * @LastEditTime: 2025-02-10 19:12:24
  * @FilePath: /i18n_translation_vite/example/vue3/vite.config.ts
  */
 import path from 'path'
 import { defineConfig } from 'vite'
-import vuePluginsAutoI18n from 'vite-plugin-auto-i18n'
 import createVuePlugin from '@vitejs/plugin-vue'
+import vitePluginsAutoI18n from 'vite-auto-i18n-plugin'
 
 const vuePlugin = createVuePlugin({
     include: [/\.vue$/],
@@ -18,8 +18,7 @@ const vuePlugin = createVuePlugin({
         }
     }
 })
-
-const i18nPlugin = vuePluginsAutoI18n({
+const i18nPlugin = vitePluginsAutoI18n({
     option: {
         globalPath: './lang',
         namespace: 'lang',

@@ -1,3 +1,9 @@
+/*
+ * @Date: 2025-01-08 11:51:33
+ * @LastEditors: xiaoshan
+ * @LastEditTime: 2025-02-10 19:20:22
+ * @FilePath: /i18n_translation_vite/packages/vitePluginsAutoI18n/rollup.config.ts
+ */
 import { defineConfig } from 'rollup'
 import typescript from '@rollup/plugin-typescript'
 import path from 'node:path'

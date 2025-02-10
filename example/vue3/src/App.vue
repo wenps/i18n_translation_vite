@@ -1,119 +1,114 @@
 <!--
- * @Author: xiaoshanwen
- * @Date: 2023-08-11 09:56:13
- * @LastEditTime: 2024-04-03 18:01:22
- * @FilePath: /i18n_translation_vite/example/vue3/src/App.vue
+ * @Date: 2025-01-23 13:44:37
+ * @LastEditors: xiaoshan
+ * @LastEditTime: 2025-01-23 18:55:09
+ * @FilePath: /element-tag-marker/example/vue3/src/App.vue
 -->
 <template>
-    <div class="main">
-        <header :name="name ? '小山' : $emit('text')">
-            <div class="title">
-                <img
-                    class="icon"
-                    @click="toPath"
-                    :name="name ? '小山' : $emit('text')"
-                    :src="img1"
-                />
-                自动国际化插件
-            </div>
-            <div class="operation">
-                <a-button @click="changeLang('zhcn')" class="mr10">中文</a-button>
-                <a-button @click="changeLang('en')" class="mr10">英文</a-button>
-                <a-button @click="changeLang('ko')" class="mr10">韩文</a-button>
-                <a-button @click="changeLang('ja')" class="mr10">日文</a-button>
-            </div>
-        </header>
-        <main>
-            <router-view></router-view>
-        </main>
-    </div>
+  <div class="app">
+    <nav class="navbar" v-bind="xx" aa="311">
+      <div class="logo">FutureTech</div>
+      <div class="nav-links">
+        <router-link v-for="link in navLinks" 
+                    :key="link.path" 
+                    :to="link.path">
+          {{ link.text }}
+        </router-link>
+      </div>
+    </nav>
+
+    <router-view></router-view>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>联系我们</h3>
+          <p>电话：400-888-8888</p>
+          <p>邮箱：contact@futuretech.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>关注我们</h3>
+          <div class="social-links">
+            <a href="#" target="_blank">微信</a>
+            <a href="#" target="_blank">微博</a>
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 FutureTech. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-    data() {
-        return {
-            name: 1,
-            img1: 'https://www.antdv.com/assets/logo.1ef800a8.svg'
-        }
-    },
-    methods: {
-        nameA(data: string) {
-            return data
-        },
-        toPath() {
-            this.$router.push({ name: 'test', params: { myid: this.name } })
-        },
-        changeLang(value: string) {
-            localStorage.setItem('lang', value)
-            location.reload()
-        }
-    }
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const xx = ref({
+  name:1312
 })
+
+const navLinks = ref([
+  { path: '/', text: '首页' },
+  { path: '/products', text: '产品' },
+  { path: '/about', text: '关于' },
+  { path: '/contact', text: '联系我们' }
+])
 </script>
-<style lang="scss" scoped>
-main {
-    padding: 20px;
+
+<style>
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-.main {
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    header {
-        width: 100%;
-        height: 64px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        z-index: 10;
-        .title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-left: 60px;
-            height: inherit;
-            .icon {
-                height: 32px;
-                width: 32px;
-                margin-right: 16px;
-            }
-            .name {
-                color: #000000d9;
-                font-size: 18px;
-                font-family:
-                    Avenir,
-                    -apple-system,
-                    BlinkMacSystemFont,
-                    Segoe UI,
-                    Roboto,
-                    Helvetica Neue,
-                    Arial,
-                    Noto Sans,
-                    sans-serif,
-                    'Apple Color Emoji',
-                    'Segoe UI Emoji',
-                    Segoe UI Symbol,
-                    'Noto Color Emoji',
-                    sans-serif;
-                font-weight: 500;
-            }
-        }
-        .operation {
-            height: inherit;
-            display: flex;
-            align-items: center;
-        }
-    }
-    main {
-        flex: 1;
-        overflow: auto;
-        display: flex;
-    }
-    .mr10 {
-        margin-right: 10px;
-    }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-</style>
+
+.nav-links a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav-links a.router-link-active {
+  color: #007bff;
+}
+
+.footer {
+  margin-top: auto;
+  background: #333;
+  color: white;
+  padding: 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-links a {
+  margin-right: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #555;
+}
+</style> 
+ <!-- element-tag-marker: rjyn8k21 -->

@@ -1,4 +1,4 @@
-# vite-plugin-auto-i18n
+# vite-auto-i18n-plugin
 
 ## Introduction
 
@@ -23,7 +23,7 @@ vite auto-translation plugin based on Google api, not intrusive to the source co
 ### Install
 
 ```
-npm i vite-plugin-auto-i18n -D # yarn add vite-plugin-auto-i18n -D
+npm i vite-auto-i18n-plugin -D # yarn add vite-auto-i18n-plugin -D
 ```
 
 ### Option

@@ -1,13 +1,33 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-11-18 19:10:08
+ * @LastEditTime: 2025-02-10 19:03:55
  * @FilePath: /i18n_translation_vite/example/vue2/vite.config.ts
  */
 import path from 'path'
 import { defineConfig } from 'vite'
-import vuePluginsAutoI18n, { YoudaoTranslator } from '../../vitePluginsAutoI18n/src/index'
 import vue from '@vitejs/plugin-vue2'
+import vitePluginsAutoI18n, { YoudaoTranslator } from 'vite-auto-i18n-plugin'
+
+const i18nPlugin = vitePluginsAutoI18n({
+    option: {
+        globalPath: './lang',
+        namespace: 'lang',
+        distPath: './dist/assets',
+        distKey: 'index',
+        targetLangList: ['en', 'ko', 'ja'],
+        originLang: 'zh-cn',
+        translator: new YoudaoTranslator({
+            appId: '4cdb9baea8066fef',
+            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j',
+            proxy: {
+                host: '127.0.0.1',
+                port: 8899,
+                protocol: 'http'
+            }
+        })
+    }
+})
 
 export default defineConfig({
     resolve: {
@@ -22,35 +42,5 @@ export default defineConfig({
             plugins: path.resolve(__dirname, './src/plugins')
         }
     },
-    plugins: [
-        vue(),
-        vuePluginsAutoI18n({
-            option: {
-                globalPath: './lang',
-                namespace: 'lang',
-                distPath: './dist/assets',
-                distKey: 'index',
-                targetLangList: ['en', 'ko', 'ja'],
-                originLang: 'zh-cn',
-                translator: new YoudaoTranslator({
-                    appId: '4cdb9baea8066fef',
-                    appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j',
-                    proxy: {
-                        host: '127.0.0.1',
-                        port: 8899,
-                        protocol: 'http'
-                    }
-                })
-                // translator: new GoogleTranslator({
-                //     proxyOption: {
-                //         host: '127.0.0.1',
-                //         port: 8899,
-                //         headers: {
-                //             'User-Agent': 'Node'
-                //         }
-                //     }
-                // })
-            }
-        })
-    ]
+    plugins: [vue(), i18nPlugin]
 })

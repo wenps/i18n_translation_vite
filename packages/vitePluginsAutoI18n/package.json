@@ -1,5 +1,5 @@
 {
-    "name": "vite-plugin-auto-i18n",
+    "name": "vite-auto-i18n-plugin",
     "version": "0.0.13",
     "description": "Vite automatic translation plugin compatible with Rollup",
     "keywords": [

@@ -23,7 +23,7 @@ import fs from 'fs'
 const allowedExtensions = ['.vue', '.ts', '.js', '.tsx', '.jsx']
 
 export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
-    const name = 'vite-plugin-auto-i18n'
+    const name = 'vite-auto-i18n-plugin'
     let config: ResolvedConfig
     let disabled = true
     let tempDir = ''

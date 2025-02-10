@@ -1,14 +1,14 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-23 15:52:50
- * @LastEditTime: 2023-11-23 16:11:36
- * @FilePath: /i18n_translation_vite/example/vue2/src/router.ts
+ * @LastEditTime: 2025-01-22 11:02:55
+ * @FilePath: /element-tag-marker/example/vue2/src/router.ts
  */
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
     mode: 'hash',
@@ -17,15 +17,31 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: Home
+            component: Home,
+        },
+        {
+            path: '/products',
+            name: 'products',
+            component: () => import('./views/Products.vue'),
+        },
+        {
+            path: '/solutions',
+            name: 'solutions',
+            component: () => import('./views/Solutions.vue'),
         },
         {
             path: '/about',
             name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-        }
-    ]
-})
+            component: () => import('./views/About.vue'),
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: () => import('./views/Contact.vue'),
+        },
+    ],
+});
+
+ // element-tag-marker: 67v6b623
+
+ // element-tag-marker: 67v6b623

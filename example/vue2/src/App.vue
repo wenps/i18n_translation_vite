@@ -1,28 +1,28 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-11-23 15:52:50
- * @LastEditTime: 2024-11-18 19:06:36
- * @FilePath: /i18n_translation_vite/example/vue2/src/App.vue
+ * @LastEditTime: 2025-02-05 16:24:16
+ * @FilePath: /element-tag-marker/example/vue2/src/App.vue
 -->
 <template>
-    <div id="app">
-        <div class="main">
-            <header :name="name ? '小山' : $emit('text')">
-                <div class="title">
+    <div   id="app">
+        <div  v-bind="xx"  class="main">
+            <header class="header">
+                <div   class="logo">
                     <img
-                        class="icon"
-                        @click="jump"
-                        :name="name ? '小山' : $emit('text')"
-                        :src="img1"
+                        class="logo-img"
+                        @click="goHome"
+                        :src="logoUrl"
+                        alt="Logo"
                     />
-                    自动国际化插件
+                    <span @click="goHome1" class="site-name">企业门户</span>
                 </div>
-                <div class="operation">
-                    <a-button @click="changeLang('zhcn')" class="mr10">中文</a-button>
-                    <a-button @click="changeLang('en')" class="mr10">英文</a-button>
-                    <a-button @click="changeLang('ko')" class="mr10">韩文</a-button>
-                    <a-button @click="changeLang('ja')" class="mr10">日文</a-button>
-                </div>
+                <nav class="nav-menu">
+                    <a-button @click="navigate('products')" class="nav-item">产品服务</a-button>
+                    <a-button @click="navigate('solutions')" class="nav-item">解决方案</a-button>
+                    <a-button @click="navigate('about')" class="nav-item">关于我们</a-button>
+                    <a-button @click="navigate('contact')" class="nav-item">联系我们</a-button>
+                </nav>
             </header>
             <main>
                 <router-view></router-view>
@@ -30,23 +30,27 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     data() {
         return {
-            name: 1,
-            img1: 'https://www.antdv.com/assets/logo.1ef800a8.svg'
+            logoUrl: 'https://www.antdv.com/assets/logo.1ef800a8.svg',
+            xx: {
+                name: 'element-tag-marker',
+                description: 'element-tag-marker'
+            }
         }
     },
     methods: {
-        changeLang(value) {
-            localStorage.setItem('lang', value)
-            location.reload()
+        navigate(route) {
+            this.$router.push({ name: route })
         },
-        jump() {
-            this.$router.push({
-                name: 'about'
-            })
+        goHome1() {
+            this.$router.push({ name: 'home' })
+        },
+        goHome() {
+            this.$router.push({ name: 'about' })
         }
     }
 }
@@ -57,22 +61,49 @@ export default {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
 }
-#nav {
-    padding: 30px;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-#nav a {
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 1rem;
+}
+
+.site-name {
+    font-size: 1.5rem;
     font-weight: bold;
     color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-    color: #42b983;
+.nav-menu {
+    display: flex;
+    gap: 1rem;
 }
+
+.nav-item {
+    font-weight: 500;
+}
+
 main {
-    padding: 20px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 </style>
+
+ <!-- element-tag-marker: wenag321 -->

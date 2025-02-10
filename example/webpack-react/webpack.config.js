@@ -1,15 +1,17 @@
 /*
  * @Date: 2025-01-23 13:43:39
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-10 19:11:48
+ * @LastEditTime: 2025-02-10 23:06:07
  * @FilePath: /i18n_translation_vite/example/webpack-react/webpack.config.js
  */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-import webpackPluginsAutoI18n, { YoudaoTranslator } from 'webpack-auto-i18n-plugin'
+const webpackPluginsAutoI18n = require('webpack-auto-i18n-plugin')
 
-const i18nPlugin = new webpackPluginsAutoI18n({
+const { YoudaoTranslator } = require('webpack-auto-i18n-plugin')
+
+const i18nPlugin = new webpackPluginsAutoI18n.default({
     option: {
         globalPath: './lang',
         namespace: 'lang',

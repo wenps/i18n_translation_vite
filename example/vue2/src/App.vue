@@ -1,23 +1,32 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-11-23 15:52:50
- * @LastEditTime: 2025-02-05 16:24:16
- * @FilePath: /element-tag-marker/example/vue2/src/App.vue
+ * @LastEditTime: 2025-02-10 22:46:38
+ * @FilePath: /i18n_translation_vite/example/vue2/src/App.vue
 -->
 <template>
-    <div   id="app">
-        <div  v-bind="xx"  class="main">
+    <div id="app">
+        <div v-bind="xx" class="main">
             <header class="header">
-                <div   class="logo">
-                    <img
-                        class="logo-img"
-                        @click="goHome"
-                        :src="logoUrl"
-                        alt="Logo"
-                    />
+                <div class="logo">
+                    <img class="logo-img" @click="goHome" :src="logoUrl" alt="Logo" />
                     <span @click="goHome1" class="site-name">企业门户</span>
                 </div>
                 <nav class="nav-menu">
+                    <div class="operation">
+                        <a-button @click="changeLang('zhcn')" style="margin-right: 10px">
+                            中文
+                        </a-button>
+                        <a-button @click="changeLang('en')" style="margin-right: 10px">
+                            英文
+                        </a-button>
+                        <a-button @click="changeLang('ko')" style="margin-right: 10px">
+                            韩文
+                        </a-button>
+                        <a-button @click="changeLang('ja')" style="margin-right: 10px">
+                            日文
+                        </a-button>
+                    </div>
                     <a-button @click="navigate('products')" class="nav-item">产品服务</a-button>
                     <a-button @click="navigate('solutions')" class="nav-item">解决方案</a-button>
                     <a-button @click="navigate('about')" class="nav-item">关于我们</a-button>
@@ -43,6 +52,10 @@ export default {
         }
     },
     methods: {
+        changeLang(value) {
+            localStorage.setItem('lang', value)
+            location.reload()
+        },
         navigate(route) {
             this.$router.push({ name: route })
         },
@@ -70,7 +83,7 @@ export default {
     align-items: center;
     padding: 1rem 2rem;
     background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -106,4 +119,4 @@ main {
 }
 </style>
 
- <!-- element-tag-marker: wenag321 -->
+<!-- element-tag-marker: wenag321 -->

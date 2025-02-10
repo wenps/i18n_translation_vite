@@ -1,8 +1,14 @@
+/*
+ * @Date: 2025-02-06 16:17:07
+ * @LastEditors: xiaoshan
+ * @LastEditTime: 2025-02-10 22:12:30
+ * @FilePath: /i18n_translation_vite/script/preview.js
+ */
 // @ts-check
-const shell = require('shelljs')
-const { select } = require('@inquirer/prompts')
-const fs = require('fs')
-const util = require('util')
+import shell from 'shelljs' // 使用 import 引入 shelljs 模块
+import { select } from '@inquirer/prompts' // 使用 import 引入 select 函数
+import fs from 'fs' // 使用 import 引入 fs 模块
+import util from 'util' // 使用 import 引入 util 模块
 
 const run = async () => {
     const readdir = util.promisify(fs.readdir)
@@ -25,7 +31,7 @@ const run = async () => {
     })
 
     shell.cd(`example/${example}`)
-    shell.exec('pnpm preview')
+    shell.exec('pnpm run dev')
 }
 
 run()

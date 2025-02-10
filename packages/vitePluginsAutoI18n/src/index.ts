@@ -1,7 +1,7 @@
 /*
  * @Author: 小山
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2024-12-16 13:59:51
+ * @LastEditTime: 2025-02-10 22:17:18
  * @FilePath: /i18n_translation_vite/packages/vitePluginsAutoI18n/src/index.ts
  */
 import {
@@ -37,6 +37,14 @@ export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
     translateUtils.initLangObj(originLangObj)
     const plugin: Plugin = {
         name,
+        configResolved(resolvedConfig) {
+            // 存储最终解析的配置
+            config = resolvedConfig
+            if (process.argv.includes('i18n')) {
+                disabled = false
+                config.build.outDir = tempDir = `dist/vite-i18n-output_${+new Date()}`
+            }
+        },
         async transform(code: string, path: string) {
             // todo 没有目标语言直接返回
             if (allowedExtensions.some(ext => path.endsWith(ext))) {
@@ -58,7 +66,7 @@ export default function vitePluginsAutoI18n(optionInfo: OptionInfo): any {
                         configFile: false,
                         plugins: [filter.default]
                     })
-                    if (config.command === 'serve') {
+                    if (config?.command === 'serve') {
                         await translateUtils.autoTranslate()
                     }
 

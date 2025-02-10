@@ -1,13 +1,33 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2025-02-10 19:12:24
+ * @LastEditTime: 2025-02-10 22:52:10
  * @FilePath: /i18n_translation_vite/example/vue3/vite.config.ts
  */
 import path from 'path'
 import { defineConfig } from 'vite'
 import createVuePlugin from '@vitejs/plugin-vue'
-import vitePluginsAutoI18n from 'vite-auto-i18n-plugin'
+import vitePluginsAutoI18n, { YoudaoTranslator } from 'vite-auto-i18n-plugin'
+
+const i18nPlugin = vitePluginsAutoI18n({
+    option: {
+        globalPath: './lang',
+        namespace: 'lang',
+        distPath: './dist/assets',
+        distKey: 'index',
+        targetLangList: ['en', 'ko', 'ja'],
+        originLang: 'zh-cn',
+        translator: new YoudaoTranslator({
+            appId: '4cdb9baea8066fef',
+            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j',
+            proxy: {
+                host: '127.0.0.1',
+                port: 8899,
+                protocol: 'http'
+            }
+        })
+    }
+})
 
 const vuePlugin = createVuePlugin({
     include: [/\.vue$/],
@@ -18,15 +38,16 @@ const vuePlugin = createVuePlugin({
         }
     }
 })
-const i18nPlugin = vitePluginsAutoI18n({
-    option: {
-        globalPath: './lang',
-        namespace: 'lang',
-        distPath: './dist/assets',
-        distKey: 'index',
-        targetLangList: ['en', 'ko', 'ja']
-    }
-})
+// 默认谷歌
+// const i18nPlugin = vitePluginsAutoI18n({
+//     option: {
+//         globalPath: './lang',
+//         namespace: 'lang',
+//         distPath: './dist/assets',
+//         distKey: 'index',
+//         targetLangList: ['en', 'ko', 'ja']
+//     }
+// })
 
 export default defineConfig({
     resolve: {

@@ -1,12 +1,12 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-23 15:52:50
- * @LastEditTime: 2025-02-10 22:14:09
+ * @LastEditTime: 2025-02-11 10:26:29
  * @FilePath: /i18n_translation_vite/example/vue2/src/main.js
  */
 import Vue from 'vue'
 import App from './App.vue'
-import './lang/index'
+import './LangInit/index'
 import router from './router'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'

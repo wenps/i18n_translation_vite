@@ -1,7 +1,7 @@
 /*
  * @Date: 2025-02-10 18:58:20
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-10 23:08:12
+ * @LastEditTime: 2025-02-11 10:33:19
  * @FilePath: /i18n_translation_vite/example/webpack-react/src/components/Navbar.tsx
  */
 import React from 'react'
@@ -15,7 +15,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo">TechCorp</div>
-            <div className="operation">
+            <div className="operation" style={{ display: 'flex' }}>
                 <div onClick={() => changeLang('zhcn')} style={{ marginRight: '10px' }}>
                     中文
                 </div>

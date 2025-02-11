@@ -1,15 +1,18 @@
 /*
  * @Date: 2025-01-23 13:44:00
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-10 19:09:51
+ * @LastEditTime: 2025-02-11 10:37:05
  * @FilePath: /i18n_translation_vite/example/webpack-vue3/webpack.config.js
  */
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-import webpackPluginsAutoI18n, { YoudaoTranslator } from 'webpack-auto-i18n-plugin'
 
-const i18nPlugin = new webpackPluginsAutoI18n({
+const webpackPluginsAutoI18n = require('webpack-auto-i18n-plugin')
+
+const { YoudaoTranslator } = require('webpack-auto-i18n-plugin')
+
+const i18nPlugin = new webpackPluginsAutoI18n.default({
     option: {
         globalPath: './lang',
         namespace: 'lang',

@@ -1,3 +1,9 @@
+/*
+ * @Date: 2025-01-08 11:51:33
+ * @LastEditors: xiaoshan
+ * @LastEditTime: 2025-02-11 10:59:00
+ * @FilePath: /i18n_translation_vite/packages/webpackPluginsAutoI18n/rollup.config.ts
+ */
 import { defineConfig } from 'rollup'
 import typescript from '@rollup/plugin-typescript'
 import path from 'node:path'
@@ -10,7 +16,7 @@ function resolve(filePath: string) {
 }
 
 const input = resolve('./src/index.ts')
-const loaderInput = resolve('./src/Loader/index.ts')
+const loaderInput = resolve('./src/customLoader/index.ts')
 
 /**
  * @description: 翻译插件打包
@@ -43,11 +49,11 @@ const loaderBuildConfig = defineConfig({
     input: loaderInput,
     output: [
         {
-            file: resolve('./dist/Loader/index.mjs'),
+            file: resolve('./dist/customLoader/index.mjs'),
             format: 'esm'
         },
         {
-            file: resolve('./dist/Loader/index.cjs'),
+            file: resolve('./dist/customLoader/index.cjs'),
             format: 'cjs'
         }
     ],
@@ -65,7 +71,7 @@ const loaderBuildConfig = defineConfig({
 const loaderDtsConfig = defineConfig({
     input: loaderInput,
     output: {
-        file: resolve('./dist/Loader/index.d.ts'),
+        file: resolve('./dist/customLoader/index.d.ts'),
         format: 'esm'
     },
     plugins: [

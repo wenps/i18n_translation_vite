@@ -1,7 +1,7 @@
 /*
  * @Date: 2025-01-08 11:51:33
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-10 23:12:22
+ * @LastEditTime: 2025-02-11 10:10:14
  * @FilePath: /i18n_translation_vite/packages/webpackPluginsAutoI18n/src/Loader/index.ts
  */
 import { LoaderContext } from 'webpack'
@@ -38,8 +38,6 @@ module.exports = function (source): string {
         return source
 
     FunctionFactoryOption.originLang = option.originLang
-
-    console.log(source)
 
     try {
         // 过滤代码语言

@@ -18,6 +18,12 @@
         },
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/LangInit/index.js"],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "src/LangInit/index.js",
+        "src/LangInit/index.js"
+    ],
     "exclude": ["node_modules"]
 }

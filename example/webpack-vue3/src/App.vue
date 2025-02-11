@@ -1,14 +1,20 @@
 <!--
  * @Date: 2025-01-23 13:44:37
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-11 10:41:49
+ * @LastEditTime: 2025-02-11 11:09:27
  * @FilePath: /i18n_translation_vite/example/webpack-vue3/src/App.vue
 -->
 <template>
     <div class="app">
         <nav class="navbar">
             <div class="logo">FutureTech</div>
-            <div class="nav-links">
+            <div class="nav-links" style="display: flex">
+                <div class="operation">
+                    <button @click="changeLang('zhcn')" style="margin-right: 10px">中文</button>
+                    <button @click="changeLang('en')" style="margin-right: 10px">英文</button>
+                    <button @click="changeLang('ko')" style="margin-right: 10px">韩文</button>
+                    <button @click="changeLang('ja')" style="margin-right: 10px">日文</button>
+                </div>
                 <router-link v-for="link in navLinks" :key="link.path" :to="link.path">
                     {{ link.text }}
                 </router-link>
@@ -41,6 +47,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+
+const changeLang = function (value: string) {
+    window.localStorage.setItem('lang', value)
+    window.location.reload()
+}
 
 const navLinks = ref([
     { path: '/', text: '首页' },

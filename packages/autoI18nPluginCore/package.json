@@ -1,6 +1,6 @@
 {
     "name": "auto-i18n-plugin-core",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "description": "vite, webpack automatic translation plugin core code.",
     "keywords": [
         "i18n",
@@ -39,7 +39,8 @@
         "@vitalets/google-translate-api": "^9.2.0",
         "json-format": "^1.0.1",
         "lodash": "^4.17.21",
-        "tunnel": "0.0.6"
+        "tunnel": "0.0.6",
+        "crypto-js": "^4.2.0"
     },
     "devDependencies": {
         "@babel/types": "^7.23.0",

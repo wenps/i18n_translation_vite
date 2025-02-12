@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2025-02-11 10:57:45
+ * @LastEditTime: 2025-02-11 23:09:10
  * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/option.ts
  */
 
@@ -24,10 +24,10 @@ const DEFAULT_OPTION = {
     /** 标记不用翻译的字符串模式数组，默认是匹配文件扩展名 */
     excludedPattern: [/\.\w+$/],
 
-    /** 排查不需要翻译的目录下的文件路径（白名单） */
-    excludedPath: [] as string[],
+    /** 排查不需要翻译的目录下的文件路径（黑名单）, 默认不处理node_modules */
+    excludedPath: ['node_modules'] as string[],
 
-    /** 指定需要翻译文件的目录路径正则（黑名单） */
+    /** 指定需要翻译文件的目录路径正则（白名单） */
     includePath: [/src\//],
 
     /** 配置文件生成位置，默认为 './lang' */

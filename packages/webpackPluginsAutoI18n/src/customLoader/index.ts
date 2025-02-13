@@ -1,7 +1,7 @@
 /*
  * @Date: 2025-01-08 11:51:33
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-11 11:01:12
+ * @LastEditTime: 2025-02-14 01:02:04
  * @FilePath: /i18n_translation_vite/packages/webpackPluginsAutoI18n/src/customLoader/index.ts
  */
 
@@ -26,7 +26,7 @@ type option = {
  */
 module.exports = function (source): string {
     // 从核心模块中解构出工具函数、选项以及过滤逻辑
-    const { baseUtils, option, FunctionFactoryOption, filter } = core
+    const { baseUtils, option, filter } = core
 
     // 获取 Webpack 的 Loader 上下文，方便访问文件路径及其他相关信息
     const global = this as unknown as LoaderContext<option>
@@ -49,9 +49,6 @@ module.exports = function (source): string {
     ) {
         return source // 在黑名单目录中的文件，不处理，直接返回原始代码。
     }
-
-    // 配置初始语言选项，将来源语言设置为配置的 originLang
-    FunctionFactoryOption.originLang = option.originLang
 
     try {
         /**

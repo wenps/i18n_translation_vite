@@ -1,6 +1,6 @@
 {
     "name": "vite-auto-i18n-plugin",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "description": "Vite automatic translation plugin compatible with Rollup",
     "keywords": [
         "i18n",
@@ -35,16 +35,21 @@
         "@babel/core": "^7.23.2",
         "@babel/preset-env": "^7.23.2",
         "@babel/preset-typescript": "^7.23.2",
-        "auto-i18n-plugin-core": "workspace:*"
+        "auto-i18n-plugin-core": "workspace:*",
+        "axios": "^1.6.8",
+        "crypto-js": "^4.2.0",
+        "lodash": "^4.17.21"
     },
     "devDependencies": {
         "@babel/types": "^7.23.0",
-        "rollup": "^4.3.0",
-        "rollup-plugin-dts": "^6.1.0",
+        "@rollup/plugin-babel": "^6.0.4",
+        "rollup-plugin-terser": "^7.0.2",
         "@rollup/plugin-typescript": "^11.1.5",
         "@types/babel__core": "^7.20.3",
         "@types/node": "^20.3.3",
         "babel-plugin-import": "^1.13.6",
+        "rollup": "^4.3.0",
+        "rollup-plugin-dts": "^6.1.0",
         "rollup-plugin-node-externals": "^7.1.2",
         "typescript": "^5.1.6",
         "vite": "^2.8.6",

@@ -399,6 +399,12 @@ importers:
       '@vitalets/google-translate-api':
         specifier: ^9.2.0
         version: 9.2.0
+      axios:
+        specifier: ^1.6.8
+        version: 1.7.4
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
       json-format:
         specifier: ^1.0.1
         version: 1.0.1
@@ -415,6 +421,9 @@ importers:
       '@rollup/plugin-alias':
         specifier: ^5.1.0
         version: 5.1.0(rollup@4.20.0)
+      '@rollup/plugin-babel':
+        specifier: ^6.0.4
+        version: 6.0.4(@babel/core@7.26.0)(@types/babel__core@7.20.5)(rollup@4.20.0)
       '@rollup/plugin-node-resolve':
         specifier: ^15.2.3
         version: 15.2.3(rollup@4.20.0)
@@ -448,6 +457,9 @@ importers:
       rollup-plugin-node-externals:
         specifier: ^7.1.2
         version: 7.1.2(rollup@4.20.0)
+      rollup-plugin-terser:
+        specifier: ^7.0.2
+        version: 7.0.2(rollup@4.20.0)
       typescript:
         specifier: ^5.1.6
         version: 5.5.4
@@ -466,10 +478,22 @@ importers:
       auto-i18n-plugin-core:
         specifier: workspace:*
         version: link:../autoI18nPluginCore
+      axios:
+        specifier: ^1.6.8
+        version: 1.7.4
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
     devDependencies:
       '@babel/types':
         specifier: ^7.23.0
         version: 7.26.0
+      '@rollup/plugin-babel':
+        specifier: ^6.0.4
+        version: 6.0.4(@babel/core@7.26.0)(@types/babel__core@7.20.5)(rollup@4.20.0)
       '@rollup/plugin-typescript':
         specifier: ^11.1.5
         version: 11.1.6(rollup@4.20.0)(tslib@2.6.3)(typescript@5.5.4)
@@ -491,6 +515,9 @@ importers:
       rollup-plugin-node-externals:
         specifier: ^7.1.2
         version: 7.1.2(rollup@4.20.0)
+      rollup-plugin-terser:
+        specifier: ^7.0.2
+        version: 7.0.2(rollup@4.20.0)
       typescript:
         specifier: ^5.1.6
         version: 5.5.4
@@ -1813,6 +1840,19 @@ packages:
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-babel@6.0.4':
+    resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+      '@types/babel__core': ^7.1.9
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      '@types/babel__core':
+        optional: true
       rollup:
         optional: true
 
@@ -5543,6 +5583,7 @@ packages:
 
   lodash.template@4.5.0:
     resolution: {integrity: sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==}
+    deprecated: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
 
   lodash.templatesettings@4.2.0:
     resolution: {integrity: sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==}
@@ -10300,6 +10341,17 @@ snapshots:
       slash: 4.0.0
     optionalDependencies:
       rollup: 4.20.0
+
+  '@rollup/plugin-babel@6.0.4(@babel/core@7.26.0)(@types/babel__core@7.20.5)(rollup@4.20.0)':
+    dependencies:
+      '@babel/core': 7.26.0
+      '@babel/helper-module-imports': 7.25.9
+      '@rollup/pluginutils': 5.1.0(rollup@4.20.0)
+    optionalDependencies:
+      '@types/babel__core': 7.20.5
+      rollup: 4.20.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@rollup/plugin-commonjs@15.1.0(rollup@2.79.1)':
     dependencies:
@@ -15964,6 +16016,14 @@ snapshots:
       '@babel/code-frame': 7.26.2
       jest-worker: 26.6.2
       rollup: 2.79.1
+      serialize-javascript: 4.0.0
+      terser: 5.31.6
+
+  rollup-plugin-terser@7.0.2(rollup@4.20.0):
+    dependencies:
+      '@babel/code-frame': 7.26.2
+      jest-worker: 26.6.2
+      rollup: 4.20.0
       serialize-javascript: 4.0.0
       terser: 5.31.6
 

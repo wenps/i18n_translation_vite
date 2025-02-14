@@ -1,7 +1,7 @@
 <!--
  * @Author: xiaoshanwen
  * @Date: 2023-11-23 15:52:50
- * @LastEditTime: 2025-02-11 10:17:47
+ * @LastEditTime: 2025-02-14 18:05:45
  * @FilePath: /i18n_translation_vite/example/webpack-vue2/src/App.vue
 -->
 <template>
@@ -13,24 +13,16 @@
                     <span @click="goHome1" class="site-name">企业门户</span>
                 </div>
                 <nav class="nav-menu">
-                    <div class="operation">
-                        <a-button @click="changeLang('zhcn')" style="margin-right: 10px">
-                            中文
-                        </a-button>
-                        <a-button @click="changeLang('en')" style="margin-right: 10px">
-                            英文
-                        </a-button>
-                        <a-button @click="changeLang('ko')" style="margin-right: 10px">
-                            韩文
-                        </a-button>
-                        <a-button @click="changeLang('ja')" style="margin-right: 10px">
-                            日文
-                        </a-button>
+                    <div class="operation" style="display: flex">
+                        <div @click="changeLang('zhcn')" style="margin-right: 10px">中文</div>
+                        <div @click="changeLang('en')" style="margin-right: 10px">英文</div>
+                        <div @click="changeLang('ko')" style="margin-right: 10px">韩文</div>
+                        <div @click="changeLang('ja')" style="margin-right: 10px">日文</div>
                     </div>
-                    <a-button @click="navigate('products')" class="nav-item">产品服务</a-button>
-                    <a-button @click="navigate('solutions')" class="nav-item">解决方案</a-button>
-                    <a-button @click="navigate('about')" class="nav-item">关于我们</a-button>
-                    <a-button @click="navigate('contact')" class="nav-item">联系我们</a-button>
+                    <div @click="navigate('products')" class="nav-item">产品服务</div>
+                    <div @click="navigate('solutions')" class="nav-item">解决方案</div>
+                    <div @click="navigate('about')" class="nav-item">关于我们</div>
+                    <div @click="navigate('contact')" class="nav-item">联系我们</div>
                 </nav>
             </header>
             <main>

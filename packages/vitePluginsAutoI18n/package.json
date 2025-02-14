@@ -35,10 +35,7 @@
         "@babel/core": "^7.23.2",
         "@babel/preset-env": "^7.23.2",
         "@babel/preset-typescript": "^7.23.2",
-        "auto-i18n-plugin-core": "workspace:*",
-        "axios": "^1.6.8",
-        "crypto-js": "^4.2.0",
-        "lodash": "^4.17.21"
+        "auto-i18n-plugin-core": "workspace:*"
     },
     "devDependencies": {
         "@babel/types": "^7.23.0",

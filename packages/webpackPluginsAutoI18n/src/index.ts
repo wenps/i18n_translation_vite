@@ -52,7 +52,7 @@ export default class webpackPluginsAutoI18n {
         /**
          * 在编译前阶段动态添加自定义 Loader
          */
-        compiler.hooks.beforeRun.tap('webpackPluginsAutoI18n', () => {
+        compiler.hooks.emit.tap('webpackPluginsAutoI18n', () => {
             // 检查是否已经添加过这个自定义 Loader，避免重复添加
             const hasCustomLoader = (rule: any) =>
                 rule.use &&

@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2025-02-14 10:33:54
+ * @LastEditTime: 2025-02-14 17:58:22
  * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/utils/base.ts
  */
 import { Node } from '@babel/types'
@@ -170,4 +170,45 @@ export function truncate(q: string) {
         const len = q.length
         return q.substring(0, 10) + len + q.substring(len - 10)
     }
+}
+
+// 导出一个深拷贝函数，用于克隆对象
+export function cloneDeep<T>(value: T, cache: WeakMap<object, any> = new WeakMap()): T {
+    // 处理基本类型和 null
+    if (typeof value !== 'object' || value === null) {
+        return value
+    }
+
+    // 处理循环引用
+    if (cache.has(value)) {
+        return cache.get(value)
+    }
+
+    // 处理特殊对象类型
+    if (value instanceof Date) {
+        return new Date(value) as T
+    }
+
+    if (value instanceof RegExp) {
+        return new RegExp(value.source, value.flags) as T
+    }
+
+    // 初始化克隆容器
+    const clone: any = Array.isArray(value) ? [] : {}
+
+    // 缓存对象防止循环引用
+    cache.set(value, clone)
+
+    // 处理 Symbol 和普通键的枚举
+    const keys = [
+        ...Object.keys(value),
+        ...Object.getOwnPropertySymbols(value).filter(sym => value.propertyIsEnumerable(sym))
+    ]
+
+    // 递归克隆属性
+    for (const key of keys) {
+        clone[key] = cloneDeep((value as any)[key], cache)
+    }
+
+    return clone as T
 }

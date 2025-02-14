@@ -1,12 +1,12 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2025-02-14 10:32:15
+ * @LastEditTime: 2025-02-14 11:28:36
  * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/option.ts
  */
 
 import { OriginLangKeyEnum } from './enums'
-import cloneDeep from 'lodash/cloneDeep'
+import { cloneDeep } from 'lodash-es'
 import { YoudaoTranslator, GoogleTranslator, Translator, TranslatorOption } from './translator'
 export { YoudaoTranslator, GoogleTranslator, Translator }
 export type { TranslatorOption }

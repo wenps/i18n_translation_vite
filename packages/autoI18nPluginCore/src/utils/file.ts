@@ -1,13 +1,13 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 13:28:03
- * @LastEditTime: 2024-12-07 16:28:31
- * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/file.ts
+ * @LastEditTime: 2025-02-14 11:45:57
+ * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/utils/file.ts
  */
 import fs from 'fs'
 import path from 'path'
 import { option } from '../option'
-const jsonFormat = require('json-format')
+import { jsonFormatter } from './json'
 
 /**
  * @description: 新建国际化配置文件夹
@@ -110,7 +110,7 @@ export function getLangObjByJSONFileWithLangKey(
  */
 export function setLangTranslateJSONFile(obj: object) {
     const filePath = path.join(option.globalPath, 'index.json')
-    const jsonObj = jsonFormat(obj)
+    const jsonObj = jsonFormatter(obj)
     if (fs.existsSync(filePath)) {
         fs.writeFileSync(filePath, jsonObj)
     } else {

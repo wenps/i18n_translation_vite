@@ -1,10 +1,10 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-12 18:18:51
- * @LastEditTime: 2023-10-31 14:37:24
- * @FilePath: /i18n_translation_vite/src/plugins/filter/visitor/CallExpression.ts
+ * @LastEditTime: 2025-02-14 10:33:39
+ * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/filter/visitor/CallExpression.ts
  */
-const types = require('@babel/types')
+import types from '@babel/types'
 import { translateUtils } from '../../utils/index'
 import { option } from '../../option'
 

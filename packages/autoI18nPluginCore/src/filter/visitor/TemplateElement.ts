@@ -1,10 +1,10 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-11-01 16:35:38
- * @LastEditTime: 2024-12-07 16:45:35
- * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/filter/visitor/TemplateElement.ts
+ * @LastEditTime: 2025-02-14 10:33:49
+ * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/filter/visitor/TemplateElement.ts
  */
-const types = require('@babel/types')
+import types from '@babel/types'
 import { option } from '../../option'
 import { baseUtils, translateUtils } from '../../utils'
 

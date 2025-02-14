@@ -1,15 +1,15 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-11 10:01:43
- * @LastEditTime: 2024-04-07 19:41:37
- * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/base.ts
+ * @LastEditTime: 2025-02-14 10:33:54
+ * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/utils/base.ts
  */
 import { Node } from '@babel/types'
+import types from '@babel/types'
 import { option } from '../option'
 import { FunctionFactoryOption } from './option'
 import { REGEX_MAP } from 'src/constants'
 import { OriginLangKeyEnum } from 'src/enums'
-const types = require('@babel/types')
 
 /**
  * @description: 是否包含来源语言字符

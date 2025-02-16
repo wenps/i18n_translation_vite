@@ -1,8 +1,8 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2024-04-06 17:17:19
- * @FilePath: /i18n_translation_vite/autoI18nPluginCore/src/utils/translate/index.ts
+ * @LastEditTime: 2025-02-16 20:43:13
+ * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/utils/translate.ts
  */
 
 import * as fileUtils from './file'
@@ -79,6 +79,10 @@ export async function autoTranslate() {
             continue
         }
         console.info('开始自动翻译...')
+        console.log(text)
+
+        console.log(text.length)
+
         const res = await option.translator.translate(
             text,
             option.originLang,

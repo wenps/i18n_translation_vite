@@ -8,8 +8,6 @@
 import { OriginLangKeyEnum } from './enums'
 import { YoudaoTranslator, GoogleTranslator, Translator, TranslatorOption } from './translator'
 import { cloneDeep } from './utils/base'
-
-// const _cloneDeep = require('lodash/cloneDeep')
 export { YoudaoTranslator, GoogleTranslator, Translator }
 export type { TranslatorOption }
 

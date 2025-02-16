@@ -1,13 +1,15 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-26 17:34:47
- * @LastEditTime: 2025-02-14 18:00:30
+ * @LastEditTime: 2025-02-16 20:32:15
  * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/option.ts
  */
 
 import { OriginLangKeyEnum } from './enums'
 import { YoudaoTranslator, GoogleTranslator, Translator, TranslatorOption } from './translator'
 import { cloneDeep } from './utils/base'
+
+// const _cloneDeep = require('lodash/cloneDeep')
 export { YoudaoTranslator, GoogleTranslator, Translator }
 export type { TranslatorOption }
 
@@ -91,9 +93,18 @@ export type OptionInfo = {
  * @param optionInfo 用户提供的配置选项
  * @returns 处理后的用户配置选项
  */
+/**
+ * Generates a user option object by deep cloning the provided option information,
+ * ensuring that the original configuration is not modified. It also initializes
+ * the translator based on the user's configuration.
+ *
+ * @param optionInfo - The option information containing the user's option and translator details.
+ * @returns A new user option object with potential translator initialization.
+ */
 function generateUserOption(optionInfo: OptionInfo) {
     // 深拷贝用户传入的配置，防止修改原配置对象
     const userOption = cloneDeep(optionInfo.option)
+    userOption.translator = optionInfo?.option?.translator
 
     // 如果用户配置了translatorOption则初始化translator，如果都没有则不设置translator
     userOption.translator ||= userOption.translatorOption

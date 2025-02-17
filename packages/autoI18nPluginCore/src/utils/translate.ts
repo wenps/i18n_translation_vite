@@ -1,12 +1,15 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2025-02-16 20:43:13
+ * @LastEditTime: 2025-02-17 10:40:37
  * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/utils/translate.ts
  */
 
 import * as fileUtils from './file'
 import { option } from 'src/option'
+
+const SEPARATOR = '\n┇┇┇\n'
+const SPLIT_SEPARATOR_REGEX = /\n┇ *┇ *┇\n/
 
 type langObj = { [key: string]: string }
 
@@ -71,7 +74,7 @@ export async function autoTranslate() {
     }
 
     // 创建翻译文本
-    let text = Object.values(transLangObj).join('\n┇┇┇\n')
+    let text = Object.values(transLangObj).join(SEPARATOR)
     let newLangObjMap: any = {}
     for (let index = 0; index < option.langKey.length; index++) {
         if (index === 0) {
@@ -79,18 +82,19 @@ export async function autoTranslate() {
             continue
         }
         console.info('开始自动翻译...')
-        console.log(text)
-
-        console.log(text.length)
 
         const res = await option.translator.translate(
             text,
             option.originLang,
             option.langKey[index]
         )
-        const resultValues = res.split(/\n┇ *┇ *┇\n/).map(v => v.trim()) // 拆分文案
+        const resultValues = res.split(SPLIT_SEPARATOR_REGEX).map(v => v.trim()) // 拆分文案
         if (resultValues.length !== Object.values(transLangObj).length) {
-            console.error('翻译异常，翻译结果缺失❌')
+            console.error(`翻译结果缺失❌:
+                预期数量: ${Object.values(transLangObj).length}
+                实际数量: ${resultValues.length}
+                样例数据: ${JSON.stringify(resultValues.slice(0, 3))}...
+                原始响应: ${res.slice(0, 100)}...`)
             return
         }
         newLangObjMap[option.langKey[index]] = resultValues
@@ -166,11 +170,11 @@ export async function completionTranslateAndWriteConfigFile(
     if (!Object.values(transLangObj).length) return
 
     // 创建翻译文本
-    let text = Object.values(transLangObj).join('\n┇┇┇\n')
+    let text = Object.values(transLangObj).join(SEPARATOR)
 
     console.info('进入新增语言补全翻译...')
     const res = await option.translator.translate(text, option.originLang, translateKey)
-    const resultValues = res.split(/\n┇ *┇ *┇\n/).map(v => v.trim()) // 拆分文案
+    const resultValues = res.split(SPLIT_SEPARATOR_REGEX).map(v => v.trim()) // 拆分文案
     if (resultValues.length !== Object.values(langObj).length) {
         console.error('翻译异常，翻译结果缺失❌')
         return
@@ -195,4 +199,59 @@ export async function completionTranslateAndWriteConfigFile(
         console.error('❌JSON配置文件写入失败' + error)
     }
     console.info('新增语言翻译补全成功⭐️⭐️⭐️')
+}
+
+function createTextSplitter(values: string[], maxChunkSize = 4500) {
+    const SEP_LENGTH = SEPARATOR.length
+
+    const result: string[] = []
+    let buffer: string[] = []
+    let currentSize = 0
+
+    const commitBuffer = () => {
+        if (buffer.length > 0) {
+            result.push(buffer.join(SEPARATOR))
+            buffer = []
+            currentSize = 0
+        }
+    }
+
+    for (const value of values) {
+        const neededSpace = value.length + (buffer.length > 0 ? SEP_LENGTH : 0)
+
+        // 处理单个超长文本的特殊情况
+        if (value.length > maxChunkSize) {
+            if (buffer.length > 0) commitBuffer()
+
+            // 分割超长文本（如果需要）
+            if (value.length > maxChunkSize * 1.5) {
+                console.warn(`检测到超长文本（${value.length} 字符），建议人工检查`)
+            }
+            result.push(value)
+            continue
+        }
+
+        // 正常分块逻辑
+        if (currentSize + neededSpace > maxChunkSize) {
+            commitBuffer()
+        }
+
+        // 更新缓冲区
+        currentSize += neededSpace
+        buffer.push(value)
+    }
+
+    commitBuffer() // 提交最后未完成的块
+
+    // 后处理验证
+    const validation = result.some(chunk => chunk.length > maxChunkSize)
+    if (validation) {
+        console.error('分块验证失败：存在超过限制的区块')
+        return { textChunks: [], splitResult: () => [] }
+    }
+
+    return {
+        textChunks: result,
+        splitResult: (text: string) => text.split(SEPARATOR).map(v => v.trim())
+    }
 }

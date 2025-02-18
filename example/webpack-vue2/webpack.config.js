@@ -1,7 +1,7 @@
 /*
  * @Date: 2025-02-06 16:17:56
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-10 23:59:58
+ * @LastEditTime: 2025-02-17 19:23:08
  * @FilePath: /i18n_translation_vite/example/webpack-vue2/webpack.config.js
  */
 const path = require('path')
@@ -22,12 +22,7 @@ const i18nPlugin = new webpackPluginsAutoI18n.default({
         originLang: 'zh-cn',
         translator: new YoudaoTranslator({
             appId: '4cdb9baea8066fef',
-            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j',
-            proxy: {
-                host: '127.0.0.1',
-                port: 8899,
-                protocol: 'http'
-            }
+            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j'
         })
     }
 })

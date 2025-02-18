@@ -1,7 +1,7 @@
 /*
  * @Date: 2025-02-10 18:58:20
  * @LastEditors: xiaoshan
- * @LastEditTime: 2025-02-11 10:47:13
+ * @LastEditTime: 2025-02-18 10:55:34
  * @FilePath: /i18n_translation_vite/example/webpack-vue2/src/main.js
  */
 

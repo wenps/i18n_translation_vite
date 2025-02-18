@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-10-30 18:23:03
- * @LastEditTime: 2025-02-17 18:01:10
+ * @LastEditTime: 2025-02-18 10:56:44
  * @FilePath: /i18n_translation_vite/packages/autoI18nPluginCore/src/utils/translate.ts
  */
 
@@ -140,13 +140,9 @@ export async function autoTranslate() {
     }
 
     // ─── 合并翻译结果到配置 ───
-    Object.keys(transLangObj).forEach((key: any, valueIndex) => {
-        option.langKey.forEach((lang, langIndex) => {
-            if (langIndex === 0) {
-                originLangObjMap[lang][key] = newLangObjMap[lang][key]
-            } else {
-                originLangObjMap[lang][key] = newLangObjMap[lang][valueIndex]
-            }
+    Object.keys(transLangObj).forEach((key: any, index) => {
+        option.langKey.forEach(item => {
+            originLangObjMap[item][key] = newLangObjMap[item][index]
         })
     })
 

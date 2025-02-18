@@ -1,7 +1,7 @@
 /*
  * @Author: xiaoshanwen
  * @Date: 2023-08-10 17:12:17
- * @LastEditTime: 2025-02-10 19:03:55
+ * @LastEditTime: 2025-02-18 11:19:58
  * @FilePath: /i18n_translation_vite/example/vue2/vite.config.ts
  */
 import path from 'path'
@@ -19,12 +19,7 @@ const i18nPlugin = vitePluginsAutoI18n({
         originLang: 'zh-cn',
         translator: new YoudaoTranslator({
             appId: '4cdb9baea8066fef',
-            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j',
-            proxy: {
-                host: '127.0.0.1',
-                port: 8899,
-                protocol: 'http'
-            }
+            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j'
         })
     }
 })

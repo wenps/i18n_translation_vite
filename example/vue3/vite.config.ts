@@ -19,12 +19,7 @@ const i18nPlugin = vitePluginsAutoI18n({
         originLang: 'zh-cn',
         translator: new YoudaoTranslator({
             appId: '4cdb9baea8066fef',
-            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j',
-            proxy: {
-                host: '127.0.0.1',
-                port: 8899,
-                protocol: 'http'
-            }
+            appKey: 'ONI6AerZnGRyDqr3w7UM730mPuF8mB3j'
         })
     }
 })

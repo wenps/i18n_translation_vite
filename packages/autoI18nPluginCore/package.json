@@ -1,6 +1,6 @@
 {
     "name": "auto-i18n-plugin-core",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "vite, webpack automatic translation plugin core code.",
     "keywords": [
         "i18n",

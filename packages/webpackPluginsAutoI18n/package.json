@@ -1,6 +1,6 @@
 {
     "name": "webpack-auto-i18n-plugin",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "webpack automatic translation plugin",
     "keywords": [
         "i18n",

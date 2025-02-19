@@ -515,6 +515,9 @@ importers:
       '@babel/core':
         specifier: ^7.26.0
         version: 7.26.0
+      '@rollup/plugin-babel':
+        specifier: ^6.0.4
+        version: 6.0.4(@babel/core@7.26.0)(@types/babel__core@7.20.5)(rollup@4.20.0)
       '@types/webpack':
         specifier: ^5.28.5
         version: 5.28.5
@@ -527,6 +530,9 @@ importers:
       auto-i18n-plugin-core:
         specifier: workspace:*
         version: link:../autoI18nPluginCore
+      rollup-plugin-terser:
+        specifier: ^7.0.2
+        version: 7.0.2(rollup@4.20.0)
       webpack:
         specifier: ^5.96.1
         version: 5.96.1(webpack-cli@5.1.4)
